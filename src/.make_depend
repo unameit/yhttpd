@@ -1,0 +1,53 @@
+AsyncConnection.o: AsyncConnection.cpp AsyncConnection.h
+AsyncMessageQueue.o: AsyncMessageQueue.cpp SystemException.h Exception.h \
+ SString.h AsyncMessageQueue.h AsyncSocket.h Socket.h Descriptor.h
+AsyncSocket.o: AsyncSocket.cpp AsyncSocket.h Socket.h Descriptor.h
+ChildThread.o: ChildThread.cpp AsyncConnection.h HTTPConnection.h \
+ AsyncSocket.h Socket.h Descriptor.h HTTPRequest.h File.h FileInfo.h \
+ SystemException.h Exception.h SString.h getChildNo.h ChildThread.h \
+ ConnectionsManager.h Vector.h AsyncMessageQueue.h
+Configuration.o: Configuration.cpp Configuration.h Properties.h Vector.h \
+ String.h Exception.h SString.h
+ConnectionWithChild.o: ConnectionWithChild.cpp EOFException.h \
+ SystemException.h Exception.h SString.h ConnectionWithChild.h \
+ AsyncConnection.h AsyncMessageQueue.h AsyncSocket.h Socket.h \
+ Descriptor.h debug.h
+ConnectionsManager.o: ConnectionsManager.cpp SystemException.h \
+ Exception.h SString.h AsyncConnection.h ConnectionsManager.h Vector.h
+Descriptor.o: Descriptor.cpp SystemException.h Exception.h SString.h \
+ EOFException.h Descriptor.h
+EOFException.o: EOFException.cpp EOFException.h SystemException.h \
+ Exception.h SString.h
+Exception.o: Exception.cpp Exception.h SString.h
+File.o: File.cpp SystemException.h Exception.h SString.h File.h \
+ Descriptor.h
+FileInfo.o: FileInfo.cpp SString.h Exception.h SystemException.h \
+ FileInfo.h
+HTTPConnection.o: HTTPConnection.cpp debug.h Exception.h SString.h File.h \
+ Descriptor.h getChildNo.h HTTPConnection.h AsyncConnection.h \
+ AsyncSocket.h Socket.h HTTPRequest.h FileInfo.h
+HTTPRequest.o: HTTPRequest.cpp Exception.h SString.h Properties.h \
+ Vector.h String.h HTTPRequest.h File.h Descriptor.h FileInfo.h debug.h
+ParentThread.o: ParentThread.cpp debug.h ConnectionWithChild.h \
+ AsyncConnection.h AsyncMessageQueue.h AsyncSocket.h Socket.h \
+ Descriptor.h SystemException.h Exception.h SString.h ParentThread.h \
+ ConnectionsManager.h Vector.h
+Properties.o: Properties.cpp SString.h SystemException.h Exception.h \
+ Properties.h Vector.h String.h
+SString.o: SString.cpp SString.h
+Socket.o: Socket.cpp SystemException.h Exception.h SString.h Socket.h \
+ Descriptor.h
+String.o: String.cpp SystemException.h Exception.h SString.h String.h
+SystemException.o: SystemException.cpp SystemException.h Exception.h \
+ SString.h
+Vector.o: Vector.cpp SString.h Exception.h SystemException.h Vector.h
+execChildThread.o: execChildThread.cpp ChildThread.h AsyncConnection.h \
+ ConnectionsManager.h Vector.h AsyncMessageQueue.h AsyncSocket.h Socket.h \
+ Descriptor.h SystemException.h Exception.h SString.h execChildThread.h
+execParentThread.o: execParentThread.cpp ParentThread.h AsyncConnection.h \
+ ConnectionsManager.h Vector.h AsyncSocket.h Socket.h Descriptor.h \
+ SystemException.h Exception.h SString.h execParentThread.h
+main.o: main.cpp String.h Configuration.h Properties.h Vector.h \
+ AsyncSocket.h Socket.h Descriptor.h ConnectionWithChild.h \
+ AsyncConnection.h AsyncMessageQueue.h SystemException.h Exception.h \
+ SString.h debug.h execParentThread.h execChildThread.h getChildNo.h
