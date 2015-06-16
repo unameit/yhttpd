@@ -5,16 +5,16 @@
 <a name=ParentThread><h2>Class ParentThread</h2></a>
 <font face="Courier New,Courier">class ParentThread<br>extends  AsyncConnection</font>
 <dl>
-<dt><b>Documentation </b><dd>Obiekt tej klasy, istniej±cy tylko w procesie-rodzica, odpowiedzialny
-<dd>jest za przyjmowanie nowych po³±czeñ od klientów oraz przekazywanie ich
-<dd>procesom-dzieciom za pomoc± obiektów ConnectionWithChild.  Klasa
-<dd>implementuje interfejs AsyncConnection, do obs³ugi asynchronicznego
-<dd>gniazda po³±czeniowego, na którym nas³uchuje w oczekiwaniu na nowe
-<dd>po³±czenia "ze ¶wiata".
+<dt><b>Documentation </b><dd>Obiekt tej klasy, istniejÄ…cy tylko w procesie-rodzica, odpowiedzialny
+<dd>jest za przyjmowanie nowych poÅ‚Ä…czeÅ„ od klientÃ³w oraz przekazywanie ich
+<dd>procesom-dzieciom za pomocÄ… obiektÃ³w ConnectionWithChild.  Klasa
+<dd>implementuje interfejs AsyncConnection, do obsÅ‚ugi asynchronicznego
+<dd>gniazda poÅ‚Ä…czeniowego, na ktÃ³rym nasÅ‚uchuje w oczekiwaniu na nowe
+<dd>poÅ‚Ä…czenia "ze Å›wiata".
 </dl>
 <h3><b>Links</h3></b>
 <ul><li><b>Aggregation manager to </b><a href=ConnectionsManager.html#ConnectionsManager>ConnectionsManager</a></li></ul>
-<dir><dt><b>Documentation </b>manager naszych po³±czeñ
+<dir><dt><b>Documentation </b>manager naszych poÅ‚Ä…czeÅ„
 </dir>
 <ul><li><b>Association serverSocket to </b><a href=AsyncSocket.html#AsyncSocket>AsyncSocket</a></li></ul>
 <dir><dt><b>Supplier cardinality </b>0..1</dt>
@@ -23,22 +23,22 @@
 <a name=children#ParentThread><ul><li><b>children</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private ConnectionWithChild * * children</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Wska¼nik do tablicy ze wska¼nikami do obiektów ConnectionWithChild
+<dt><b>Documentation </b>WskaÅºnik do tablicy ze wskaÅºnikami do obiektÃ³w ConnectionWithChild
 </dl>
 </dir><a name=maxChildren#ParentThread><ul><li><b>maxChildren</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private const int maxChildren</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>liczba procesów-dzieci jak± posiadamy
+<dt><b>Documentation </b>liczba procesÃ³w-dzieci jakÄ… posiadamy
 </dl>
 </dir><a name=peer#ParentThread><ul><li><b>peer</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private struct sockaddr_in peer</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>tu pamiêtamy adres klienta, który pode¶lemy te¿ dziecku
+<dt><b>Documentation </b>tu pamiÄ™tamy adres klienta, ktÃ³ry podeÅ›lemy teÅ¼ dziecku
 </dl>
 </dir><a name=socketfdToSend#ParentThread><ul><li><b>socketfdToSend</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private int socketfdToSend</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>tu pamiêtamy deskryptor gniazda, które zaraz wy¶lemy procesowi-dziecku
+<dt><b>Documentation </b>tu pamiÄ™tamy deskryptor gniazda, ktÃ³re zaraz wyÅ›lemy procesowi-dziecku
 </dl>
 </dir><h3><b>Operations</h3></b>
 <a name=ParentThread#AsyncSocket_*#ConnectionWithChild_*_*#int#ParentThread><ul><li><b>ParentThread</b></li></ul>
@@ -53,7 +53,7 @@
 </dir><a name=getChild#ParentThread><ul><li><b>getChild</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private ConnectionWithChild * getChild()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>metoda zwraca wska¼nik do proponowanego procesu-dziecka, które powinni¶my obarczyæ nastêpnym zadaniem.
+<dt><b>Documentation </b>metoda zwraca wskaÅºnik do proponowanego procesu-dziecka, ktÃ³re powinniÅ›my obarczyÄ‡ nastÄ™pnym zadaniem.
 </dl>
 </dir><a name=isReadNeeded#ParentThread><ul><li><b>isReadNeeded</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private bool isReadNeeded()</font></font><p>  </p>

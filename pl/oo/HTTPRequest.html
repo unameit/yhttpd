@@ -5,9 +5,9 @@
 <a name=HTTPRequest><h2>Class HTTPRequest</h2></a>
 <font face="Courier New,Courier">class HTTPRequest</font>
 <dl>
-<dt><b>Documentation </b><dd>Obiekt tej klasy zajmuje siê parsowaniem zapytania klienta, zrozumieniem
-<dd>go oraz wygenerowaniem w³a¶ciwej odpowiedzi (zgodnie z protoko³em HTTP). 
-<dd>Wskazuje te¿ oraz otwiera plik, którego wys³aniem zaj±æ siê ma obiekt
+<dt><b>Documentation </b><dd>Obiekt tej klasy zajmuje siÄ™ parsowaniem zapytania klienta, zrozumieniem
+<dd>go oraz wygenerowaniem wÅ‚aÅ›ciwej odpowiedzi (zgodnie z protokoÅ‚em HTTP). 
+<dd>Wskazuje teÅ¼ oraz otwiera plik, ktÃ³rego wysÅ‚aniem zajÄ…Ä‡ siÄ™ ma obiekt
 <dd>HTTPConnection.
 </dl>
 <h3><b>Links</h3></b>
@@ -15,22 +15,22 @@
 <dir><dt><b>Documentation </b>a tu jest ewentualnie ten plik.
 </dir>
 <ul><li><b>Aggregation fileinfo to </b><a href=FileInfo.html#FileInfo>FileInfo</a></li></ul>
-<dir><dt><b>Documentation </b>tu pamiêtamy dane o pliku, którym interesuje siê klient
+<dir><dt><b>Documentation </b>tu pamiÄ™tamy dane o pliku, ktÃ³rym interesuje siÄ™ klient
 </dir>
 <ul><li><b>Association mimeTypes to </b><a href=Properties.html#Properties>Properties</a></li></ul>
 <dir><dt><b>Supplier cardinality </b>0..1</dt>
-<dt><b>Documentation </b>Obiekt 'rozpoznaj±cy' typy plików po rozszerzeniach ich nazwy.
+<dt><b>Documentation </b>Obiekt 'rozpoznajÄ…cy' typy plikÃ³w po rozszerzeniach ich nazwy.
 </dir>
 <h3><b>Attributes</h3></b>
 <a name=documentRoot#HTTPRequest><ul><li><b>documentRoot</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private const char * const documentRoot</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Gdzie sk³aowane s± dokumenty z g³ównego drzewa.
+<dt><b>Documentation </b>Gdzie skÅ‚aowane sÄ… dokumenty z gÅ‚Ã³wnego drzewa.
 </dl>
 </dir><a name=haveContent#HTTPRequest><ul><li><b>haveContent</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private bool haveContent</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>wysy³amy co¶ oprócz nag³ówka? / wysy³amy plik?
+<dt><b>Documentation </b>wysyÅ‚amy coÅ› oprÃ³cz nagÅ‚Ã³wka? / wysyÅ‚amy plik?
 </dl>
 </dir><a name=hdr200#HTTPRequest><ul><li><b>hdr200</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private const ResponseHeader hdr200</font></font><p>  </p>
@@ -55,7 +55,7 @@
 </dir><a name=hostName#HTTPRequest><ul><li><b>hostName</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private const char * const hostName</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Nazwa komputera na którym jeste¶my uruchomieni - potrzebna w polu Location odpowiedzi HTTP.
+<dt><b>Documentation </b>Nazwa komputera na ktÃ³rym jesteÅ›my uruchomieni - potrzebna w polu Location odpowiedzi HTTP.
 </dl>
 </dir><a name=method#HTTPRequest><ul><li><b>method</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private char[10] method</font></font><p>  </p>
@@ -64,7 +64,7 @@
 </dir><a name=sendFile#HTTPRequest><ul><li><b>sendFile</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private bool sendFile</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>wysy³amy co¶ oprócz nag³ówka? / wysy³amy plik?
+<dt><b>Documentation </b>wysyÅ‚amy coÅ› oprÃ³cz nagÅ‚Ã³wka? / wysyÅ‚amy plik?
 </dl>
 </dir><a name=uri#HTTPRequest><ul><li><b>uri</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private char[500] uri</font></font><p>  </p>
@@ -73,69 +73,69 @@
 </dir><a name=userDir#HTTPRequest><ul><li><b>userDir</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private const char * const userDir</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>W którym katalogu w katalgoach u¿ytkowników szukaæ index.html i innych dokumentów.
+<dt><b>Documentation </b>W ktÃ³rym katalogu w katalgoach uÅ¼ytkownikÃ³w szukaÄ‡ index.html i innych dokumentÃ³w.
 </dl>
 </dir><h3><b>Operations</h3></b>
 <a name=HTTPRequest#const_char_*#const_Properties_*#const_char_*#const_char_*#HTTPRequest><ul><li><b>HTTPRequest</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public  HTTPRequest(const char * hostName, const Properties * mimeTypes, const char * documentRoot, const char * userDir)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b><dd>Standardowy konstruktor, w którym podajemy wska¼niki do pó¼niej
-<dd>wykorzystywanych obiektów.
+<dt><b>Documentation </b><dd>Standardowy konstruktor, w ktÃ³rym podajemy wskaÅºniki do pÃ³Åºniej
+<dd>wykorzystywanych obiektÃ³w.
 </dl>
 </dir><a name=generateResponseHeader#char_*#uint#const_ResponseHeader_&#const_char_*#ulong#const_char_*#time_t#HTTPRequest><ul><li><b>generateResponseHeader</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private void generateResponseHeader(char * buffer, uint bufferLength, const ResponseHeader & hdr, const char * location, ulong contentLength, const char * contentType, time_t mtime)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Metoda generuje nag³ówke odpowiedzi korzystaj±c z podanych obiektów.
+<dt><b>Documentation </b>Metoda generuje nagÅ‚Ã³wke odpowiedzi korzystajÄ…c z podanych obiektÃ³w.
 </dl>
 </dir><a name=getFile#HTTPRequest><ul><li><b>getFile</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public File * getFile()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b><dd>Metoda ta zwraca wska¼nik do obiektu File, którego zawarto¶æ nale¿y
-<dd>wys³aæ, zaraz za nag³ówkiem.  Zwraca NULL je¶li nie nale¿y nic wiêcej
-<dd>(poza nag³ówkiem) wysy³aæ.  Je¶li skoñczê z plikiem, to sam go zamknê
-<dd>- Ty wiêc o jego zamykanie nie musisz martwiæ.
+<dt><b>Documentation </b><dd>Metoda ta zwraca wskaÅºnik do obiektu File, ktÃ³rego zawartoÅ›Ä‡ naleÅ¼y
+<dd>wysÅ‚aÄ‡, zaraz za nagÅ‚Ã³wkiem.  Zwraca NULL jeÅ›li nie naleÅ¼y nic wiÄ™cej
+<dd>(poza nagÅ‚Ã³wkiem) wysyÅ‚aÄ‡.  JeÅ›li skoÅ„czÄ™ z plikiem, to sam go zamknÄ™
+<dd>- Ty wiÄ™c o jego zamykanie nie musisz martwiÄ‡.
 </dl>
 </dir><a name=getMethod#HTTPRequest><ul><li><b>getMethod</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public const char * getMethod()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Zwraca metodê bie¿±cego zapytania. Metoda na potrzeby wpisu w pliku acces.log
+<dt><b>Documentation </b>Zwraca metodÄ™ bieÅ¼Ä…cego zapytania. Metoda na potrzeby wpisu w pliku acces.log
 </dl>
 </dir><a name=getResponse#char_*#uint#HTTPRequest><ul><li><b>getResponse</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public uint getResponse(char * buffer, uint bufferLength)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b><dd>Metoda ta na podstawie zapytania przegl±darki (podawanego w metodzie
-<dd>wy¿ej, ale podana tak¿e tutaj jeszcze raz, tylko tym razem mo¿n± j±
-<dd>zniszczyæ - a nawet trzeba. Bufor przenaczony jest przecie¿ teraz na
-<dd>odpowied¼) formu³uje nag³ówek odpowiedzi. Mog± to ju¿ byæ np. jakie¶
-<dd>informacje o pliku, który za¿yczy³a sobie przegl±darka w zapytaniu. 
-<dd>Odpowied¼ tê umieszcza we wskazanym buforze tekstowym, którego
-<dd>wielko¶æ podana jest jako drugi argument.  Naturalnie odpowied¼ nie
-<dd>mo¿e przekroczyæ tego rozmiaru, gdy¿ spowoduje to "SEGMENTATION
-<dd>FAULT" i zakoñczenie bie¿±cego procesu. Nale¿y siê jednak spodziewaæ,
-<dd>¿e dany bufor bêdzie mia³ conajmniej 32 kilobajty, a wiêc
-<dd>wystarczaj±co du¿o.  Metoda ta zwraca d³ugo¶æ w bajtach nag³ówka
-<dd>odpowiedzi, który nale¿y wys³aæ.
+<dt><b>Documentation </b><dd>Metoda ta na podstawie zapytania przeglÄ…darki (podawanego w metodzie
+<dd>wyÅ¼ej, ale podana takÅ¼e tutaj jeszcze raz, tylko tym razem moÅ¼nÄ… jÄ…
+<dd>zniszczyÄ‡ - a nawet trzeba. Bufor przenaczony jest przecieÅ¼ teraz na
+<dd>odpowiedÅº) formuÅ‚uje nagÅ‚Ã³wek odpowiedzi. MogÄ… to juÅ¼ byÄ‡ np. jakieÅ›
+<dd>informacje o pliku, ktÃ³ry zaÅ¼yczyÅ‚a sobie przeglÄ…darka w zapytaniu. 
+<dd>OdpowiedÅº tÄ™ umieszcza we wskazanym buforze tekstowym, ktÃ³rego
+<dd>wielkoÅ›Ä‡ podana jest jako drugi argument.  Naturalnie odpowiedÅº nie
+<dd>moÅ¼e przekroczyÄ‡ tego rozmiaru, gdyÅ¼ spowoduje to "SEGMENTATION
+<dd>FAULT" i zakoÅ„czenie bieÅ¼Ä…cego procesu. NaleÅ¼y siÄ™ jednak spodziewaÄ‡,
+<dd>Å¼e dany bufor bÄ™dzie miaÅ‚ conajmniej 32 kilobajty, a wiÄ™c
+<dd>wystarczajÄ…co duÅ¼o.  Metoda ta zwraca dÅ‚ugoÅ›Ä‡ w bajtach nagÅ‚Ã³wka
+<dd>odpowiedzi, ktÃ³ry naleÅ¼y wysÅ‚aÄ‡.
 </dl>
 </dir><a name=getURI#HTTPRequest><ul><li><b>getURI</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public const char * getURI()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Zwraca URI bie¿±cego zapytania. Metoda na potrzeby wpisu w pliku acces.log
+<dt><b>Documentation </b>Zwraca URI bieÅ¼Ä…cego zapytania. Metoda na potrzeby wpisu w pliku acces.log
 </dl>
 </dir><a name=isComplete#const_char_*#HTTPRequest><ul><li><b>isComplete</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public bool isComplete(const char * request)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b><dd>Metoda prawdza to co nam przys³a³a przegl±darka (a ja to podajê w
-<dd>buforze tekstowym jako string - czyli zakoñczony znakiem '\0'). 
-<dd>Zwraca true, je¶li request jest ju¿ odebrany w ca³o¶ci (zwykle
-<dd>oznacza to, ¿e koñczy siê dwoma znakami koñca linii '\n' - ale nie
-<dd>jest to regu³±, choæ tak powinno byæ). Lub zwraca false, je¶li
-<dd>request nie jest jeszcze kompletny i nale¿y spodziewaæ siê, ¿e co¶ z
-<dd>sieci zaraz dojdzie. Wtedy metoda ta zostanie wywo³ana ponownie z
-<dd>uzupe³nionym buforem.
+<dt><b>Documentation </b><dd>Metoda prawdza to co nam przysÅ‚aÅ‚a przeglÄ…darka (a ja to podajÄ™ w
+<dd>buforze tekstowym jako string - czyli zakoÅ„czony znakiem '\0'). 
+<dd>Zwraca true, jeÅ›li request jest juÅ¼ odebrany w caÅ‚oÅ›ci (zwykle
+<dd>oznacza to, Å¼e koÅ„czy siÄ™ dwoma znakami koÅ„ca linii '\n' - ale nie
+<dd>jest to reguÅ‚Ä…, choÄ‡ tak powinno byÄ‡). Lub zwraca false, jeÅ›li
+<dd>request nie jest jeszcze kompletny i naleÅ¼y spodziewaÄ‡ siÄ™, Å¼e coÅ› z
+<dd>sieci zaraz dojdzie. Wtedy metoda ta zostanie wywoÅ‚ana ponownie z
+<dd>uzupeÅ‚nionym buforem.
 </dl>
 </dir><a name=resolvePathName#char_*#HTTPRequest><ul><li><b>resolvePathName</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private const char * resolvePathName(char * )</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>metoda przerabia URI na pe³n± scie¿kê dostêpu do pliku
+<dt><b>Documentation </b>metoda przerabia URI na peÅ‚nÄ… scieÅ¼kÄ™ dostÄ™pu do pliku
 </dl>
 </dir><center><h3><a href=_index.html#_index>Return to top</a></h3></center></html>

@@ -5,23 +5,23 @@
 <a name=AsyncMessageQueue><h2>Class AsyncMessageQueue</h2></a>
 <font face="Courier New,Courier">class AsyncMessageQueue<br>extends  AsyncSocket</font>
 <dl>
-<dt><b>Documentation </b><dd>Klasa ta (dziedzicz±ca prywatnie klasê AsyncSocket) s³u¿y przede
-<dd>wszystkim do komunikacji miêdzyprocesowej. Oprócz zwyk³ych danych pozwala
-<dd>tak¿e przekazywaæ otwarte deskryptory plików i gniazd (socketów) innym
-<dd>procesom. Ze wzglêdu na potrzeby tego projektu oraz wymagane jej cechy
-<dd>zosta³a ona zrealizowana na ³±czu komunikacyjnym nieblokuj±cym
+<dt><b>Documentation </b><dd>Klasa ta (dziedziczÄ…ca prywatnie klasÄ™ AsyncSocket) sÅ‚uÅ¼y przede
+<dd>wszystkim do komunikacji miÄ™dzyprocesowej. OprÃ³cz zwykÅ‚ych danych pozwala
+<dd>takÅ¼e przekazywaÄ‡ otwarte deskryptory plikÃ³w i gniazd (socketÃ³w) innym
+<dd>procesom. Ze wzglÄ™du na potrzeby tego projektu oraz wymagane jej cechy
+<dd>zostaÅ‚a ona zrealizowana na Å‚Ä…czu komunikacyjnym nieblokujÄ…cym
 <dd>(asynchronicznym socket'cie w dziedzinie UNIXa).
 </dl>
 <h3><b>Attributes</h3></b>
 <a name=close#AsyncMessageQueue><ul><li><b>close</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public  close</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Upubliczniamy metodê close(), gdy¿ zosta³a ona wcze¶niej schowana z powody prywatnego dziedziczenia.
+<dt><b>Documentation </b>Upubliczniamy metodÄ™ close(), gdyÅ¼ zostaÅ‚a ona wczeÅ›niej schowana z powody prywatnego dziedziczenia.
 </dl>
 </dir><a name=fd#AsyncMessageQueue><ul><li><b>fd</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>protected  fd</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>udostêpniamy fd innym wy¿szym klasom (bo go schowali¶my przez ": private AsyncSocket")
+<dt><b>Documentation </b>udostÄ™pniamy fd innym wyÅ¼szym klasom (bo go schowaliÅ›my przez ": private AsyncSocket")
 </dl>
 </dir><a name=iov#AsyncMessageQueue><ul><li><b>iov</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private struct iovec [1] iov</font></font><p>  </p>
@@ -35,8 +35,8 @@
 <a name=AsyncMessageQueue#int#AsyncMessageQueue><ul><li><b>AsyncMessageQueue</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public  AsyncMessageQueue(int sockfd)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b><dd>Jako argument MUSI byæ podany deskryptor gniazda z dziedziny UNIXa -
-<dd>inne nie potrafi± przekazywaæ ¿ywych deskryptorów.
+<dt><b>Documentation </b><dd>Jako argument MUSI byÄ‡ podany deskryptor gniazda z dziedziny UNIXa -
+<dd>inne nie potrafiÄ… przekazywaÄ‡ Å¼ywych deskryptorÃ³w.
 </dl>
 </dir><a name=init#AsyncMessageQueue><ul><li><b>init</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private void init()</font></font><p>  </p>
@@ -50,7 +50,7 @@
 </dir><a name=operatorint#AsyncMessageQueue><ul><li><b>operatorint</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public  operatorint()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Podaj mi swój deskryptor gniazda.
+<dt><b>Documentation </b>Podaj mi swÃ³j deskryptor gniazda.
 </dl>
 </dir><a name=recvDescriptor#struct_sockaddr_in_*#AsyncMessageQueue><ul><li><b>recvDescriptor</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public int recvDescriptor(struct sockaddr_in * peer)</font></font><p>  </p>
@@ -59,17 +59,17 @@
 </dir><a name=recvInt#AsyncMessageQueue><ul><li><b>recvInt</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public int recvInt()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Odbierz liczbê int.
+<dt><b>Documentation </b>Odbierz liczbÄ™ int.
 </dl>
 </dir><a name=sendDescriptor#int#const_struct_sockaddr_in_*#AsyncMessageQueue><ul><li><b>sendDescriptor</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public void sendDescriptor(int , const struct sockaddr_in * peer)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Wy¶lij deskryptor podany jako argument.
+<dt><b>Documentation </b>WyÅ›lij deskryptor podany jako argument.
 </dl>
 </dir><a name=sendInt#int#AsyncMessageQueue><ul><li><b>sendInt</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public void sendInt(int i)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Wy¶lij liczbê int.
+<dt><b>Documentation </b>WyÅ›lij liczbÄ™ int.
 </dl>
 </dir><a name=~AsyncMessageQueue#AsyncMessageQueue><ul><li><b>~AsyncMessageQueue</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public  ~AsyncMessageQueue()</font></font><p>  </p>

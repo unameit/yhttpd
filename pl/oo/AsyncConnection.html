@@ -5,49 +5,49 @@
 <a name=AsyncConnection><h2>Class AsyncConnection</h2></a>
 <font face="Courier New,Courier">class AsyncConnection</font>
 <dl>
-<dt><b>Documentation </b><dd>Klasa ta jest tylko interfejsem który musz± implementowaæ obiekty chc±ce
-<dd>byæ obs³ugiwane przez ConnectionsManager'a.
-<dd>Generalnie opiera siê na mechanizmie asynchronicznych unix'owych
-<dd>socket'ów, ale ich obs³uga odbywa siê w sposób zdarzeniowy, tzn. gdy
-<dd>mo¿liwy jest zapis/odczyt na danym deskryptorze, to generowane jest
-<dd>odpowiednie zdarzenie obs³uguj±ce tê sytuacjê (czyli wywo³ywana
-<dd>odpowiednia metoda dla obiektu klasy imlementuj±cej ten interfejs).
+<dt><b>Documentation </b><dd>Klasa ta jest tylko interfejsem ktÃ³ry muszÄ… implementowaÄ‡ obiekty chcÄ…ce
+<dd>byÄ‡ obsÅ‚ugiwane przez ConnectionsManager'a.
+<dd>Generalnie opiera siÄ™ na mechanizmie asynchronicznych unix'owych
+<dd>socket'Ã³w, ale ich obsÅ‚uga odbywa siÄ™ w sposÃ³b zdarzeniowy, tzn. gdy
+<dd>moÅ¼liwy jest zapis/odczyt na danym deskryptorze, to generowane jest
+<dd>odpowiednie zdarzenie obsÅ‚ugujÄ…ce tÄ™ sytuacjÄ™ (czyli wywoÅ‚ywana
+<dd>odpowiednia metoda dla obiektu klasy imlementujÄ…cej ten interfejs).
 </dl>
 <h3><b>Operations</h3></b>
 <a name=AsyncConnection#AsyncConnection><ul><li><b>AsyncConnection</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>protected  AsyncConnection()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b><dd>chroniony konstruktor - niech nie istniej± obiekty tej klasy. 
+<dt><b>Documentation </b><dd>chroniony konstruktor - niech nie istniejÄ… obiekty tej klasy. 
 <dd>Przeznaczona jest ona tylko do dziedziczenia.
 </dl>
 </dir><a name=finalize#AsyncConnection><ul><li><b>finalize</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public void finalize()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b><dd>je¶li -1 == (int) *this, wiêc po³±czenie jest ju¿ zamkniête.
-<dd>wywo³aj wiêc wtedy ten niby destruktor
+<dt><b>Documentation </b><dd>jeÅ›li -1 == (int) *this, wiÄ™c poÅ‚Ä…czenie jest juÅ¼ zamkniÄ™te.
+<dd>wywoÅ‚aj wiÄ™c wtedy ten niby destruktor
 </dl>
 </dir><a name=isFinalized#AsyncConnection><ul><li><b>isFinalized</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public bool isFinalized()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b><dd>czy zosta³o ju¿ wywo³ane finalize() ?
-<dd>musisz zapamiêtaæ ten fakt, ¿eby inne obiekty nie przeoczy³y
-<dd>re-inicjalizacji po³±czenia
+<dt><b>Documentation </b><dd>czy zostaÅ‚o juÅ¼ wywoÅ‚ane finalize() ?
+<dd>musisz zapamiÄ™taÄ‡ ten fakt, Å¼eby inne obiekty nie przeoczyÅ‚y
+<dd>re-inicjalizacji poÅ‚Ä…czenia
 <dd>(to zamiast niepotrzebnych new i delete)
 </dl>
 </dir><a name=isReadNeeded#AsyncConnection><ul><li><b>isReadNeeded</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public bool isReadNeeded()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>chcesz czytaæ?
+<dt><b>Documentation </b>chcesz czytaÄ‡?
 </dl>
 </dir><a name=isWriteNeeded#AsyncConnection><ul><li><b>isWriteNeeded</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public bool isWriteNeeded()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>chcesz pisaæ?
+<dt><b>Documentation </b>chcesz pisaÄ‡?
 </dl>
 </dir><a name=onReadable#AsyncConnection><ul><li><b>onReadable</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public void onReadable()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>no to czytaj, bo teraz mo¿na
+<dt><b>Documentation </b>no to czytaj, bo teraz moÅ¼na
 </dl>
 </dir><a name=onWriteable#AsyncConnection><ul><li><b>onWriteable</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public void onWriteable()</font></font><p>  </p>
@@ -57,7 +57,7 @@
 </dir><a name=operatorint#AsyncConnection><ul><li><b>operatorint</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public  operatorint()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b><dd>daj mi swój UNIXowy deskryptor pliku/gniazda.
-<dd>-1 oznacza, ¿e po³±czenie jest ju¿ zamkniête.
+<dt><b>Documentation </b><dd>daj mi swÃ³j UNIXowy deskryptor pliku/gniazda.
+<dd>-1 oznacza, Å¼e poÅ‚Ä…czenie jest juÅ¼ zamkniÄ™te.
 </dl>
 </dir><center><h3><a href=_index.html#_index>Return to top</a></h3></center></html>

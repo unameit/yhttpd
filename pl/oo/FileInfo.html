@@ -5,7 +5,7 @@
 <a name=FileInfo><h2>Class FileInfo</h2></a>
 <font face="Courier New,Courier">class FileInfo</font>
 <dl>
-<dt><b>Documentation </b><dd>Obiekty tej klasy zawieraj± informacje na temat istniej±cych plików takie
+<dt><b>Documentation </b><dd>Obiekty tej klasy zawierajÄ… informacje na temat istniejÄ…cych plikÃ³w takie
 <dd>jak: data ostatniej modyfikacji i rozmiar. Klasa pozwala na uzyskiwanie
 <dd>tych informacji bez otwierania wskazanego pliku.
 </dl>
@@ -18,28 +18,28 @@
 </dir><a name=mtime#FileInfo><ul><li><b>mtime</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private time_t mtime</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Tu zapamiêtujemu czas ostatniej modyifikacji.
+<dt><b>Documentation </b>Tu zapamiÄ™tujemu czas ostatniej modyifikacji.
 </dl>
 </dir><a name=size#FileInfo><ul><li><b>size</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private off_t size</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Tu zapamiêtujemy rozmiar pliku w bajtach.
+<dt><b>Documentation </b>Tu zapamiÄ™tujemy rozmiar pliku w bajtach.
 </dl>
 </dir><h3><b>Operations</h3></b>
 <a name=FileInfo#const_char_*#FileInfo><ul><li><b>FileInfo</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public  FileInfo(const char * filename)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Pobierz informacje na temat pliku, którego nazwê Ci przekazujê jako argument
+<dt><b>Documentation </b>Pobierz informacje na temat pliku, ktÃ³rego nazwÄ™ Ci przekazujÄ™ jako argument
 </dl>
 </dir><a name=FileInfo#int#FileInfo><ul><li><b>FileInfo</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public  FileInfo(int fd)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Pobierz informacje na temat pliku, którego deskryptor Ci przekazujê jako parametr.
+<dt><b>Documentation </b>Pobierz informacje na temat pliku, ktÃ³rego deskryptor Ci przekazujÄ™ jako parametr.
 </dl>
 </dir><a name=getMTime#FileInfo><ul><li><b>getMTime</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public time_t getMTime()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Podaj mi czas ostatniej modyfikacji obiektu, o którym przechowujesz informacjê.
+<dt><b>Documentation </b>Podaj mi czas ostatniej modyfikacji obiektu, o ktÃ³rym przechowujesz informacjÄ™.
 </dl>
 </dir><a name=getSize#FileInfo><ul><li><b>getSize</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public off_t getSize()</font></font><p>  </p>
@@ -49,26 +49,26 @@
 </dir><a name=isDirectory#FileInfo><ul><li><b>isDirectory</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public bool isDirectory()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Czy obiekt o którym informacjê przechowujesz, jest katalogiem?
+<dt><b>Documentation </b>Czy obiekt o ktÃ³rym informacjÄ™ przechowujesz, jest katalogiem?
 </dl>
 </dir><a name=operator=#const_char_*#FileInfo><ul><li><b>operator=</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public FileInfo & operator=(const char * filename)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Pobierz informacje na temat pliku, którego nazwê Ci przypisujê
+<dt><b>Documentation </b>Pobierz informacje na temat pliku, ktÃ³rego nazwÄ™ Ci przypisujÄ™
 </dl>
 </dir><a name=operator=#int#FileInfo><ul><li><b>operator=</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public FileInfo & operator=(int fd)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Pobierz informacje na temat pliku, którego deskryptor Ci przypisujê.
+<dt><b>Documentation </b>Pobierz informacje na temat pliku, ktÃ³rego deskryptor Ci przypisujÄ™.
 </dl>
 </dir><a name=stat#const_char_*#FileInfo><ul><li><b>stat</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private void stat(const char * filename)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Pobierz informacje o pliku wskazywanym przez nazwê podan± jako paramter.
+<dt><b>Documentation </b>Pobierz informacje o pliku wskazywanym przez nazwÄ™ podanÄ… jako paramter.
 </dl>
 </dir><a name=stat#int#FileInfo><ul><li><b>stat</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private void stat(int fd)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Pobierz informacje o pliku wskazywanym przez ten deskryptor, który Ci przekazujê, jako argument.
+<dt><b>Documentation </b>Pobierz informacje o pliku wskazywanym przez ten deskryptor, ktÃ³ry Ci przekazujÄ™, jako argument.
 </dl>
 </dir><center><h3><a href=_index.html#_index>Return to top</a></h3></center></html>

@@ -5,85 +5,85 @@
 <a name=HTTPConnection><h2>Class HTTPConnection</h2></a>
 <font face="Courier New,Courier">class HTTPConnection<br>extends  AsyncConnection</font>
 <dl>
-<dt><b>Documentation </b><dd>Klasa implementuj±ca interfejs AsyncConnection i realizuj±ca po³±czenie z
-<dd>klientem (cze¶ci± obiektu HTTPConnection jest obiekt AsyncSocket).
-<dd>Zajmuje siê tylko odbieraniem (i zapamiêtywaniem) danych przes³anych od
-<dd>klienta, oraz wysy³aniem odpowiedzi wygenerowanej przez obiekt
-<dd>HTTPRequest. Obiekt tej klasy potrafi te¿ wys³aæ plik wskazany przez
+<dt><b>Documentation </b><dd>Klasa implementujÄ…ca interfejs AsyncConnection i realizujÄ…ca poÅ‚Ä…czenie z
+<dd>klientem (czeÅ›ciÄ… obiektu HTTPConnection jest obiekt AsyncSocket).
+<dd>Zajmuje siÄ™ tylko odbieraniem (i zapamiÄ™tywaniem) danych przesÅ‚anych od
+<dd>klienta, oraz wysyÅ‚aniem odpowiedzi wygenerowanej przez obiekt
+<dd>HTTPRequest. Obiekt tej klasy potrafi teÅ¼ wysÅ‚aÄ‡ plik wskazany przez
 <dd>HTTPRequest'a.
 </dl>
 <h3><b>Links</h3></b>
 <ul><li><b>Aggregation request to </b><a href=HTTPRequest.html#HTTPRequest>HTTPRequest</a></li></ul>
-<dir><dt><b>Documentation </b>ten obiekt parsuje zapytanie przegl±darki i czyni odpowied¼
+<dir><dt><b>Documentation </b>ten obiekt parsuje zapytanie przeglÄ…darki i czyni odpowiedÅº
 </dir>
 <ul><li><b>Aggregation sock to </b><a href=AsyncSocket.html#AsyncSocket>AsyncSocket</a></li></ul>
-<dir><dt><b>Documentation </b>socket - po³±czenie ze ¶wiatem
+<dir><dt><b>Documentation </b>socket - poÅ‚Ä…czenie ze Å›wiatem
 </dir>
 <ul><li><b>Association file to </b><a href=File.html#File>File</a></li></ul>
 <dir><dt><b>Supplier cardinality </b>0..1</dt>
-<dt><b>Documentation </b>Wska¼nik do pliku, który od czasu do czasu zdarzy siê nam wys³aæ.
+<dt><b>Documentation </b>WskaÅºnik do pliku, ktÃ³ry od czasu do czasu zdarzy siÄ™ nam wysÅ‚aÄ‡.
 </dir>
 <h3><b>Attributes</h3></b>
 <a name=buffer#HTTPConnection><ul><li><b>buffer</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private char [bufferSize] buffer</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>bufor do odbierania i wysy³ania danych
+<dt><b>Documentation </b>bufor do odbierania i wysyÅ‚ania danych
 </dl>
 </dir><a name=bufferSize#HTTPConnection><ul><li><b>bufferSize</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private static const size_t bufferSize</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>32k - powinno wystarczyæ
+<dt><b>Documentation </b>32k - powinno wystarczyÄ‡
 </dl>
 </dir><a name=finalized#HTTPConnection><ul><li><b>finalized</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private bool finalized</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>czy manager wie, ¿e po³±czenie zakoñczone?
+<dt><b>Documentation </b>czy manager wie, Å¼e poÅ‚Ä…czenie zakoÅ„czone?
 </dl>
 </dir><a name=nread#HTTPConnection><ul><li><b>nread</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private size_t nread</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>ile ju¿ odebrali¶my/wys³ali¶my
+<dt><b>Documentation </b>ile juÅ¼ odebraliÅ›my/wysÅ‚aliÅ›my
 </dl>
 </dir><a name=nwritten#HTTPConnection><ul><li><b>nwritten</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private size_t nwritten</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>ile ju¿ odebrali¶my/wys³ali¶my
+<dt><b>Documentation </b>ile juÅ¼ odebraliÅ›my/wysÅ‚aliÅ›my
 </dl>
 </dir><a name=peer#HTTPConnection><ul><li><b>peer</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private struct sockaddr_in peer</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>tu zapamiêtujemy adres klienta - w celu zapisu w logu
+<dt><b>Documentation </b>tu zapamiÄ™tujemy adres klienta - w celu zapisu w logu
 </dl>
 </dir><a name=requestReceived#HTTPConnection><ul><li><b>requestReceived</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private bool requestReceived</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>czy odebrali¶my ju¿ kompletny request?
+<dt><b>Documentation </b>czy odebraliÅ›my juÅ¼ kompletny request?
 </dl>
 </dir><a name=responseLength#HTTPConnection><ul><li><b>responseLength</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private size_t responseLength</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>ile trzeba bêdzie wys³aæ bajtów nag³ówka
+<dt><b>Documentation </b>ile trzeba bÄ™dzie wysÅ‚aÄ‡ bajtÃ³w nagÅ‚Ã³wka
 </dl>
 </dir><h3><b>Operations</h3></b>
 <a name=HTTPConnection#const_char_*#const_Properties_*#const_char_*#const_char_*#HTTPConnection><ul><li><b>HTTPConnection</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public  HTTPConnection(const char * hostName, const Properties * mimeTypes, const char * documentRoot, const char * userDir)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Utwórz obiekt. Zapamiêtaj tych parê rzeczy, które Ci siê nied³ugo przydadz±.
+<dt><b>Documentation </b>UtwÃ³rz obiekt. ZapamiÄ™taj tych parÄ™ rzeczy, ktÃ³re Ci siÄ™ niedÅ‚ugo przydadzÄ….
 </dl>
 </dir><a name=finalize#HTTPConnection><ul><li><b>finalize</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private void finalize()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>'Zfinalizuj siê', tzn. odnotuj fakt, ¿e ConnectionsManager zauwa¿y³, i¿ po³±czenie zosta³o zakoñczone i usun±³ ten obiekt ze swojej tablicy. Bêdzie wiêc mo¿na po re-inicjalizacji podaæ mu go znowu.
+<dt><b>Documentation </b>'Zfinalizuj siÄ™', tzn. odnotuj fakt, Å¼e ConnectionsManager zauwaÅ¼yÅ‚, iÅ¼ poÅ‚Ä…czenie zostaÅ‚o zakoÅ„czone i usunÄ…Å‚ ten obiekt ze swojej tablicy. BÄ™dzie wiÄ™c moÅ¼na po re-inicjalizacji podaÄ‡ mu go znowu.
 </dl>
 </dir><a name=isFinalized#HTTPConnection><ul><li><b>isFinalized</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private bool isFinalized()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Odpowiada na pytanie, czy obiekt jest ju¿ 'zfianlizowany'.
+<dt><b>Documentation </b>Odpowiada na pytanie, czy obiekt jest juÅ¼ 'zfianlizowany'.
 </dl>
 </dir><a name=isReadNeeded#HTTPConnection><ul><li><b>isReadNeeded</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private bool isReadNeeded()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>metody, które musz± byæ 'przykryte' dla ConnectionsManager'a:
+<dt><b>Documentation </b>metody, ktÃ³re muszÄ… byÄ‡ 'przykryte' dla ConnectionsManager'a:
 </dl>
 </dir><a name=isWriteNeeded#HTTPConnection><ul><li><b>isWriteNeeded</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private bool isWriteNeeded()</font></font><p>  </p>
@@ -93,22 +93,22 @@
 </dir><a name=onReadable#HTTPConnection><ul><li><b>onReadable</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private void onReadable()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Metoda wywo³ywana, gdy odczyt jest mo¿liwy
+<dt><b>Documentation </b>Metoda wywoÅ‚ywana, gdy odczyt jest moÅ¼liwy
 </dl>
 </dir><a name=onWriteable#HTTPConnection><ul><li><b>onWriteable</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private void onWriteable()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Metoda wywo³ywana, gdy zapis jest mo¿liwy
+<dt><b>Documentation </b>Metoda wywoÅ‚ywana, gdy zapis jest moÅ¼liwy
 </dl>
 </dir><a name=operator=#int#HTTPConnection><ul><li><b>operator=</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public HTTPConnection & operator=(int sockfd)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>inicjuj nowe po³±czenie (na podanym deskryptorze)
+<dt><b>Documentation </b>inicjuj nowe poÅ‚Ä…czenie (na podanym deskryptorze)
 </dl>
 </dir><a name=operatorint#HTTPConnection><ul><li><b>operatorint</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private  operatorint()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Zwróæ deskryptor naszego po³±czenia - czyli socket'u.
+<dt><b>Documentation </b>ZwrÃ³Ä‡ deskryptor naszego poÅ‚Ä…czenia - czyli socket'u.
 </dl>
 </dir><a name=setPeer#struct_sockaddr_in_*#HTTPConnection><ul><li><b>setPeer</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public void setPeer(struct sockaddr_in * p)</font></font><p>  </p>

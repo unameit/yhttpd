@@ -5,42 +5,42 @@
 <a name=ConnectionWithChild><h2>Class ConnectionWithChild</h2></a>
 <font face="Courier New,Courier">class ConnectionWithChild<br>extends  AsyncConnection</font>
 <dl>
-<dt><b>Documentation </b><dd>Ka¿dy obiekt tej klasy zajmuje siê komunikacj± miêdzy procesem-rodzicem a
-<dd>jednym procesem-dzieckiem, po stronie procesu-ojca. Potrafi przekazaæ
-<dd>dziecku nowe po³±czenie (deskryptor gniazda przekazany za pomoc± obiektu
-<dd>AsyncMessageQueue, który jest jego czê¶ci±) oraz odebraæ informacjê o
-<dd>aktualnej ilo¶ci otwartych po³±czeñ procesu-dziecka. To on nie pozwala,
-<dd>by proces-dziecko mia³o wiêksz± ni¿ dozwolona w pliku konfiguracyjnym
-<dd>ilo¶æ jednocze¶nie otwartych po³±czeñ.
+<dt><b>Documentation </b><dd>KaÅ¼dy obiekt tej klasy zajmuje siÄ™ komunikacjÄ… miÄ™dzy procesem-rodzicem a
+<dd>jednym procesem-dzieckiem, po stronie procesu-ojca. Potrafi przekazaÄ‡
+<dd>dziecku nowe poÅ‚Ä…czenie (deskryptor gniazda przekazany za pomocÄ… obiektu
+<dd>AsyncMessageQueue, ktÃ³ry jest jego czÄ™Å›ciÄ…) oraz odebraÄ‡ informacjÄ™ o
+<dd>aktualnej iloÅ›ci otwartych poÅ‚Ä…czeÅ„ procesu-dziecka. To on nie pozwala,
+<dd>by proces-dziecko miaÅ‚o wiÄ™kszÄ… niÅ¼ dozwolona w pliku konfiguracyjnym
+<dd>iloÅ›Ä‡ jednoczeÅ›nie otwartych poÅ‚Ä…czeÅ„.
 </dl>
 <h3><b>Links</h3></b>
 <ul><li><b>Aggregation msgq to </b><a href=AsyncMessageQueue.html#AsyncMessageQueue>AsyncMessageQueue</a></li></ul>
-<dir><dt><b>Documentation </b>nasze ³±cze komunikacyjne do procesu-dziecka
+<dir><dt><b>Documentation </b>nasze Å‚Ä…cze komunikacyjne do procesu-dziecka
 </dir>
 <ul><li><b>Aggregation socketToSend to </b><a href=Socket.html#Socket>Socket</a></li></ul>
-<dir><dt><b>Documentation </b>obiekt Socket oczekuj±cy a wys³anie.
+<dir><dt><b>Documentation </b>obiekt Socket oczekujÄ…cy a wysÅ‚anie.
 </dir>
 <h3><b>Attributes</h3></b>
 <a name=maxConnections#ConnectionWithChild><ul><li><b>maxConnections</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private const uint maxConnections</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>maksymalan dozwolona liczba po³±czeñ procesu-dziecka
+<dt><b>Documentation </b>maksymalan dozwolona liczba poÅ‚Ä…czeÅ„ procesu-dziecka
 </dl>
 </dir><a name=openConnections#ConnectionWithChild><ul><li><b>openConnections</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private uint openConnections</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>liczba otwartych po³±czeñ procesu-dziecka
+<dt><b>Documentation </b>liczba otwartych poÅ‚Ä…czeÅ„ procesu-dziecka
 </dl>
 </dir><a name=peer#ConnectionWithChild><ul><li><b>peer</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private struct sockaddr_in peer</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>adres klienta (po drugiej stronie socket'u) - wy¶lemy go dziecku
+<dt><b>Documentation </b>adres klienta (po drugiej stronie socket'u) - wyÅ›lemy go dziecku
 </dl>
 </dir><h3><b>Operations</h3></b>
 <a name=ConnectionWithChild#int#int#ConnectionWithChild><ul><li><b>ConnectionWithChild</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public  ConnectionWithChild(int sockfd, int maxChildConnections)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Standardowy konstruktor, któremu podajemy przede wszystkim deskryptor ³±cza komunikacyjnego do procesu-dziecka.
+<dt><b>Documentation </b>Standardowy konstruktor, ktÃ³remu podajemy przede wszystkim deskryptor Å‚Ä…cza komunikacyjnego do procesu-dziecka.
 </dl>
 </dir><a name=finalize#ConnectionWithChild><ul><li><b>finalize</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private void finalize()</font></font><p>  </p>
@@ -49,17 +49,17 @@
 </dir><a name=getConnectionsCount#ConnectionWithChild><ul><li><b>getConnectionsCount</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public uint getConnectionsCount()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>metoda podaje aktualn± liczbê aktywnych po³±czeñ dziecka, z którym jest po³±czony
+<dt><b>Documentation </b>metoda podaje aktualnÄ… liczbÄ™ aktywnych poÅ‚Ä…czeÅ„ dziecka, z ktÃ³rym jest poÅ‚Ä…czony
 </dl>
 </dir><a name=isReadNeeded#ConnectionWithChild><ul><li><b>isReadNeeded</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private bool isReadNeeded()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>zawsze chcemy odbieraæ to, co dziecko nam wysy³a
+<dt><b>Documentation </b>zawsze chcemy odbieraÄ‡ to, co dziecko nam wysyÅ‚a
 </dl>
 </dir><a name=isWriteNeeded#ConnectionWithChild><ul><li><b>isWriteNeeded</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private bool isWriteNeeded()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>ale sami wysy³amy tylko wtedy, gdy rzeczywi¶cie mamy co¶ do wys³ania
+<dt><b>Documentation </b>ale sami wysyÅ‚amy tylko wtedy, gdy rzeczywiÅ›cie mamy coÅ› do wysÅ‚ania
 </dl>
 </dir><a name=onReadable#ConnectionWithChild><ul><li><b>onReadable</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>private void onReadable()</font></font><p>  </p>
@@ -76,7 +76,7 @@
 </dir><a name=sendSocket#int#const_struct_sockaddr_in_*#ConnectionWithChild><ul><li><b>sendSocket</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public bool sendSocket(int sockfd, const struct sockaddr_in * peer)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>wy¶lij deskryptor do dziecka, albo nie, je¶li poprzedni jeszcze nie wys³any
+<dt><b>Documentation </b>wyÅ›lij deskryptor do dziecka, albo nie, jeÅ›li poprzedni jeszcze nie wysÅ‚any
 </dl>
 </dir><a name=~ConnectionWithChild#ConnectionWithChild><ul><li><b>~ConnectionWithChild</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public  ~ConnectionWithChild()</font></font><p>  </p>

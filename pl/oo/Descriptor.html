@@ -5,11 +5,11 @@
 <a name=Descriptor><h2>Class Descriptor</h2></a>
 <font face="Courier New,Courier">class Descriptor</font>
 <dl>
-<dt><b>Documentation </b><dd>Klasa ta obudowuje klasyczne UNIXowe funkcje operuj±ce na deskryptorach w
-<dd>klasê jêzyka C++, by upro¶ciæ korzystanie z nich, a jednocze¶nie zapewniæ
-<dd>lepsz± obs³ugê sytuacji awaryjnych (niepowodzeñ wywo³añ tych¿e funkcji
-<dd>systemowych) poprzez rzucanie wyj±tków jêzyka C++, a przez to u³atwienie
-<dd>sterowania wykonywaniem programu. Metody tej klasy s± wspólne dla plików
+<dt><b>Documentation </b><dd>Klasa ta obudowuje klasyczne UNIXowe funkcje operujÄ…ce na deskryptorach w
+<dd>klasÄ™ jÄ™zyka C++, by uproÅ›ciÄ‡ korzystanie z nich, a jednoczeÅ›nie zapewniÄ‡
+<dd>lepszÄ… obsÅ‚ugÄ™ sytuacji awaryjnych (niepowodzeÅ„ wywoÅ‚aÅ„ tychÅ¼e funkcji
+<dd>systemowych) poprzez rzucanie wyjÄ…tkÃ³w jÄ™zyka C++, a przez to uÅ‚atwienie
+<dd>sterowania wykonywaniem programu. Metody tej klasy sÄ… wspÃ³lne dla plikÃ³w
 <dd>jak i gniazd.
 </dl>
 <h3><b>Attributes</h3></b>
@@ -22,27 +22,27 @@
 <a name=Descriptor#int#Descriptor><ul><li><b>Descriptor</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>protected  Descriptor(int newfd)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Chroniony konstruktor  - niech nie istnieja obiekty tej klasy tworzone przez inaczej, ni¿ w klasach pochdnych.
+<dt><b>Documentation </b>Chroniony konstruktor  - niech nie istnieja obiekty tej klasy tworzone przez inaczej, niÅ¼ w klasach pochdnych.
 </dl>
 </dir><a name=close#Descriptor><ul><li><b>close</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public void close()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Zamknij deskryptor. Zwykle oznacza to tak¿e zapisanie danych przetrzymywanych nadal w buforach systemowych.
+<dt><b>Documentation </b>Zamknij deskryptor. Zwykle oznacza to takÅ¼e zapisanie danych przetrzymywanych nadal w buforach systemowych.
 </dl>
 </dir><a name=makeAsync#Descriptor><ul><li><b>makeAsync</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>protected void makeAsync()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Zrób z tego deskryptora, deskryptor asynchroniczny.
+<dt><b>Documentation </b>ZrÃ³b z tego deskryptora, deskryptor asynchroniczny.
 </dl>
 </dir><a name=operator=#int#Descriptor><ul><li><b>operator=</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public Descriptor & operator=(int )</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Przypisz temu obiektowi ca³kiem nowy deskryptor.
+<dt><b>Documentation </b>Przypisz temu obiektowi caÅ‚kiem nowy deskryptor.
 </dl>
 </dir><a name=operatorint#Descriptor><ul><li><b>operatorint</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public  operatorint()</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Zwróæ mi swój UNIXowy deskryptor.
+<dt><b>Documentation </b>ZwrÃ³Ä‡ mi swÃ³j UNIXowy deskryptor.
 </dl>
 </dir><a name=read#Descriptor><ul><li><b>read</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public int read()</font></font><p>  </p>
@@ -52,12 +52,12 @@
 </dir><a name=read#void_*#size_t#bool#Descriptor><ul><li><b>read</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public size_t read(void * buffer, size_t nbytes, bool full)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Odczytaj nbytes znaków do bufora wskazywanego przez buffer. Je¶li ostatni argument bêdzie true, to rzuæ wyj±tkiem EOFException, je¶li nie uda³o Ci siê wczytaæ ca³ej ¿±danej porcji danych.
+<dt><b>Documentation </b>Odczytaj nbytes znakÃ³w do bufora wskazywanego przez buffer. JeÅ›li ostatni argument bÄ™dzie true, to rzuÄ‡ wyjÄ…tkiem EOFException, jeÅ›li nie udaÅ‚o Ci siÄ™ wczytaÄ‡ caÅ‚ej Å¼Ä…danej porcji danych.
 </dl>
 </dir><a name=readv#const_struct_iovec_*#size_t#bool#Descriptor><ul><li><b>readv</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public size_t readv(const struct iovec * iov, size_t count, bool full)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Podobnie jak wy¿ej, lecz dla tablicy buforów iovec[]
+<dt><b>Documentation </b>Podobnie jak wyÅ¼ej, lecz dla tablicy buforÃ³w iovec[]
 </dl>
 </dir><a name=write#const_void_*#size_t#bool#Descriptor><ul><li><b>write</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public size_t write(const void * buffer, size_t , bool full)</font></font><p>  </p>
@@ -72,7 +72,7 @@
 </dir><a name=writev#const_struct_iovec_*#size_t#bool#Descriptor><ul><li><b>writev</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public size_t writev(const struct iovec * iov, size_t count, bool full)</font></font><p>  </p>
 <dl>
-<dt><b>Documentation </b>Podobnie jak wy¿ej.
+<dt><b>Documentation </b>Podobnie jak wyÅ¼ej.
 </dl>
 </dir><a name=~Descriptor#Descriptor><ul><li><b>~Descriptor</b></li></ul>
 </a><dir><font face="Courier New,Courier"><font size=-1>public  ~Descriptor()</font></font><p>  </p>
