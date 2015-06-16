@@ -2,7 +2,7 @@
 <BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
 In file src/ConnectionWithChild.h:<H2><A HREF ="#DOC.DOCU" > <IMG BORDER=0 SRC=down.gif></A>  class  ConnectionWithChild : public <!2><A HREF="AsyncConnection.html#DOC.1.3">AsyncConnection</A> </H2><BLOCKQUOTE>
 
-Ka¿dy obiekt tej klasy zajmuje siê komunikacj± miêdzy procesem-rodzicem a
+KaÅ¼dy obiekt tej klasy zajmuje siÄ™ komunikacjÄ… miÄ™dzy procesem-rodzicem a
 jednym procesem-dzieckiem, po stronie procesu-ojca
 </BLOCKQUOTE>
 <hr>
@@ -19,30 +19,30 @@ jednym procesem-dzieckiem, po stronie procesu-ojca
 <DL>
 <DL>
 <DT><h3>Public Methods</h3><DD><DT><A HREF="#DOC.6.1"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>ConnectionWithChild</B>(int sockfd, int maxChildConnections) </B>
- <DD><I>Standardowy konstruktor, któremu podajemy przede wszystkim deskryptor ³±cza komunikacyjnego do procesu-dziecka</I>
+ <DD><I>Standardowy konstruktor, ktÃ³remu podajemy przede wszystkim deskryptor Å‚Ä…cza komunikacyjnego do procesu-dziecka</I>
 <DT><A HREF="#DOC.6.2"> <IMG BORDER=0 SRC=icon1.gif></A> uint  <B>getConnectionsCount</B>() const  </B>
- <DD><I>metoda podaje aktualn± liczbê aktywnych po³±czeñ dziecka, z którym jest po³±czony </I>
+ <DD><I>metoda podaje aktualnÄ… liczbÄ™ aktywnych poÅ‚Ä…czeÅ„ dziecka, z ktÃ³rym jest poÅ‚Ä…czony </I>
 <DT><A HREF="#DOC.6.3"> <IMG BORDER=0 SRC=icon1.gif></A> bool  <B>sendSocket</B>(int sockfd, const struct sockaddr_in *<!2><A HREF="ConnectionWithChild.html#DOC.6.8">peer</A>) </B>
- <DD><I>wy¶lij deskryptor do dziecka, albo nie, je¶li poprzedni jeszcze nie wys³any </I>
+ <DD><I>wyÅ›lij deskryptor do dziecka, albo nie, jeÅ›li poprzedni jeszcze nie wysÅ‚any </I>
 <DT><A HREF="#DOC.6.10"> <IMG BORDER=0 SRC=icon1.gif></A> bool  <B>isReadNeeded</B>() const  </B>
- <DD><I>zawsze chcemy odbieraæ to, co dziecko nam wysy³a </I>
+ <DD><I>zawsze chcemy odbieraÄ‡ to, co dziecko nam wysyÅ‚a </I>
 </DL><DL>
 <DT><h3>Private Fields</h3><DD><DT><A HREF="#DOC.6.4"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="AsyncMessageQueue.html">AsyncMessageQueue</A>  <B>msgq</B> </B>
- <DD><I>nasze ³±cze komunikacyjne do procesu-dziecka </I>
+ <DD><I>nasze Å‚Ä…cze komunikacyjne do procesu-dziecka </I>
 <DT><A HREF="#DOC.6.5"> <IMG BORDER=0 SRC=icon1.gif></A> uint  <B>openConnections</B> </B>
- <DD><I>liczba otwartych po³±czeñ procesu-dziecka </I>
+ <DD><I>liczba otwartych poÅ‚Ä…czeÅ„ procesu-dziecka </I>
 <DT><A HREF="#DOC.6.6"> <IMG BORDER=0 SRC=icon1.gif></A> const  uint  <B>maxConnections</B> </B>
- <DD><I>maksymalan dozwolona liczba po³±czeñ procesu-dziecka </I>
+ <DD><I>maksymalan dozwolona liczba poÅ‚Ä…czeÅ„ procesu-dziecka </I>
 <DT><A HREF="#DOC.6.7"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="Socket.html">Socket</A>  <B>socketToSend</B> </B>
- <DD><I>obiekt Socket oczekuj±cy a wys³anie</I>
+ <DD><I>obiekt Socket oczekujÄ…cy a wysÅ‚anie</I>
 <DT><A HREF="#DOC.6.8"> <IMG BORDER=0 SRC=icon1.gif></A>  struct  sockaddr_in <B>peer</B> </B>
- <DD><I>adres klienta (po drugiej stronie socket'u) - wy¶lemy go dziecku </I>
+ <DD><I>adres klienta (po drugiej stronie socket'u) - wyÅ›lemy go dziecku </I>
 </DL><DL>
 <DT><h3>Private Methods</h3><DD><DT><A HREF="#DOC.6.11"> <IMG BORDER=0 SRC=icon1.gif></A> bool  <B>isWriteNeeded</B>() const  </B>
- <DD><I>ale sami wysy³amy tylko wtedy, gdy rzeczywi¶cie mamy co¶ do wys³ania </I>
+ <DD><I>ale sami wysyÅ‚amy tylko wtedy, gdy rzeczywiÅ›cie mamy coÅ› do wysÅ‚ania </I>
 </DL><DL>
 <DT><h3>Private</h3><DD><DT><A HREF="#DOC.6.9"> <IMG BORDER=0 SRC=icon1.gif></A>  <B></B> </B>
- <DD><I>metody przys³aniane z AsyncConnection dla ConnectionsManager'a </I>
+ <DD><I>metody przysÅ‚aniane z AsyncConnection dla ConnectionsManager'a </I>
 </DL></DL>
 <hr><H3>Inherited from <A HREF="AsyncConnection.html">AsyncConnection:</A></h3>
 
@@ -59,13 +59,13 @@ jednym procesem-dzieckiem, po stronie procesu-ojca
  <h2> Documentation </h2>
 <BLOCKQUOTE>
 
-Ka¿dy obiekt tej klasy zajmuje siê komunikacj± miêdzy procesem-rodzicem a
-jednym procesem-dzieckiem, po stronie procesu-ojca. Potrafi przekazaæ
-dziecku nowe po³±czenie (deskryptor gniazda przekazany za pomoc± obiektu
-AsyncMessageQueue, który jest jego czê¶ci±) oraz odebraæ informacjê o
-aktualnej ilo¶ci otwartych po³±czeñ procesu-dziecka. To on nie pozwala,
-by proces-dziecko mia³o wiêksz± ni¿ dozwolona w pliku konfiguracyjnym
-ilo¶æ jednocze¶nie otwartych po³±czeñ.
+KaÅ¼dy obiekt tej klasy zajmuje siÄ™ komunikacjÄ… miÄ™dzy procesem-rodzicem a
+jednym procesem-dzieckiem, po stronie procesu-ojca. Potrafi przekazaÄ‡
+dziecku nowe poÅ‚Ä…czenie (deskryptor gniazda przekazany za pomocÄ… obiektu
+AsyncMessageQueue, ktÃ³ry jest jego czÄ™Å›ciÄ…) oraz odebraÄ‡ informacjÄ™ o
+aktualnej iloÅ›ci otwartych poÅ‚Ä…czeÅ„ procesu-dziecka. To on nie pozwala,
+by proces-dziecko miaÅ‚o wiÄ™kszÄ… niÅ¼ dozwolona w pliku konfiguracyjnym
+iloÅ›Ä‡ jednoczeÅ›nie otwartych poÅ‚Ä…czeÅ„.
 
 </BLOCKQUOTE>
 <DL>
@@ -73,81 +73,81 @@ ilo¶æ jednocze¶nie otwartych po³±czeñ.
 <A NAME="ConnectionWithChild">
 <A NAME ="DOC.6.1">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  ConnectionWithChild(int sockfd, int maxChildConnections)</B></TT>
-<DD>Standardowy konstruktor, któremu podajemy przede wszystkim deskryptor ³±cza komunikacyjnego do procesu-dziecka
+<DD>Standardowy konstruktor, ktÃ³remu podajemy przede wszystkim deskryptor Å‚Ä…cza komunikacyjnego do procesu-dziecka
 <DL></DL><P>
 <A NAME="getConnectionsCount">
 <A NAME ="DOC.6.2">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> uint  getConnectionsCount() const </B></TT>
-<DD>metoda podaje aktualn± liczbê aktywnych po³±czeñ dziecka, z którym jest po³±czony 
+<DD>metoda podaje aktualnÄ… liczbÄ™ aktywnych poÅ‚Ä…czeÅ„ dziecka, z ktÃ³rym jest poÅ‚Ä…czony 
 <DL></DL><P>
 <A NAME="sendSocket">
 <A NAME ="DOC.6.3">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> bool  sendSocket(int sockfd, const struct sockaddr_in *<!2><A HREF="ConnectionWithChild.html#DOC.6.8">peer</A>)</B></TT>
-<DD>wy¶lij deskryptor do dziecka, albo nie, je¶li poprzedni jeszcze nie wys³any 
+<DD>wyÅ›lij deskryptor do dziecka, albo nie, jeÅ›li poprzedni jeszcze nie wysÅ‚any 
 <DL></DL><P>
 <A NAME="msgq">
 <A NAME ="DOC.6.4">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="AsyncMessageQueue.html">AsyncMessageQueue</A>  msgq</B></TT>
-<DD>nasze ³±cze komunikacyjne do procesu-dziecka 
+<DD>nasze Å‚Ä…cze komunikacyjne do procesu-dziecka 
 <DL></DL><P>
 <A NAME="openConnections">
 <A NAME ="DOC.6.5">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> uint  openConnections</B></TT>
-<DD>liczba otwartych po³±czeñ procesu-dziecka 
+<DD>liczba otwartych poÅ‚Ä…czeÅ„ procesu-dziecka 
 <DL></DL><P>
 <A NAME="maxConnections">
 <A NAME ="DOC.6.6">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  uint  maxConnections</B></TT>
-<DD>maksymalan dozwolona liczba po³±czeñ procesu-dziecka 
+<DD>maksymalan dozwolona liczba poÅ‚Ä…czeÅ„ procesu-dziecka 
 <DL></DL><P>
 <A NAME="socketToSend">
 <A NAME ="DOC.6.7">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="Socket.html">Socket</A>  socketToSend</B></TT>
-<DD>obiekt Socket oczekuj±cy a wys³anie
+<DD>obiekt Socket oczekujÄ…cy a wysÅ‚anie
 <DL></DL><P>
 <A NAME="peer">
 <A NAME ="DOC.6.8">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  struct  sockaddr_in peer</B></TT>
-<DD>adres klienta (po drugiej stronie socket'u) - wy¶lemy go dziecku 
+<DD>adres klienta (po drugiej stronie socket'u) - wyÅ›lemy go dziecku 
 <DL></DL><P>
 <A NAME="">
 <A NAME ="DOC.6.9">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  </B></TT>
-<DD>metody przys³aniane z AsyncConnection dla ConnectionsManager'a 
+<DD>metody przysÅ‚aniane z AsyncConnection dla ConnectionsManager'a 
 <DL></DL><P>
 <A NAME="isReadNeeded">
 <A NAME ="DOC.6.10">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> bool  isReadNeeded() const </B></TT>
-<DD>zawsze chcemy odbieraæ to, co dziecko nam wysy³a 
+<DD>zawsze chcemy odbieraÄ‡ to, co dziecko nam wysyÅ‚a 
 <DL></DL><P>
 <A NAME="isWriteNeeded">
 <A NAME ="DOC.6.11">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> bool  isWriteNeeded() const </B></TT>
-<DD>ale sami wysy³amy tylko wtedy, gdy rzeczywi¶cie mamy co¶ do wys³ania 
+<DD>ale sami wysyÅ‚amy tylko wtedy, gdy rzeczywiÅ›cie mamy coÅ› do wysÅ‚ania 
 <DL></DL><P></DL>
 <hr>
  <DL><DT><B>This class has no child classes.</B></DL>
 <DL></DL><P><I><A HREF="aindex.html"> alphabetic index</A></I>  <I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
 <STRONG>
-Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
-Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
-ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
-autorów.
+Kod ÅºrÃ³dÅ‚owy tego programu oraz jego dokumentacja sÄ… chronione przez
+UstawÄ™ o prawie autorskim i prawach pokrewnych. Nie mogÄ… byÄ‡ uÅ¼yte
+ani opublikowane w Å¼adnych innych pracach bez pisemnej zgody ich
+autorÃ³w.
 <P>
 This documentation and all of the sources are copyright protected and
 may not be used or published in other works without express written
 permission from the authors.
 </P>
 </STRONG>
-Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+Copyright &copy; 1999 Åukasz HoÅ‚ody, MichaÅ‚ Jacykiewicz, Marcin JarzÄ…b, Marek Konieczny. All rights reserved.
 
 <HR>
 
 <P ALIGN="CENTER">
 <SMALL>
-<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../">Strona gÅ‚Ã³wna projektu</A> |
 <A HREF="../projektowa.html">Dokumentacja projektowa</A> |
-<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+<A HREF="../koncowa.html">Dokumentacja koÅ„cowa</A>
 </SMALL>
 </P>
 

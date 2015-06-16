@@ -2,9 +2,9 @@
 <BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
 In file src/ConnectionsManager.h:<H2><A HREF ="#DOC.DOCU" > <IMG BORDER=0 SRC=down.gif></A>  class  ConnectionsManager  </H2><BLOCKQUOTE>
 
-Obiekt tej klasy potrafi zarz±dzaæ grup± obiektów, które implementuj±
-interfejs AsyncConnection i realizuj± nieblokuj±ce po³±czenie z u¿yciem
-UNIXowych deskryptorów
+Obiekt tej klasy potrafi zarzÄ…dzaÄ‡ grupÄ… obiektÃ³w, ktÃ³re implementujÄ…
+interfejs AsyncConnection i realizujÄ… nieblokujÄ…ce poÅ‚Ä…czenie z uÅ¼yciem
+UNIXowych deskryptorÃ³w
 </BLOCKQUOTE>
 <hr>
 
@@ -12,30 +12,30 @@ UNIXowych deskryptorów
 <DL>
 <DT><h3>Public Methods</h3><DD><DT><A HREF="#DOC.7.1"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>main</B>() </B>
  <DD><I>
-Tu siê oddaje sterowanie</I>
+Tu siÄ™ oddaje sterowanie</I>
 <DT><A HREF="#DOC.7.2"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>add</B>(<!1><A HREF="AsyncConnection.html">AsyncConnection</A> *) </B>
  <DD><I>
-Dodaj nowe po³±czenie</I>
+Dodaj nowe poÅ‚Ä…czenie</I>
 </DL><DL>
 <DT><h3>Private Fields</h3><DD><DT><A HREF="#DOC.7.3"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="Vector.html">Vector</A>  <B>connections</B> </B>
- <DD><I>tu pamiêtamy wszystkie obs³ugiwane po³±czenia </I>
+ <DD><I>tu pamiÄ™tamy wszystkie obsÅ‚ugiwane poÅ‚Ä…czenia </I>
 </DL><DL>
 <DT><h3>Private Methods</h3><DD><DT><A HREF="#DOC.7.4"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>update</B>() </B>
- <DD><I>Metoda sprawdza, czy po³±czenia s± aktywne, i ewentualnie je usuwa</I>
+ <DD><I>Metoda sprawdza, czy poÅ‚Ä…czenia sÄ… aktywne, i ewentualnie je usuwa</I>
 </DL></DL>
 <A NAME="DOC.DOCU">
 <hr>
  <h2> Documentation </h2>
 <BLOCKQUOTE>
 
-Obiekt tej klasy potrafi zarz±dzaæ grup± obiektów, które implementuj±
-interfejs AsyncConnection i realizuj± nieblokuj±ce po³±czenie z u¿yciem
-UNIXowych deskryptorów.  Obiektowi tej klasy oddaje siê sterowanie
-zarówno w procesie-rodzicu, jak i w procesach potomnych.  Dziêki klasie
-AsyncConnection metody z innych obiektów mog± byæ wywo³ywane w
-odpowiednich dla nich momentach, tj. gdy zajd± zdarzenia "mo¿liwo¶æ
-pisania na deskryptorze" lub/i "mo¿liwo¶æ czytania z deskryptora". Obiekt
-tej klasy usuwa zamkniête po³±czenia w sposób umo¿liwiaj±cy ich dalsze
+Obiekt tej klasy potrafi zarzÄ…dzaÄ‡ grupÄ… obiektÃ³w, ktÃ³re implementujÄ…
+interfejs AsyncConnection i realizujÄ… nieblokujÄ…ce poÅ‚Ä…czenie z uÅ¼yciem
+UNIXowych deskryptorÃ³w.  Obiektowi tej klasy oddaje siÄ™ sterowanie
+zarÃ³wno w procesie-rodzicu, jak i w procesach potomnych.  DziÄ™ki klasie
+AsyncConnection metody z innych obiektÃ³w mogÄ… byÄ‡ wywoÅ‚ywane w
+odpowiednich dla nich momentach, tj. gdy zajdÄ… zdarzenia "moÅ¼liwoÅ›Ä‡
+pisania na deskryptorze" lub/i "moÅ¼liwoÅ›Ä‡ czytania z deskryptora". Obiekt
+tej klasy usuwa zamkniÄ™te poÅ‚Ä…czenia w sposÃ³b umoÅ¼liwiajÄ…cy ich dalsze
 wykorzystanie po re-inicjalizacji.
 
 </BLOCKQUOTE>
@@ -45,57 +45,57 @@ wykorzystanie po re-inicjalizacji.
 <A NAME ="DOC.7.1">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  main()</B></TT>
 <DD>
-Tu siê oddaje sterowanie. Potem tyko wyskakuje do metod obiektów
+Tu siÄ™ oddaje sterowanie. Potem tyko wyskakuje do metod obiektÃ³w
 AsyncConnection::onReadable() i onWriteable().  dlatego trzeba
-przed oddaniem sterowania dodaæ conajmniej jeden ¿ywy obiekt
+przed oddaniem sterowania dodaÄ‡ conajmniej jeden Å¼ywy obiekt
 AsyncConnection.
 <DL></DL><P>
 <A NAME="add">
 <A NAME ="DOC.7.2">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  add(<!1><A HREF="AsyncConnection.html">AsyncConnection</A> *)</B></TT>
 <DD>
-Dodaj nowe po³±czenie. Je¶li zostanie ono zamkniête (zwróci -1
-jako swój deskryptor) zostanie 'automatycznie' usuniête z naszej
-tablicy obs³ugiwanych po³±czeñ. Musimy powiadomiæ inne obiekty o
-tym, ¿e 'zauwa¿yli¶my' zamkniêcie po³±czenia. Zrobimy to poprzez
-wywo³anie metody AsyncConnection::finalize(). Wtedy obiekt ten
-(jak i inne) bêd± wiedzia³y, ¿e nie znajduje siê on ju¿ w naszej
-tablicy, a wiêc mo¿na na tym obiekcie utoworzyæ nowe po³±czenie i
-na nowo dodaæ do tego manager'a.
+Dodaj nowe poÅ‚Ä…czenie. JeÅ›li zostanie ono zamkniÄ™te (zwrÃ³ci -1
+jako swÃ³j deskryptor) zostanie 'automatycznie' usuniÄ™te z naszej
+tablicy obsÅ‚ugiwanych poÅ‚Ä…czeÅ„. Musimy powiadomiÄ‡ inne obiekty o
+tym, Å¼e 'zauwaÅ¼yliÅ›my' zamkniÄ™cie poÅ‚Ä…czenia. Zrobimy to poprzez
+wywoÅ‚anie metody AsyncConnection::finalize(). Wtedy obiekt ten
+(jak i inne) bÄ™dÄ… wiedziaÅ‚y, Å¼e nie znajduje siÄ™ on juÅ¼ w naszej
+tablicy, a wiÄ™c moÅ¼na na tym obiekcie utoworzyÄ‡ nowe poÅ‚Ä…czenie i
+na nowo dodaÄ‡ do tego manager'a.
 <DL></DL><P>
 <A NAME="connections">
 <A NAME ="DOC.7.3">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="Vector.html">Vector</A>  connections</B></TT>
-<DD>tu pamiêtamy wszystkie obs³ugiwane po³±czenia 
+<DD>tu pamiÄ™tamy wszystkie obsÅ‚ugiwane poÅ‚Ä…czenia 
 <DL></DL><P>
 <A NAME="update">
 <A NAME ="DOC.7.4">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  update()</B></TT>
-<DD>Metoda sprawdza, czy po³±czenia s± aktywne, i ewentualnie je usuwa
+<DD>Metoda sprawdza, czy poÅ‚Ä…czenia sÄ… aktywne, i ewentualnie je usuwa
 <DL></DL><P></DL>
 <hr>
  <DL><DT><B>This class has no child classes.</B></DL>
 <DL></DL><P><I><A HREF="aindex.html"> alphabetic index</A></I>  <I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
 <STRONG>
-Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
-Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
-ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
-autorów.
+Kod ÅºrÃ³dÅ‚owy tego programu oraz jego dokumentacja sÄ… chronione przez
+UstawÄ™ o prawie autorskim i prawach pokrewnych. Nie mogÄ… byÄ‡ uÅ¼yte
+ani opublikowane w Å¼adnych innych pracach bez pisemnej zgody ich
+autorÃ³w.
 <P>
 This documentation and all of the sources are copyright protected and
 may not be used or published in other works without express written
 permission from the authors.
 </P>
 </STRONG>
-Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+Copyright &copy; 1999 Åukasz HoÅ‚ody, MichaÅ‚ Jacykiewicz, Marcin JarzÄ…b, Marek Konieczny. All rights reserved.
 
 <HR>
 
 <P ALIGN="CENTER">
 <SMALL>
-<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../">Strona gÅ‚Ã³wna projektu</A> |
 <A HREF="../projektowa.html">Dokumentacja projektowa</A> |
-<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+<A HREF="../koncowa.html">Dokumentacja koÅ„cowa</A>
 </SMALL>
 </P>
 

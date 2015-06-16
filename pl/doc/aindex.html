@@ -4,78 +4,78 @@
 <H2>Classes</H2>
 <UL>
 <LI><A HREF="AsyncConnection.html">AsyncConnection</A> <I>
-Klasa ta jest tylko interfejsem który musz± implementowaæ obiekty chc±ce
-byæ obs³ugiwane przez ConnectionsManager'a</I>
+Klasa ta jest tylko interfejsem ktÃ³ry muszÄ… implementowaÄ‡ obiekty chcÄ…ce
+byÄ‡ obsÅ‚ugiwane przez ConnectionsManager'a</I>
 <LI><A HREF="AsyncMessageQueue.html">AsyncMessageQueue</A> <I>
-Klasa ta (dziedzicz±ca prywatnie klasê AsyncSocket) s³u¿y przede
-wszystkim do komunikacji miêdzyprocesowej</I>
+Klasa ta (dziedziczÄ…ca prywatnie klasÄ™ AsyncSocket) sÅ‚uÅ¼y przede
+wszystkim do komunikacji miÄ™dzyprocesowej</I>
 <LI><A HREF="AsyncSocket.html">AsyncSocket</A> <I>
-Klasa ta, dziedzicz±ca publicznie po klasie Socket, zmienia wywo³ania
-niektórych jej metod, by poprawnie zachowywa³y siê dla po³±czeñ
-asynchronicznych (nieblokuj±cych)</I>
+Klasa ta, dziedziczÄ…ca publicznie po klasie Socket, zmienia wywoÅ‚ania
+niektÃ³rych jej metod, by poprawnie zachowywaÅ‚y siÄ™ dla poÅ‚Ä…czeÅ„
+asynchronicznych (nieblokujÄ…cych)</I>
 <LI><A HREF="ChildThread.html">ChildThread</A> <I>
-Obiekt tej klasy odpowiedzialny s± za przyjmowanie nowych po³±czeñ od
-procesu-rodzica, tworzenie z nich obiektów HTTPConnection i obs³ugê
-tych¿e</I>
+Obiekt tej klasy odpowiedzialny sÄ… za przyjmowanie nowych poÅ‚Ä…czeÅ„ od
+procesu-rodzica, tworzenie z nich obiektÃ³w HTTPConnection i obsÅ‚ugÄ™
+tychÅ¼e</I>
 <LI><A HREF="Configuration.html">Configuration</A> <I>
-Klasa dziedzicz±ca prywatnie po klasie Properties a stworzona, by
-wygodniej obs³ugiwaæ plik konfiguracyjny naszego daemona</I>
+Klasa dziedziczÄ…ca prywatnie po klasie Properties a stworzona, by
+wygodniej obsÅ‚ugiwaÄ‡ plik konfiguracyjny naszego daemona</I>
 <LI><A HREF="ConnectionsManager.html">ConnectionsManager</A> <I>
-Obiekt tej klasy potrafi zarz±dzaæ grup± obiektów, które implementuj±
-interfejs AsyncConnection i realizuj± nieblokuj±ce po³±czenie z u¿yciem
-UNIXowych deskryptorów</I>
+Obiekt tej klasy potrafi zarzÄ…dzaÄ‡ grupÄ… obiektÃ³w, ktÃ³re implementujÄ…
+interfejs AsyncConnection i realizujÄ… nieblokujÄ…ce poÅ‚Ä…czenie z uÅ¼yciem
+UNIXowych deskryptorÃ³w</I>
 <LI><A HREF="ConnectionWithChild.html">ConnectionWithChild</A> <I>
-Ka¿dy obiekt tej klasy zajmuje siê komunikacj± miêdzy procesem-rodzicem a
+KaÅ¼dy obiekt tej klasy zajmuje siÄ™ komunikacjÄ… miÄ™dzy procesem-rodzicem a
 jednym procesem-dzieckiem, po stronie procesu-ojca</I>
 <LI><A HREF="Descriptor.html">Descriptor</A> <I>
-Klasa ta obudowuje klasyczne UNIXowe funkcje operuj±ce na deskryptorach w
-klasê jêzyka C++, by upro¶ciæ korzystanie z nich, a jednocze¶nie zapewniæ
-lepsz± obs³ugê sytuacji awaryjnych (niepowodzeñ wywo³añ tych¿e funkcji
-systemowych) poprzez rzucanie wyj±tków jêzyka C++, a przez to u³atwienie
+Klasa ta obudowuje klasyczne UNIXowe funkcje operujÄ…ce na deskryptorach w
+klasÄ™ jÄ™zyka C++, by uproÅ›ciÄ‡ korzystanie z nich, a jednoczeÅ›nie zapewniÄ‡
+lepszÄ… obsÅ‚ugÄ™ sytuacji awaryjnych (niepowodzeÅ„ wywoÅ‚aÅ„ tychÅ¼e funkcji
+systemowych) poprzez rzucanie wyjÄ…tkÃ³w jÄ™zyka C++, a przez to uÅ‚atwienie
 sterowania wykonywaniem programu</I>
 <LI><A HREF="EOFException.html">EOFException</A> <I>
-Obiekt tej klasy jest wyj±tkiem w sensie jêzyka C++ rzucanym w sytuacji,
-gdy za¿±dano odczytu z deskryptora dok³adnej porcji danych (tzn</I>
+Obiekt tej klasy jest wyjÄ…tkiem w sensie jÄ™zyka C++ rzucanym w sytuacji,
+gdy zaÅ¼Ä…dano odczytu z deskryptora dokÅ‚adnej porcji danych (tzn</I>
 <LI><A HREF="Exception.html">Exception</A> <I>
-obiekty tej klasy s± wyj±tkami jêzyka C++ rzucanymi (jak nazwa wskazuje)
-w sytacjach wyj±tkowych (np</I>
+obiekty tej klasy sÄ… wyjÄ…tkami jÄ™zyka C++ rzucanymi (jak nazwa wskazuje)
+w sytacjach wyjÄ…tkowych (np</I>
 <LI><A HREF="File.html">File</A> <I>
 Obiekty tej klasy to standardowe pliki systemu UNIX(R)</I>
 <LI><A HREF="FileInfo.html">FileInfo</A> <I>
-Obiekty tej klasy zawieraj± informacje na temat istniej±cych plików takie
+Obiekty tej klasy zawierajÄ… informacje na temat istniejÄ…cych plikÃ³w takie
 jak: data ostatniej modyfikacji i rozmiar</I>
 <LI><A HREF="HTTPConnection.html">HTTPConnection</A> <I>
-Klasa implementuj±ca interfejs AsyncConnection i realizuj±ca po³±czenie z
-klientem (cze¶ci± obiektu HTTPConnection jest obiekt AsyncSocket)</I>
+Klasa implementujÄ…ca interfejs AsyncConnection i realizujÄ…ca poÅ‚Ä…czenie z
+klientem (czeÅ›ciÄ… obiektu HTTPConnection jest obiekt AsyncSocket)</I>
 <LI><A HREF="HTTPRequest.html">HTTPRequest</A> <I>
-Obiekt tej klasy zajmuje siê parsowaniem zapytania klienta, zrozumieniem
-go oraz wygenerowaniem w³a¶ciwej odpowiedzi (zgodnie z protoko³em HTTP)</I>
+Obiekt tej klasy zajmuje siÄ™ parsowaniem zapytania klienta, zrozumieniem
+go oraz wygenerowaniem wÅ‚aÅ›ciwej odpowiedzi (zgodnie z protokoÅ‚em HTTP)</I>
 <LI><A HREF="ParentThread.html">ParentThread</A> <I>
-Obiekt tej klasy, istniej±cy tylko w procesie-rodzica, odpowiedzialny
-jest za przyjmowanie nowych po³±czeñ od klientów oraz przekazywanie ich
-procesom-dzieciom za pomoc± obiektów ConnectionWithChild</I>
+Obiekt tej klasy, istniejÄ…cy tylko w procesie-rodzica, odpowiedzialny
+jest za przyjmowanie nowych poÅ‚Ä…czeÅ„ od klientÃ³w oraz przekazywanie ich
+procesom-dzieciom za pomocÄ… obiektÃ³w ConnectionWithChild</I>
 <LI><A HREF="Properties.html">Properties</A> <I>
-Obiekty tej klasy potrafi± wczytaæ plik tekstowy zawieraj±cy pary
-klucz-warto¶æ oraz zapamiêtaæ go tak (dziêki obiektowi klasy Vector), by
-odszukiwanie danej warto¶ci na podstawie podanego klucza odbywa³o siê
+Obiekty tej klasy potrafiÄ… wczytaÄ‡ plik tekstowy zawierajÄ…cy pary
+klucz-wartoÅ›Ä‡ oraz zapamiÄ™taÄ‡ go tak (dziÄ™ki obiektowi klasy Vector), by
+odszukiwanie danej wartoÅ›ci na podstawie podanego klucza odbywaÅ‚o siÄ™
 szybko</I>
 <LI><A HREF="PropertiesNode.html">PropertiesNode</A> <I>
-Prywatna klasa klasy Properties zapamiêtuj±ca (jako obiekty klasy String)
-klucz i odpowiadaj±c± mu warto¶æ</I>
+Prywatna klasa klasy Properties zapamiÄ™tujÄ…ca (jako obiekty klasy String)
+klucz i odpowiadajÄ…cÄ… mu wartoÅ›Ä‡</I>
 <LI><A HREF="Socket.html">Socket</A> <I>
 Obiekty tej klasy to standardowe gniazda (socket'y) systemu UNIX(R)</I>
 <LI><A HREF="SString.html">SString</A> <I>
-Obiekty tej klasy u³atwiaj± operacje na ci±gach znaków, poprzez
-zdefiniowanie kilku operatorów oraz posiadanie statycznego bufora o
-wielko¶ci 512 bajtów</I>
+Obiekty tej klasy uÅ‚atwiajÄ… operacje na ciÄ…gach znakÃ³w, poprzez
+zdefiniowanie kilku operatorÃ³w oraz posiadanie statycznego bufora o
+wielkoÅ›ci 512 bajtÃ³w</I>
 <LI><A HREF="String.html">String</A> <I>
-Klasa u³atwiaj±ce korzystanie z danych z³o¿onych z ci±gów znaków</I>
+Klasa uÅ‚atwiajÄ…ce korzystanie z danych zÅ‚oÅ¼onych z ciÄ…gÃ³w znakÃ³w</I>
 <LI><A HREF="SystemException.html">SystemException</A> <I>
-Klasa pochodna klasy Exception zapewniaj±ca dodatkowo komunikaty o
-b³êdach pochodz±ce bezpo¶rednio od systemu operacyjnego (na podstawie
+Klasa pochodna klasy Exception zapewniajÄ…ca dodatkowo komunikaty o
+bÅ‚Ä™dach pochodzÄ…ce bezpoÅ›rednio od systemu operacyjnego (na podstawie
 zmiennej errno i funkcji strerror)</I>
 <LI><A HREF="Vector.html">Vector</A> <I>
-Implementacja struktury danych okre¶lanej jako dynamiczna tablica</I>
+Implementacja struktury danych okreÅ›lanej jako dynamiczna tablica</I>
 </UL>
 <H2>Functions, Macros</H2>
 <UL>
@@ -84,25 +84,25 @@ Funkcja zwraca nr procesu-dziecka [1</I>
 </UL>
 <I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
 <STRONG>
-Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
-Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
-ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
-autorów.
+Kod ÅºrÃ³dÅ‚owy tego programu oraz jego dokumentacja sÄ… chronione przez
+UstawÄ™ o prawie autorskim i prawach pokrewnych. Nie mogÄ… byÄ‡ uÅ¼yte
+ani opublikowane w Å¼adnych innych pracach bez pisemnej zgody ich
+autorÃ³w.
 <P>
 This documentation and all of the sources are copyright protected and
 may not be used or published in other works without express written
 permission from the authors.
 </P>
 </STRONG>
-Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+Copyright &copy; 1999 Åukasz HoÅ‚ody, MichaÅ‚ Jacykiewicz, Marcin JarzÄ…b, Marek Konieczny. All rights reserved.
 
 <HR>
 
 <P ALIGN="CENTER">
 <SMALL>
-<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../">Strona gÅ‚Ã³wna projektu</A> |
 <A HREF="../projektowa.html">Dokumentacja projektowa</A> |
-<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+<A HREF="../koncowa.html">Dokumentacja koÅ„cowa</A>
 </SMALL>
 </P>
 

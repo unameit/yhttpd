@@ -2,8 +2,8 @@
 <BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
 In file src/HTTPRequest.h:<H2><A HREF ="#DOC.DOCU" > <IMG BORDER=0 SRC=down.gif></A>  class  HTTPRequest  </H2><BLOCKQUOTE>
 
-Obiekt tej klasy zajmuje siê parsowaniem zapytania klienta, zrozumieniem
-go oraz wygenerowaniem w³a¶ciwej odpowiedzi (zgodnie z protoko³em HTTP)
+Obiekt tej klasy zajmuje siÄ™ parsowaniem zapytania klienta, zrozumieniem
+go oraz wygenerowaniem wÅ‚aÅ›ciwej odpowiedzi (zgodnie z protokoÅ‚em HTTP)
 </BLOCKQUOTE>
 <hr>
 
@@ -11,54 +11,54 @@ go oraz wygenerowaniem w³a¶ciwej odpowiedzi (zgodnie z protoko³em HTTP)
 <DL>
 <DT><h3>Public Methods</h3><DD><DT><A HREF="#DOC.14.8"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>HTTPRequest</B>(const char *<!2><A HREF="HTTPRequest.html#DOC.14.9">hostName</A>, const <!1><A HREF="Properties.html">Properties</A> *<!2><A HREF="HTTPRequest.html#DOC.14.10">mimeTypes</A>, const char *<!2><A HREF="HTTPRequest.html#DOC.14.11">documentRoot</A>, const char *<!2><A HREF="HTTPRequest.html#DOC.14.6">userDir</A>) </B>
  <DD><I>
-Standardowy konstruktor, w którym podajemy wska¼niki do pó¼niej
-wykorzystywanych obiektów</I>
+Standardowy konstruktor, w ktÃ³rym podajemy wskaÅºniki do pÃ³Åºniej
+wykorzystywanych obiektÃ³w</I>
 <DT><A HREF="#DOC.14.1"> <IMG BORDER=0 SRC=icon1.gif></A> bool  <B>isComplete</B>(const char *request) </B>
  <DD><I>
-Metoda prawdza to co nam przys³a³a przegl±darka (a ja to podajê w
-buforze tekstowym jako string - czyli zakoñczony znakiem '\0')</I>
+Metoda prawdza to co nam przysÅ‚aÅ‚a przeglÄ…darka (a ja to podajÄ™ w
+buforze tekstowym jako string - czyli zakoÅ„czony znakiem '\0')</I>
 <DT><A HREF="#DOC.14.2"> <IMG BORDER=0 SRC=icon1.gif></A> uint  <B>getResponse</B>(char *buffer, uint bufferLength) </B>
  <DD><I>
-Metoda ta na podstawie zapytania przegl±darki (podawanego w metodzie
-wy¿ej, ale podana tak¿e tutaj jeszcze raz, tylko tym razem mo¿n± j±
-zniszczyæ - a nawet trzeba</I>
+Metoda ta na podstawie zapytania przeglÄ…darki (podawanego w metodzie
+wyÅ¼ej, ale podana takÅ¼e tutaj jeszcze raz, tylko tym razem moÅ¼nÄ… jÄ…
+zniszczyÄ‡ - a nawet trzeba</I>
 <DT><A HREF="#DOC.14.3"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="File.html">File</A>*  <B>getFile</B>() </B>
  <DD><I>
-Metoda ta zwraca wska¼nik do obiektu File, którego zawarto¶æ nale¿y
-wys³aæ, zaraz za nag³ówkiem</I>
+Metoda ta zwraca wskaÅºnik do obiektu File, ktÃ³rego zawartoÅ›Ä‡ naleÅ¼y
+wysÅ‚aÄ‡, zaraz za nagÅ‚Ã³wkiem</I>
 <DT><A HREF="#DOC.14.4"> <IMG BORDER=0 SRC=icon1.gif></A> const  char*  <B>getMethod</B>() const  </B>
- <DD><I>Zwraca metodê bie¿±cego zapytania</I>
+ <DD><I>Zwraca metodÄ™ bieÅ¼Ä…cego zapytania</I>
 <DT><A HREF="#DOC.14.5"> <IMG BORDER=0 SRC=icon1.gif></A> const  char*  <B>getURI</B>() const  </B>
- <DD><I>Zwraca URI bie¿±cego zapytania</I>
+ <DD><I>Zwraca URI bieÅ¼Ä…cego zapytania</I>
 </DL><DL>
 <DT><h3>Private Fields</h3><DD><DT><A HREF="#DOC.14.9"> <IMG BORDER=0 SRC=icon1.gif></A> const  char*  const  <B>hostName</B> </B>
- <DD><I>Nazwa komputera na którym jeste¶my uruchomieni - potrzebna w polu Location odpowiedzi HTTP</I>
+ <DD><I>Nazwa komputera na ktÃ³rym jesteÅ›my uruchomieni - potrzebna w polu Location odpowiedzi HTTP</I>
 <DT><A HREF="#DOC.14.10"> <IMG BORDER=0 SRC=icon1.gif></A> const  <!1><A HREF="Properties.html">Properties</A>*  const  <B>mimeTypes</B> </B>
- <DD><I>Obiekt 'rozpoznaj±cy' typy plików po rozszerzeniach ich nazwy</I>
+ <DD><I>Obiekt 'rozpoznajÄ…cy' typy plikÃ³w po rozszerzeniach ich nazwy</I>
 <DT><A HREF="#DOC.14.11"> <IMG BORDER=0 SRC=icon1.gif></A> const  char*  const  <B>documentRoot</B> </B>
- <DD><I>Gdzie sk³aowane s± dokumenty z g³ównego drzewa</I>
+ <DD><I>Gdzie skÅ‚aowane sÄ… dokumenty z gÅ‚Ã³wnego drzewa</I>
 <DT><A HREF="#DOC.14.6"> <IMG BORDER=0 SRC=icon1.gif></A> const  char*  const  <B>userDir</B> </B>
- <DD><I>W którym katalogu w katalgoach u¿ytkowników szukaæ index</I>
+ <DD><I>W ktÃ³rym katalogu w katalgoach uÅ¼ytkownikÃ³w szukaÄ‡ index</I>
 <DT><A HREF="#DOC.14.12"> <IMG BORDER=0 SRC=icon1.gif></A> bool  <B>haveContent</B> </B>
- <DD><I>wysy³amy co¶ oprócz nag³ówka? / wysy³amy plik? </I>
+ <DD><I>wysyÅ‚amy coÅ› oprÃ³cz nagÅ‚Ã³wka? / wysyÅ‚amy plik? </I>
 <DT><A HREF="#DOC.14.13"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="FileInfo.html">FileInfo</A>  <B>fileinfo</B> </B>
- <DD><I>tu pamiêtamy dane o pliku, którym interesuje siê klient </I>
+ <DD><I>tu pamiÄ™tamy dane o pliku, ktÃ³rym interesuje siÄ™ klient </I>
 <DT><A HREF="#DOC.14.14"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="File.html">File</A>  <B>file</B> </B>
  <DD><I>a tu jest ewentualnie ten plik</I>
 </DL><DL>
 <DT><h3>Private Methods</h3><DD><DT><A HREF="#DOC.14.15"> <IMG BORDER=0 SRC=icon1.gif></A> const  char*  <B>resolvePathName</B>(char *) </B>
- <DD><I>metoda przerabia URI na pe³n± scie¿kê dostêpu do pliku </I>
+ <DD><I>metoda przerabia URI na peÅ‚nÄ… scieÅ¼kÄ™ dostÄ™pu do pliku </I>
 <DT><A HREF="#DOC.14.16"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>generateResponseHeader</B>(char *buffer, uint bufferLength, const <!2><A HREF="HTTPRequest.html#DOC.14.7">ResponseHeader</A> &amp;hdr, const char *location, ulong contentLength, const char *contentType, time_t mtime) const  </B>
- <DD><I>Metoda generuje nag³ówke odpowiedzi korzystaj±c z podanych obiektów</I>
+ <DD><I>Metoda generuje nagÅ‚Ã³wke odpowiedzi korzystajÄ…c z podanych obiektÃ³w</I>
 </DL></DL>
 <A NAME="DOC.DOCU">
 <hr>
  <h2> Documentation </h2>
 <BLOCKQUOTE>
 
-Obiekt tej klasy zajmuje siê parsowaniem zapytania klienta, zrozumieniem
-go oraz wygenerowaniem w³a¶ciwej odpowiedzi (zgodnie z protoko³em HTTP). 
-Wskazuje te¿ oraz otwiera plik, którego wys³aniem zaj±æ siê ma obiekt
+Obiekt tej klasy zajmuje siÄ™ parsowaniem zapytania klienta, zrozumieniem
+go oraz wygenerowaniem wÅ‚aÅ›ciwej odpowiedzi (zgodnie z protokoÅ‚em HTTP). 
+Wskazuje teÅ¼ oraz otwiera plik, ktÃ³rego wysÅ‚aniem zajÄ…Ä‡ siÄ™ ma obiekt
 HTTPConnection.
 
 </BLOCKQUOTE>
@@ -68,87 +68,87 @@ HTTPConnection.
 <A NAME ="DOC.14.8">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  HTTPRequest(const char *<!2><A HREF="HTTPRequest.html#DOC.14.9">hostName</A>, const <!1><A HREF="Properties.html">Properties</A> *<!2><A HREF="HTTPRequest.html#DOC.14.10">mimeTypes</A>, const char *<!2><A HREF="HTTPRequest.html#DOC.14.11">documentRoot</A>, const char *<!2><A HREF="HTTPRequest.html#DOC.14.6">userDir</A>)</B></TT>
 <DD>
-Standardowy konstruktor, w którym podajemy wska¼niki do pó¼niej
-wykorzystywanych obiektów
+Standardowy konstruktor, w ktÃ³rym podajemy wskaÅºniki do pÃ³Åºniej
+wykorzystywanych obiektÃ³w
 <DL></DL><P>
 <A NAME="isComplete">
 <A NAME ="DOC.14.1">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> bool  isComplete(const char *request)</B></TT>
 <DD>
-Metoda prawdza to co nam przys³a³a przegl±darka (a ja to podajê w
-buforze tekstowym jako string - czyli zakoñczony znakiem '\0'). 
-Zwraca true, je¶li request jest ju¿ odebrany w ca³o¶ci (zwykle
-oznacza to, ¿e koñczy siê dwoma znakami koñca linii '\n' - ale nie
-jest to regu³±, choæ tak powinno byæ). Lub zwraca false, je¶li
-request nie jest jeszcze kompletny i nale¿y spodziewaæ siê, ¿e co¶ z
-sieci zaraz dojdzie. Wtedy metoda ta zostanie wywo³ana ponownie z
-uzupe³nionym buforem.
+Metoda prawdza to co nam przysÅ‚aÅ‚a przeglÄ…darka (a ja to podajÄ™ w
+buforze tekstowym jako string - czyli zakoÅ„czony znakiem '\0'). 
+Zwraca true, jeÅ›li request jest juÅ¼ odebrany w caÅ‚oÅ›ci (zwykle
+oznacza to, Å¼e koÅ„czy siÄ™ dwoma znakami koÅ„ca linii '\n' - ale nie
+jest to reguÅ‚Ä…, choÄ‡ tak powinno byÄ‡). Lub zwraca false, jeÅ›li
+request nie jest jeszcze kompletny i naleÅ¼y spodziewaÄ‡ siÄ™, Å¼e coÅ› z
+sieci zaraz dojdzie. Wtedy metoda ta zostanie wywoÅ‚ana ponownie z
+uzupeÅ‚nionym buforem.
 <DL></DL><P>
 <A NAME="getResponse">
 <A NAME ="DOC.14.2">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> uint  getResponse(char *buffer, uint bufferLength)</B></TT>
 <DD>
-Metoda ta na podstawie zapytania przegl±darki (podawanego w metodzie
-wy¿ej, ale podana tak¿e tutaj jeszcze raz, tylko tym razem mo¿n± j±
-zniszczyæ - a nawet trzeba. Bufor przenaczony jest przecie¿ teraz na
-odpowied¼) formu³uje nag³ówek odpowiedzi. Mog± to ju¿ byæ np. jakie¶
-informacje o pliku, który za¿yczy³a sobie przegl±darka w zapytaniu. 
-Odpowied¼ tê umieszcza we wskazanym buforze tekstowym, którego
-wielko¶æ podana jest jako drugi argument.  Naturalnie odpowied¼ nie
-mo¿e przekroczyæ tego rozmiaru, gdy¿ spowoduje to "SEGMENTATION
-FAULT" i zakoñczenie bie¿±cego procesu. Nale¿y siê jednak spodziewaæ,
-¿e dany bufor bêdzie mia³ conajmniej 32 kilobajty, a wiêc
-wystarczaj±co du¿o.  Metoda ta zwraca d³ugo¶æ w bajtach nag³ówka
-odpowiedzi, który nale¿y wys³aæ.
+Metoda ta na podstawie zapytania przeglÄ…darki (podawanego w metodzie
+wyÅ¼ej, ale podana takÅ¼e tutaj jeszcze raz, tylko tym razem moÅ¼nÄ… jÄ…
+zniszczyÄ‡ - a nawet trzeba. Bufor przenaczony jest przecieÅ¼ teraz na
+odpowiedÅº) formuÅ‚uje nagÅ‚Ã³wek odpowiedzi. MogÄ… to juÅ¼ byÄ‡ np. jakieÅ›
+informacje o pliku, ktÃ³ry zaÅ¼yczyÅ‚a sobie przeglÄ…darka w zapytaniu. 
+OdpowiedÅº tÄ™ umieszcza we wskazanym buforze tekstowym, ktÃ³rego
+wielkoÅ›Ä‡ podana jest jako drugi argument.  Naturalnie odpowiedÅº nie
+moÅ¼e przekroczyÄ‡ tego rozmiaru, gdyÅ¼ spowoduje to "SEGMENTATION
+FAULT" i zakoÅ„czenie bieÅ¼Ä…cego procesu. NaleÅ¼y siÄ™ jednak spodziewaÄ‡,
+Å¼e dany bufor bÄ™dzie miaÅ‚ conajmniej 32 kilobajty, a wiÄ™c
+wystarczajÄ…co duÅ¼o.  Metoda ta zwraca dÅ‚ugoÅ›Ä‡ w bajtach nagÅ‚Ã³wka
+odpowiedzi, ktÃ³ry naleÅ¼y wysÅ‚aÄ‡.
 <DL></DL><P>
 <A NAME="getFile">
 <A NAME ="DOC.14.3">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="File.html">File</A>*  getFile()</B></TT>
 <DD>
-Metoda ta zwraca wska¼nik do obiektu File, którego zawarto¶æ nale¿y
-wys³aæ, zaraz za nag³ówkiem.  Zwraca NULL je¶li nie nale¿y nic wiêcej
-(poza nag³ówkiem) wysy³aæ.  Je¶li skoñczê z plikiem, to sam go zamknê
-- Ty wiêc o jego zamykanie nie musisz martwiæ.
+Metoda ta zwraca wskaÅºnik do obiektu File, ktÃ³rego zawartoÅ›Ä‡ naleÅ¼y
+wysÅ‚aÄ‡, zaraz za nagÅ‚Ã³wkiem.  Zwraca NULL jeÅ›li nie naleÅ¼y nic wiÄ™cej
+(poza nagÅ‚Ã³wkiem) wysyÅ‚aÄ‡.  JeÅ›li skoÅ„czÄ™ z plikiem, to sam go zamknÄ™
+- Ty wiÄ™c o jego zamykanie nie musisz martwiÄ‡.
 <DL></DL><P>
 <A NAME="getMethod">
 <A NAME ="DOC.14.4">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  char*  getMethod() const </B></TT>
-<DD>Zwraca metodê bie¿±cego zapytania. Metoda na potrzeby wpisu w pliku acces.log 
+<DD>Zwraca metodÄ™ bieÅ¼Ä…cego zapytania. Metoda na potrzeby wpisu w pliku acces.log 
 <DL></DL><P>
 <A NAME="getURI">
 <A NAME ="DOC.14.5">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  char*  getURI() const </B></TT>
-<DD>Zwraca URI bie¿±cego zapytania. Metoda na potrzeby wpisu w pliku acces.log 
+<DD>Zwraca URI bieÅ¼Ä…cego zapytania. Metoda na potrzeby wpisu w pliku acces.log 
 <DL></DL><P>
 <A NAME="hostName">
 <A NAME ="DOC.14.9">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  char*  const  hostName</B></TT>
-<DD>Nazwa komputera na którym jeste¶my uruchomieni - potrzebna w polu Location odpowiedzi HTTP
+<DD>Nazwa komputera na ktÃ³rym jesteÅ›my uruchomieni - potrzebna w polu Location odpowiedzi HTTP
 <DL></DL><P>
 <A NAME="mimeTypes">
 <A NAME ="DOC.14.10">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  <!1><A HREF="Properties.html">Properties</A>*  const  mimeTypes</B></TT>
-<DD>Obiekt 'rozpoznaj±cy' typy plików po rozszerzeniach ich nazwy
+<DD>Obiekt 'rozpoznajÄ…cy' typy plikÃ³w po rozszerzeniach ich nazwy
 <DL></DL><P>
 <A NAME="documentRoot">
 <A NAME ="DOC.14.11">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  char*  const  documentRoot</B></TT>
-<DD>Gdzie sk³aowane s± dokumenty z g³ównego drzewa
+<DD>Gdzie skÅ‚aowane sÄ… dokumenty z gÅ‚Ã³wnego drzewa
 <DL></DL><P>
 <A NAME="userDir">
 <A NAME ="DOC.14.6">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  char*  const  userDir</B></TT>
-<DD>W którym katalogu w katalgoach u¿ytkowników szukaæ index.html i innych dokumentów. 
+<DD>W ktÃ³rym katalogu w katalgoach uÅ¼ytkownikÃ³w szukaÄ‡ index.html i innych dokumentÃ³w. 
 <DL></DL><P>
 <A NAME="haveContent">
 <A NAME ="DOC.14.12">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> bool  haveContent</B></TT>
-<DD>wysy³amy co¶ oprócz nag³ówka? / wysy³amy plik? 
+<DD>wysyÅ‚amy coÅ› oprÃ³cz nagÅ‚Ã³wka? / wysyÅ‚amy plik? 
 <DL></DL><P>
 <A NAME="fileinfo">
 <A NAME ="DOC.14.13">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="FileInfo.html">FileInfo</A>  fileinfo</B></TT>
-<DD>tu pamiêtamy dane o pliku, którym interesuje siê klient 
+<DD>tu pamiÄ™tamy dane o pliku, ktÃ³rym interesuje siÄ™ klient 
 <DL></DL><P>
 <A NAME="file">
 <A NAME ="DOC.14.14">
@@ -158,44 +158,44 @@ wys³aæ, zaraz za nag³ówkiem.  Zwraca NULL je¶li nie nale¿y nic wiêcej
 <A NAME="resolvePathName">
 <A NAME ="DOC.14.15">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  char*  resolvePathName(char *)</B></TT>
-<DD>metoda przerabia URI na pe³n± scie¿kê dostêpu do pliku 
+<DD>metoda przerabia URI na peÅ‚nÄ… scieÅ¼kÄ™ dostÄ™pu do pliku 
 <DL></DL><P>
 <A NAME="ResponseHeader">
 <A NAME ="DOC.14.7">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  class  ResponseHeader</B></TT>
 <DD>
-Prywatna klasa klasy HTTPRequest. Jej obiekty s± nag³ówkami
-odpowiedzi wysy³anymi do klientów. Atrybutami tych oiektów s±: kod
-odpowiedzi, jej krótki opis, opis w HTMLu
+Prywatna klasa klasy HTTPRequest. Jej obiekty sÄ… nagÅ‚Ã³wkami
+odpowiedzi wysyÅ‚anymi do klientÃ³w. Atrybutami tych oiektÃ³w sÄ…: kod
+odpowiedzi, jej krÃ³tki opis, opis w HTMLu
 <DL></DL><P>
 <A NAME="generateResponseHeader">
 <A NAME ="DOC.14.16">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  generateResponseHeader(char *buffer, uint bufferLength, const <!2><A HREF="HTTPRequest.html#DOC.14.7">ResponseHeader</A> &amp;hdr, const char *location, ulong contentLength, const char *contentType, time_t mtime) const </B></TT>
-<DD>Metoda generuje nag³ówke odpowiedzi korzystaj±c z podanych obiektów
+<DD>Metoda generuje nagÅ‚Ã³wke odpowiedzi korzystajÄ…c z podanych obiektÃ³w
 <DL></DL><P></DL>
 <hr>
  <DL><DT><B>This class has no child classes.</B></DL>
 <DL></DL><P><I><A HREF="aindex.html"> alphabetic index</A></I>  <I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
 <STRONG>
-Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
-Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
-ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
-autorów.
+Kod ÅºrÃ³dÅ‚owy tego programu oraz jego dokumentacja sÄ… chronione przez
+UstawÄ™ o prawie autorskim i prawach pokrewnych. Nie mogÄ… byÄ‡ uÅ¼yte
+ani opublikowane w Å¼adnych innych pracach bez pisemnej zgody ich
+autorÃ³w.
 <P>
 This documentation and all of the sources are copyright protected and
 may not be used or published in other works without express written
 permission from the authors.
 </P>
 </STRONG>
-Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+Copyright &copy; 1999 Åukasz HoÅ‚ody, MichaÅ‚ Jacykiewicz, Marcin JarzÄ…b, Marek Konieczny. All rights reserved.
 
 <HR>
 
 <P ALIGN="CENTER">
 <SMALL>
-<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../">Strona gÅ‚Ã³wna projektu</A> |
 <A HREF="../projektowa.html">Dokumentacja projektowa</A> |
-<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+<A HREF="../koncowa.html">Dokumentacja koÅ„cowa</A>
 </SMALL>
 </P>
 

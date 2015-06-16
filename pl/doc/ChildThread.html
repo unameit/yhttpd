@@ -2,9 +2,9 @@
 <BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
 In file src/ChildThread.h:<H2><A HREF ="#DOC.DOCU" > <IMG BORDER=0 SRC=down.gif></A>  class  ChildThread : public <!2><A HREF="AsyncConnection.html#DOC.1.3">AsyncConnection</A> </H2><BLOCKQUOTE>
 
-Obiekt tej klasy odpowiedzialny s± za przyjmowanie nowych po³±czeñ od
-procesu-rodzica, tworzenie z nich obiektów HTTPConnection i obs³ugê
-tych¿e
+Obiekt tej klasy odpowiedzialny sÄ… za przyjmowanie nowych poÅ‚Ä…czeÅ„ od
+procesu-rodzica, tworzenie z nich obiektÃ³w HTTPConnection i obsÅ‚ugÄ™
+tychÅ¼e
 </BLOCKQUOTE>
 <hr>
  <h2> Inheritance:</h2>
@@ -24,23 +24,23 @@ tych¿e
 <DT><A HREF="#DOC.4.3"> <IMG BORDER=0 SRC=icon1.gif></A> virtual  <B>~ChildThread</B>() </B>
  <DD><I>Standardowy (wirtualny) desktruktor)</I>
 <DT><A HREF="#DOC.4.1"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>main</B>() </B>
- <DD><I>g³ówna funkcja procesu-dziecka</I>
+ <DD><I>gÅ‚Ã³wna funkcja procesu-dziecka</I>
 </DL><DL>
 <DT><h3>Private Fields</h3><DD><DT><A HREF="#DOC.4.4"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="ConnectionsManager.html">ConnectionsManager</A>  <B>manager</B> </B>
- <DD><I>Manager po³±czeñ odwalaj±cy de facto ca³± czarn± robotê</I>
+ <DD><I>Manager poÅ‚Ä…czeÅ„ odwalajÄ…cy de facto caÅ‚Ä… czarnÄ… robotÄ™</I>
 <DT><A HREF="#DOC.4.5"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="AsyncMessageQueue.html">AsyncMessageQueue</A>  <B>msgq</B> </B>
- <DD><I>nasze ³±cze komunikacyjne z procesem-ojcem</I>
+ <DD><I>nasze Å‚Ä…cze komunikacyjne z procesem-ojcem</I>
 <DT><A HREF="#DOC.4.6"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="Vector.html">Vector</A>  <B>openedConnections</B> </B>
- <DD><I>tu zapamiêtujemy nasze aktywne-otwarte po³±czenia z klientam</I>
+ <DD><I>tu zapamiÄ™tujemy nasze aktywne-otwarte poÅ‚Ä…czenia z klientam</I>
 <DT><A HREF="#DOC.4.7"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="Vector.html">Vector</A>  <B>closedConnections</B> </B>
- <DD><I>tu mamy po³±czenia ju¿ zakoñczone - gotowe go re-inicjalizacji (dziêki nim unikamy kosztowengo 'new' i 'delete')</I>
+ <DD><I>tu mamy poÅ‚Ä…czenia juÅ¼ zakoÅ„czone - gotowe go re-inicjalizacji (dziÄ™ki nim unikamy kosztowengo 'new' i 'delete')</I>
 <DT><A HREF="#DOC.4.8"> <IMG BORDER=0 SRC=icon1.gif></A> int  <B>intToSend</B> </B>
- <DD><I>warto¶æ int, któr± nale¿y zaraz wys³aæ do procesu-rodzica</I>
+ <DD><I>wartoÅ›Ä‡ int, ktÃ³rÄ… naleÅ¼y zaraz wysÅ‚aÄ‡ do procesu-rodzica</I>
 <DT><A HREF="#DOC.4.9"> <IMG BORDER=0 SRC=icon1.gif></A> const  char*  const  <B>hostName</B> </B>
- <DD><I>Wska¼niki do obiektów, które musimy przekazywaæ nowo-tworzonym obiektom HTTPconnection</I>
+ <DD><I>WskaÅºniki do obiektÃ³w, ktÃ³re musimy przekazywaÄ‡ nowo-tworzonym obiektom HTTPconnection</I>
 </DL><DL>
 <DT><h3>Private Methods</h3><DD><DT><A HREF="#DOC.4.10"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>updateConnections</B>() </B>
- <DD><I>metoda uaktualnia tablicê aktywnych i nieaktywnych po³±czeñ </I>
+ <DD><I>metoda uaktualnia tablicÄ™ aktywnych i nieaktywnych poÅ‚Ä…czeÅ„ </I>
 <DT><A HREF="#DOC.4.11"> <IMG BORDER=0 SRC=icon1.gif></A> bool  <B>isReadNeeded</B>() const  </B>
  <DD><I>methods inherited from AsyncConnection </I>
 </DL></DL>
@@ -60,10 +60,10 @@ tych¿e
  <h2> Documentation </h2>
 <BLOCKQUOTE>
 
-Obiekt tej klasy odpowiedzialny s± za przyjmowanie nowych po³±czeñ od
-procesu-rodzica, tworzenie z nich obiektów HTTPConnection i obs³ugê
-tych¿e.  Jego czê¶ci± jest obiekt ConnectonsManager, który "za³atwia ca³±
-robotê" z po³±czeniami.
+Obiekt tej klasy odpowiedzialny sÄ… za przyjmowanie nowych poÅ‚Ä…czeÅ„ od
+procesu-rodzica, tworzenie z nich obiektÃ³w HTTPConnection i obsÅ‚ugÄ™
+tychÅ¼e.  Jego czÄ™Å›ciÄ… jest obiekt ConnectonsManager, ktÃ³ry "zaÅ‚atwia caÅ‚Ä…
+robotÄ™" z poÅ‚Ä…czeniami.
 
 </BLOCKQUOTE>
 <DL>
@@ -81,42 +81,42 @@ robotê" z po³±czeniami.
 <A NAME="main">
 <A NAME ="DOC.4.1">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  main()</B></TT>
-<DD>g³ówna funkcja procesu-dziecka. Tu nale¿y oddaæ sterowanie. 
+<DD>gÅ‚Ã³wna funkcja procesu-dziecka. Tu naleÅ¼y oddaÄ‡ sterowanie. 
 <DL></DL><P>
 <A NAME="manager">
 <A NAME ="DOC.4.4">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="ConnectionsManager.html">ConnectionsManager</A>  manager</B></TT>
-<DD>Manager po³±czeñ odwalaj±cy de facto ca³± czarn± robotê
+<DD>Manager poÅ‚Ä…czeÅ„ odwalajÄ…cy de facto caÅ‚Ä… czarnÄ… robotÄ™
 <DL></DL><P>
 <A NAME="msgq">
 <A NAME ="DOC.4.5">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="AsyncMessageQueue.html">AsyncMessageQueue</A>  msgq</B></TT>
-<DD>nasze ³±cze komunikacyjne z procesem-ojcem
+<DD>nasze Å‚Ä…cze komunikacyjne z procesem-ojcem
 <DL></DL><P>
 <A NAME="openedConnections">
 <A NAME ="DOC.4.6">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="Vector.html">Vector</A>  openedConnections</B></TT>
-<DD>tu zapamiêtujemy nasze aktywne-otwarte po³±czenia z klientam
+<DD>tu zapamiÄ™tujemy nasze aktywne-otwarte poÅ‚Ä…czenia z klientam
 <DL></DL><P>
 <A NAME="closedConnections">
 <A NAME ="DOC.4.7">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="Vector.html">Vector</A>  closedConnections</B></TT>
-<DD>tu mamy po³±czenia ju¿ zakoñczone - gotowe go re-inicjalizacji (dziêki nim unikamy kosztowengo 'new' i 'delete')
+<DD>tu mamy poÅ‚Ä…czenia juÅ¼ zakoÅ„czone - gotowe go re-inicjalizacji (dziÄ™ki nim unikamy kosztowengo 'new' i 'delete')
 <DL></DL><P>
 <A NAME="intToSend">
 <A NAME ="DOC.4.8">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> int  intToSend</B></TT>
-<DD>warto¶æ int, któr± nale¿y zaraz wys³aæ do procesu-rodzica
+<DD>wartoÅ›Ä‡ int, ktÃ³rÄ… naleÅ¼y zaraz wysÅ‚aÄ‡ do procesu-rodzica
 <DL></DL><P>
 <A NAME="hostName">
 <A NAME ="DOC.4.9">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  char*  const  hostName</B></TT>
-<DD>Wska¼niki do obiektów, które musimy przekazywaæ nowo-tworzonym obiektom HTTPconnection
+<DD>WskaÅºniki do obiektÃ³w, ktÃ³re musimy przekazywaÄ‡ nowo-tworzonym obiektom HTTPconnection
 <DL></DL><P>
 <A NAME="updateConnections">
 <A NAME ="DOC.4.10">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  updateConnections()</B></TT>
-<DD>metoda uaktualnia tablicê aktywnych i nieaktywnych po³±czeñ 
+<DD>metoda uaktualnia tablicÄ™ aktywnych i nieaktywnych poÅ‚Ä…czeÅ„ 
 <DL></DL><P>
 <A NAME="isReadNeeded">
 <A NAME ="DOC.4.11">
@@ -127,25 +127,25 @@ robotê" z po³±czeniami.
  <DL><DT><B>This class has no child classes.</B></DL>
 <DL></DL><P><I><A HREF="aindex.html"> alphabetic index</A></I>  <I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
 <STRONG>
-Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
-Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
-ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
-autorów.
+Kod ÅºrÃ³dÅ‚owy tego programu oraz jego dokumentacja sÄ… chronione przez
+UstawÄ™ o prawie autorskim i prawach pokrewnych. Nie mogÄ… byÄ‡ uÅ¼yte
+ani opublikowane w Å¼adnych innych pracach bez pisemnej zgody ich
+autorÃ³w.
 <P>
 This documentation and all of the sources are copyright protected and
 may not be used or published in other works without express written
 permission from the authors.
 </P>
 </STRONG>
-Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+Copyright &copy; 1999 Åukasz HoÅ‚ody, MichaÅ‚ Jacykiewicz, Marcin JarzÄ…b, Marek Konieczny. All rights reserved.
 
 <HR>
 
 <P ALIGN="CENTER">
 <SMALL>
-<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../">Strona gÅ‚Ã³wna projektu</A> |
 <A HREF="../projektowa.html">Dokumentacja projektowa</A> |
-<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+<A HREF="../koncowa.html">Dokumentacja koÅ„cowa</A>
 </SMALL>
 </P>
 

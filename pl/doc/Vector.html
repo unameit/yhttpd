@@ -2,44 +2,44 @@
 <BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
 In file src/Vector.h:<H2><A HREF ="#DOC.DOCU" > <IMG BORDER=0 SRC=down.gif></A>  class  Vector  </H2><BLOCKQUOTE>
 
-Implementacja struktury danych okre¶lanej jako dynamiczna tablica
+Implementacja struktury danych okreÅ›lanej jako dynamiczna tablica
 </BLOCKQUOTE>
 <hr>
 
 <DL>
 <DL>
 <DT><h3>Public Methods</h3><DD><DT><A HREF="#DOC.22.1"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>Vector</B>(uint = 100, uint = 100) </B>
- <DD><I>utwórz pusty wektor </I>
+ <DD><I>utwÃ³rz pusty wektor </I>
 <DT><A HREF="#DOC.22.2"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>~Vector</B>() </B>
- <DD><I>Usuñ tablicê </I>
+ <DD><I>UsuÅ„ tablicÄ™ </I>
 <DT><A HREF="#DOC.22.3"> <IMG BORDER=0 SRC=icon1.gif></A> uint  <B>add</B>(void *) </B>
  <DD><I>dodaj nowy element do tablicy </I>
 <DT><A HREF="#DOC.22.4"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>set</B>(uint index, void *element) </B>
- <DD><I>zmieñ element o indeksie index na nowy </I>
+ <DD><I>zmieÅ„ element o indeksie index na nowy </I>
 <DT><A HREF="#DOC.22.5"> <IMG BORDER=0 SRC=icon1.gif></A> void*  <B>operator[]</B>(uint) const  </B>
  <DD><I>podaj mi i-ty element tablicy </I>
 <DT><A HREF="#DOC.22.6"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>swap</B>(uint i, uint j) </B>
- <DD><I>zamieñ miejscami dwa elementy tablicy </I>
+ <DD><I>zamieÅ„ miejscami dwa elementy tablicy </I>
 <DT><A HREF="#DOC.22.7"> <IMG BORDER=0 SRC=icon1.gif></A> void*  <B>remove</B>(uint i) </B>
- <DD><I>usuñ i-ty element tablicy </I>
+ <DD><I>usuÅ„ i-ty element tablicy </I>
 <DT><A HREF="#DOC.22.8"> <IMG BORDER=0 SRC=icon1.gif></A> uint  <B>getCount</B>() const  </B>
- <DD><I>podaj mi aktualn± liczbê elementów w tej tablicy </I>
+ <DD><I>podaj mi aktualnÄ… liczbÄ™ elementÃ³w w tej tablicy </I>
 <DT><A HREF="#DOC.22.9"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>setCount</B>(uint) </B>
- <DD><I>ustaw liczbê elementów w tablicy - mo¿na j± tylko zmniejszyæ</I>
+ <DD><I>ustaw liczbÄ™ elementÃ³w w tablicy - moÅ¼na jÄ… tylko zmniejszyÄ‡</I>
 <DT><A HREF="#DOC.22.10"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>clear</B>() </B>
- <DD><I>wyrzuæ wszysktie elementy </I>
+ <DD><I>wyrzuÄ‡ wszysktie elementy </I>
 <DT><A HREF="#DOC.22.11"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>sort</B>(int (*cmpf)(const void *, const void *)) </B>
- <DD><I>posortuj elementy tablicy wg podanej funkcji porównuj±cej</I>
+ <DD><I>posortuj elementy tablicy wg podanej funkcji porÃ³wnujÄ…cej</I>
 <DT><A HREF="#DOC.22.12"> <IMG BORDER=0 SRC=icon1.gif></A> void*  <B>search</B>(const void *key, int (*cmpf)(const void *, const void *)) const  </B>
- <DD><I>wyszukaj element w tablicy (maj±c podan± funkcjê porównuj±c±)</I>
+ <DD><I>wyszukaj element w tablicy (majÄ…c podanÄ… funkcjÄ™ porÃ³wnujÄ…cÄ…)</I>
 <DT><A HREF="#DOC.22.13"> <IMG BORDER=0 SRC=icon1.gif></A> uint  <B>getCapacity</B>() const  </B>
- <DD><I>podaj mi aktualn± pojemno¶æ tablicy </I>
+ <DD><I>podaj mi aktualnÄ… pojemnoÅ›Ä‡ tablicy </I>
 <DT><A HREF="#DOC.22.14"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>setCapacity</B>(uint) </B>
- <DD><I>ustaw j± </I>
+ <DD><I>ustaw jÄ… </I>
 <DT><A HREF="#DOC.22.15"> <IMG BORDER=0 SRC=icon1.gif></A> uint  <B>getIncrement</B>() const  </B>
- <DD><I>o ile zwiêksza siê pojemno¶æ tablicy, gdy siê skoñczy w niej miejsce? </I>
+ <DD><I>o ile zwiÄ™ksza siÄ™ pojemnoÅ›Ä‡ tablicy, gdy siÄ™ skoÅ„czy w niej miejsce? </I>
 <DT><A HREF="#DOC.22.16"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>setIncrement</B>(uint) </B>
- <DD><I>ustaw tê warto¶æ </I>
+ <DD><I>ustaw tÄ™ wartoÅ›Ä‡ </I>
 </DL><DL>
 <DT><h3>Private Fields</h3><DD><DT><A HREF="#DOC.22.17"> <IMG BORDER=0 SRC=icon1.gif></A> uint  <B>capacity</B> </B>
  <DD><I>actual capacity </I>
@@ -53,9 +53,9 @@ Implementacja struktury danych okre¶lanej jako dynamiczna tablica
  <h2> Documentation </h2>
 <BLOCKQUOTE>
 
-Implementacja struktury danych okre¶lanej jako dynamiczna tablica.
-Przechowuje wska¼niki do "czegokolwiek" (void *). Po dostarczeniu jej
-funkcji porównuj±cej potrafi sortowaæ oraz wyszukiwaæ po¿±dane elementy.
+Implementacja struktury danych okreÅ›lanej jako dynamiczna tablica.
+Przechowuje wskaÅºniki do "czegokolwiek" (void *). Po dostarczeniu jej
+funkcji porÃ³wnujÄ…cej potrafi sortowaÄ‡ oraz wyszukiwaÄ‡ poÅ¼Ä…dane elementy.
 
 </BLOCKQUOTE>
 <DL>
@@ -63,12 +63,12 @@ funkcji porównuj±cej potrafi sortowaæ oraz wyszukiwaæ po¿±dane elementy.
 <A NAME="Vector">
 <A NAME ="DOC.22.1">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  Vector(uint = 100, uint = 100)</B></TT>
-<DD>utwórz pusty wektor 
+<DD>utwÃ³rz pusty wektor 
 <DL></DL><P>
 <A NAME="~Vector">
 <A NAME ="DOC.22.2">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  ~Vector()</B></TT>
-<DD>Usuñ tablicê 
+<DD>UsuÅ„ tablicÄ™ 
 <DL></DL><P>
 <A NAME="add">
 <A NAME ="DOC.22.3">
@@ -78,7 +78,7 @@ funkcji porównuj±cej potrafi sortowaæ oraz wyszukiwaæ po¿±dane elementy.
 <A NAME="set">
 <A NAME ="DOC.22.4">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  set(uint index, void *element)</B></TT>
-<DD>zmieñ element o indeksie index na nowy 
+<DD>zmieÅ„ element o indeksie index na nowy 
 <DL></DL><P>
 <A NAME="operator[]">
 <A NAME ="DOC.22.5">
@@ -88,57 +88,57 @@ funkcji porównuj±cej potrafi sortowaæ oraz wyszukiwaæ po¿±dane elementy.
 <A NAME="swap">
 <A NAME ="DOC.22.6">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  swap(uint i, uint j)</B></TT>
-<DD>zamieñ miejscami dwa elementy tablicy 
+<DD>zamieÅ„ miejscami dwa elementy tablicy 
 <DL></DL><P>
 <A NAME="remove">
 <A NAME ="DOC.22.7">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void*  remove(uint i)</B></TT>
-<DD>usuñ i-ty element tablicy 
+<DD>usuÅ„ i-ty element tablicy 
 <DL></DL><P>
 <A NAME="getCount">
 <A NAME ="DOC.22.8">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> uint  getCount() const </B></TT>
-<DD>podaj mi aktualn± liczbê elementów w tej tablicy 
+<DD>podaj mi aktualnÄ… liczbÄ™ elementÃ³w w tej tablicy 
 <DL></DL><P>
 <A NAME="setCount">
 <A NAME ="DOC.22.9">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  setCount(uint)</B></TT>
-<DD>ustaw liczbê elementów w tablicy - mo¿na j± tylko zmniejszyæ
+<DD>ustaw liczbÄ™ elementÃ³w w tablicy - moÅ¼na jÄ… tylko zmniejszyÄ‡
 <DL></DL><P>
 <A NAME="clear">
 <A NAME ="DOC.22.10">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  clear()</B></TT>
-<DD>wyrzuæ wszysktie elementy 
+<DD>wyrzuÄ‡ wszysktie elementy 
 <DL></DL><P>
 <A NAME="sort">
 <A NAME ="DOC.22.11">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  sort(int (*cmpf)(const void *, const void *))</B></TT>
-<DD>posortuj elementy tablicy wg podanej funkcji porównuj±cej
+<DD>posortuj elementy tablicy wg podanej funkcji porÃ³wnujÄ…cej
 <DL></DL><P>
 <A NAME="search">
 <A NAME ="DOC.22.12">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void*  search(const void *key, int (*cmpf)(const void *, const void *)) const </B></TT>
-<DD>wyszukaj element w tablicy (maj±c podan± funkcjê porównuj±c±)
+<DD>wyszukaj element w tablicy (majÄ…c podanÄ… funkcjÄ™ porÃ³wnujÄ…cÄ…)
 <DL></DL><P>
 <A NAME="getCapacity">
 <A NAME ="DOC.22.13">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> uint  getCapacity() const </B></TT>
-<DD>podaj mi aktualn± pojemno¶æ tablicy 
+<DD>podaj mi aktualnÄ… pojemnoÅ›Ä‡ tablicy 
 <DL></DL><P>
 <A NAME="setCapacity">
 <A NAME ="DOC.22.14">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  setCapacity(uint)</B></TT>
-<DD>ustaw j± 
+<DD>ustaw jÄ… 
 <DL></DL><P>
 <A NAME="getIncrement">
 <A NAME ="DOC.22.15">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> uint  getIncrement() const </B></TT>
-<DD>o ile zwiêksza siê pojemno¶æ tablicy, gdy siê skoñczy w niej miejsce? 
+<DD>o ile zwiÄ™ksza siÄ™ pojemnoÅ›Ä‡ tablicy, gdy siÄ™ skoÅ„czy w niej miejsce? 
 <DL></DL><P>
 <A NAME="setIncrement">
 <A NAME ="DOC.22.16">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  setIncrement(uint)</B></TT>
-<DD>ustaw tê warto¶æ 
+<DD>ustaw tÄ™ wartoÅ›Ä‡ 
 <DL></DL><P>
 <A NAME="capacity">
 <A NAME ="DOC.22.17">
@@ -159,25 +159,25 @@ funkcji porównuj±cej potrafi sortowaæ oraz wyszukiwaæ po¿±dane elementy.
  <DL><DT><B>This class has no child classes.</B></DL>
 <DL></DL><P><I><A HREF="aindex.html"> alphabetic index</A></I>  <I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
 <STRONG>
-Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
-Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
-ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
-autorów.
+Kod ÅºrÃ³dÅ‚owy tego programu oraz jego dokumentacja sÄ… chronione przez
+UstawÄ™ o prawie autorskim i prawach pokrewnych. Nie mogÄ… byÄ‡ uÅ¼yte
+ani opublikowane w Å¼adnych innych pracach bez pisemnej zgody ich
+autorÃ³w.
 <P>
 This documentation and all of the sources are copyright protected and
 may not be used or published in other works without express written
 permission from the authors.
 </P>
 </STRONG>
-Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+Copyright &copy; 1999 Åukasz HoÅ‚ody, MichaÅ‚ Jacykiewicz, Marcin JarzÄ…b, Marek Konieczny. All rights reserved.
 
 <HR>
 
 <P ALIGN="CENTER">
 <SMALL>
-<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../">Strona gÅ‚Ã³wna projektu</A> |
 <A HREF="../projektowa.html">Dokumentacja projektowa</A> |
-<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+<A HREF="../koncowa.html">Dokumentacja koÅ„cowa</A>
 </SMALL>
 </P>
 

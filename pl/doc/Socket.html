@@ -18,27 +18,27 @@ Obiekty tej klasy to standardowe gniazda (socket'y) systemu UNIX(R)
 <DL>
 <DL>
 <DT><h3>Public Methods</h3><DD><DT><A HREF="#DOC.19.3"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>Socket</B>() </B>
- <DD><I>Otwórz obiekt Socket, ale go ie otwieraj </I>
+ <DD><I>OtwÃ³rz obiekt Socket, ale go ie otwieraj </I>
 <DT><A HREF="#DOC.19.4"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>Socket</B>(int i) </B>
- <DD><I>Utwórz obiekt Socket, z deskryptora, który Ci dajê</I>
+ <DD><I>UtwÃ³rz obiekt Socket, z deskryptora, ktÃ³ry Ci dajÄ™</I>
 <DT><A HREF="#DOC.19.5"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>Socket</B>(int domain, int type, int protocol = 0) </B>
- <DD><I>Utwórz Socket ze wskazanej rodziny i podanego typu </I>
+ <DD><I>UtwÃ³rz Socket ze wskazanej rodziny i podanego typu </I>
 <DT><A HREF="#DOC.19.6"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>connect</B>(const char *hostName, ushort port) </B>
- <DD><I>Po³±cz to gniazdo z podanym komputerem, na podanym porcie</I>
+ <DD><I>PoÅ‚Ä…cz to gniazdo z podanym komputerem, na podanym porcie</I>
 <DT><A HREF="#DOC.19.7"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>connect</B>(const struct sockaddr_in *addr) </B>
- <DD><I>Po³±cz to gniazdo z komputerem, którego adres podany jest w tej strukturze</I>
+ <DD><I>PoÅ‚Ä…cz to gniazdo z komputerem, ktÃ³rego adres podany jest w tej strukturze</I>
 <DT><A HREF="#DOC.19.8"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>bind</B>(const char *hostName, ushort port) </B>
- <DD><I>Zrób bind tego Socket'a, czyli przypisz go do interfejsu sieciowego wskazywanego podan± nazw± komputera oraz do portu o podanym numerze</I>
+ <DD><I>ZrÃ³b bind tego Socket'a, czyli przypisz go do interfejsu sieciowego wskazywanego podanÄ… nazwÄ… komputera oraz do portu o podanym numerze</I>
 <DT><A HREF="#DOC.19.9"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>bind</B>(const struct sockaddr_in *addr) </B>
  <DD><I>Przypisz to gniazdo do adresu podanego w tej strukturze danych przekazanej jako argument</I>
 <DT><A HREF="#DOC.19.1"> <IMG BORDER=0 SRC=icon1.gif></A> int  <B>accept</B>() </B>
- <DD><I>Akceptuj po³±czenie ze ¶wiata</I>
+ <DD><I>Akceptuj poÅ‚Ä…czenie ze Å›wiata</I>
 <DT><A HREF="#DOC.19.2"> <IMG BORDER=0 SRC=icon1.gif></A> int  <B>accept</B>(struct sockaddr_in *) </B>
- <DD><I>Akceptuj po³±czenie ze ¶wiata</I>
+ <DD><I>Akceptuj poÅ‚Ä…czenie ze Å›wiata</I>
 <DT><A HREF="#DOC.19.10"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>listen</B>(int backlog) </B>
- <DD><I>Pozwól na backlog oczekuj±cych po³±czeñ w kolejce na zaakceptowanie przez nas</I>
+ <DD><I>PozwÃ³l na backlog oczekujÄ…cych poÅ‚Ä…czeÅ„ w kolejce na zaakceptowanie przez nas</I>
 <DT><A HREF="#DOC.19.11"> <IMG BORDER=0 SRC=icon1.gif></A> <!2><A HREF="Socket.html#DOC.19.3">Socket</A>&amp;  <B>operator=</B>(int) </B>
- <DD><I>Podany deskryptor niech bêdzie nowym moim</I>
+ <DD><I>Podany deskryptor niech bÄ™dzie nowym moim</I>
 </DL><DL>
 <DT><h3>Private Methods</h3><DD><DT><A HREF="#DOC.19.12"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>convert</B>(struct sockaddr_in *addr, const char *hostName, ushort port) const  </B>
  <DD><I>Zapytaj DNSa o IP tego komputera i wpisz mi to do struktury sockaddr_in</I>
@@ -66,8 +66,8 @@ Obiekty tej klasy to standardowe gniazda (socket'y) systemu UNIX(R)
 <BLOCKQUOTE>
 
 Obiekty tej klasy to standardowe gniazda (socket'y) systemu UNIX(R).
-Klasa rozszerza mo¿liwo¶ci klasy Descriptor o metody specyficzne dla
-deskryptorów gniazd (takie jak: connect, bind, listen, accept).
+Klasa rozszerza moÅ¼liwoÅ›ci klasy Descriptor o metody specyficzne dla
+deskryptorÃ³w gniazd (takie jak: connect, bind, listen, accept).
 
 </BLOCKQUOTE>
 <DL>
@@ -75,32 +75,32 @@ deskryptorów gniazd (takie jak: connect, bind, listen, accept).
 <A NAME="Socket">
 <A NAME ="DOC.19.3">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  Socket()</B></TT>
-<DD>Otwórz obiekt Socket, ale go ie otwieraj 
+<DD>OtwÃ³rz obiekt Socket, ale go ie otwieraj 
 <DL></DL><P>
 <A NAME="Socket">
 <A NAME ="DOC.19.4">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  Socket(int i)</B></TT>
-<DD>Utwórz obiekt Socket, z deskryptora, który Ci dajê
+<DD>UtwÃ³rz obiekt Socket, z deskryptora, ktÃ³ry Ci dajÄ™
 <DL></DL><P>
 <A NAME="Socket">
 <A NAME ="DOC.19.5">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  Socket(int domain, int type, int protocol = 0)</B></TT>
-<DD>Utwórz Socket ze wskazanej rodziny i podanego typu 
+<DD>UtwÃ³rz Socket ze wskazanej rodziny i podanego typu 
 <DL></DL><P>
 <A NAME="connect">
 <A NAME ="DOC.19.6">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  connect(const char *hostName, ushort port)</B></TT>
-<DD>Po³±cz to gniazdo z podanym komputerem, na podanym porcie
+<DD>PoÅ‚Ä…cz to gniazdo z podanym komputerem, na podanym porcie
 <DL></DL><P>
 <A NAME="connect">
 <A NAME ="DOC.19.7">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  connect(const struct sockaddr_in *addr)</B></TT>
-<DD>Po³±cz to gniazdo z komputerem, którego adres podany jest w tej strukturze
+<DD>PoÅ‚Ä…cz to gniazdo z komputerem, ktÃ³rego adres podany jest w tej strukturze
 <DL></DL><P>
 <A NAME="bind">
 <A NAME ="DOC.19.8">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  bind(const char *hostName, ushort port)</B></TT>
-<DD>Zrób bind tego Socket'a, czyli przypisz go do interfejsu sieciowego wskazywanego podan± nazw± komputera oraz do portu o podanym numerze
+<DD>ZrÃ³b bind tego Socket'a, czyli przypisz go do interfejsu sieciowego wskazywanego podanÄ… nazwÄ… komputera oraz do portu o podanym numerze
 <DL></DL><P>
 <A NAME="bind">
 <A NAME ="DOC.19.9">
@@ -110,22 +110,22 @@ deskryptorów gniazd (takie jak: connect, bind, listen, accept).
 <A NAME="accept">
 <A NAME ="DOC.19.1">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> int  accept()</B></TT>
-<DD>Akceptuj po³±czenie ze ¶wiata. Zwróæ mi deskryptor nowo utworzonego w tym celu gniazda. 
+<DD>Akceptuj poÅ‚Ä…czenie ze Å›wiata. ZwrÃ³Ä‡ mi deskryptor nowo utworzonego w tym celu gniazda. 
 <DL></DL><P>
 <A NAME="accept">
 <A NAME ="DOC.19.2">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> int  accept(struct sockaddr_in *)</B></TT>
-<DD>Akceptuj po³±czenie ze ¶wiata. Adres maszyny, sk±d pochodzi po³±czenie zapisz do struktury przekazywanej jako parametr. 
+<DD>Akceptuj poÅ‚Ä…czenie ze Å›wiata. Adres maszyny, skÄ…d pochodzi poÅ‚Ä…czenie zapisz do struktury przekazywanej jako parametr. 
 <DL></DL><P>
 <A NAME="listen">
 <A NAME ="DOC.19.10">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  listen(int backlog)</B></TT>
-<DD>Pozwól na backlog oczekuj±cych po³±czeñ w kolejce na zaakceptowanie przez nas
+<DD>PozwÃ³l na backlog oczekujÄ…cych poÅ‚Ä…czeÅ„ w kolejce na zaakceptowanie przez nas
 <DL></DL><P>
 <A NAME="operator=">
 <A NAME ="DOC.19.11">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!2><A HREF="Socket.html#DOC.19.3">Socket</A>&amp;  operator=(int)</B></TT>
-<DD>Podany deskryptor niech bêdzie nowym moim
+<DD>Podany deskryptor niech bÄ™dzie nowym moim
 <DL></DL><P>
 <A NAME="convert">
 <A NAME ="DOC.19.12">
@@ -138,25 +138,25 @@ deskryptorów gniazd (takie jak: connect, bind, listen, accept).
 </DL>
 <DL></DL><P><I><A HREF="aindex.html"> alphabetic index</A></I>  <I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
 <STRONG>
-Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
-Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
-ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
-autorów.
+Kod ÅºrÃ³dÅ‚owy tego programu oraz jego dokumentacja sÄ… chronione przez
+UstawÄ™ o prawie autorskim i prawach pokrewnych. Nie mogÄ… byÄ‡ uÅ¼yte
+ani opublikowane w Å¼adnych innych pracach bez pisemnej zgody ich
+autorÃ³w.
 <P>
 This documentation and all of the sources are copyright protected and
 may not be used or published in other works without express written
 permission from the authors.
 </P>
 </STRONG>
-Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+Copyright &copy; 1999 Åukasz HoÅ‚ody, MichaÅ‚ Jacykiewicz, Marcin JarzÄ…b, Marek Konieczny. All rights reserved.
 
 <HR>
 
 <P ALIGN="CENTER">
 <SMALL>
-<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../">Strona gÅ‚Ã³wna projektu</A> |
 <A HREF="../projektowa.html">Dokumentacja projektowa</A> |
-<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+<A HREF="../koncowa.html">Dokumentacja koÅ„cowa</A>
 </SMALL>
 </P>
 

@@ -18,17 +18,17 @@ Obiekty tej klasy to standardowe pliki systemu UNIX(R)
 <DL>
 <DL>
 <DT><h3>Public Methods</h3><DD><DT><A HREF="#DOC.11.1"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>File</B>(int d = -1) </B>
- <DD><I>Konstruktor przypisuj±cy istniej±cy ju¿ deskryptor do tego obiektu, lub -1, co oznacza deskryptor ju¿ zamkniêty</I>
+ <DD><I>Konstruktor przypisujÄ…cy istniejÄ…cy juÅ¼ deskryptor do tego obiektu, lub -1, co oznacza deskryptor juÅ¼ zamkniÄ™ty</I>
 <DT><A HREF="#DOC.11.2"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>File</B>(const char *, int = O_RDONLY) </B>
- <DD><I>Otwórz wskazany plik, z odpowiednim trybem </I>
+ <DD><I>OtwÃ³rz wskazany plik, z odpowiednim trybem </I>
 <DT><A HREF="#DOC.11.3"> <IMG BORDER=0 SRC=icon1.gif></A> <!2><A HREF="File.html#DOC.11.1">File</A>&amp;  <B>open</B>(const char *, int = O_RDONLY) </B>
- <DD><I>Jak konstruktor wy¿ej, lecz umo¿liwia re-inicjowane obiektu</I>
+ <DD><I>Jak konstruktor wyÅ¼ej, lecz umoÅ¼liwia re-inicjowane obiektu</I>
 <DT><A HREF="#DOC.11.4"> <IMG BORDER=0 SRC=icon1.gif></A> <!2><A HREF="File.html#DOC.11.1">File</A>&amp;  <B>rewind</B>() </B>
- <DD><I>Przesuñ wska¼nik pliku na jego pocz±tek</I>
+ <DD><I>PrzesuÅ„ wskaÅºnik pliku na jego poczÄ…tek</I>
 <DT><A HREF="#DOC.11.5"> <IMG BORDER=0 SRC=icon1.gif></A> <!2><A HREF="File.html#DOC.11.1">File</A>&amp;  <B>seek</B>(off_t offset, int whence = SEEK_CUR) </B>
- <DD><I>Ustaw wska¼nik pliku</I>
+ <DD><I>Ustaw wskaÅºnik pliku</I>
 <DT><A HREF="#DOC.11.6"> <IMG BORDER=0 SRC=icon1.gif></A> <!2><A HREF="File.html#DOC.11.1">File</A>&amp;  <B>setpos</B>(off_t offset) </B>
- <DD><I>Podobnie jak wy¿ej</I>
+ <DD><I>Podobnie jak wyÅ¼ej</I>
 <DT><A HREF="#DOC.11.7"> <IMG BORDER=0 SRC=icon1.gif></A> <!2><A HREF="File.html#DOC.11.1">File</A>&amp;  <B>lock</B>(off_t len = 0, bool mandatory = false) </B>
  <DD><I>Zablokuj fragment pliku </I>
 <DT><A HREF="#DOC.11.8"> <IMG BORDER=0 SRC=icon1.gif></A> <!2><A HREF="File.html#DOC.11.1">File</A>&amp;  <B>unlock</B>(off_t len = 0) </B>
@@ -41,9 +41,9 @@ Obiekty tej klasy to standardowe pliki systemu UNIX(R)
  <DD><I>Niech ten obiekt zostanie przypisany innemu deskryptorowi </I>
 </DL><DL>
 <DT><h3>Private Fields</h3><DD><DT><A HREF="#DOC.11.12"> <IMG BORDER=0 SRC=icon1.gif></A> off_t  <B>size</B> </B>
- <DD><I>Tu zapamiêtujemy rozmiar pliku (w bajtach)</I>
+ <DD><I>Tu zapamiÄ™tujemy rozmiar pliku (w bajtach)</I>
 <DT><A HREF="#DOC.11.13"> <IMG BORDER=0 SRC=icon1.gif></A> time_t  <B>mtime</B> </B>
- <DD><I>Tu zapamiêtujemy czas ostatniej modyfikacji w pliku</I>
+ <DD><I>Tu zapamiÄ™tujemy czas ostatniej modyfikacji w pliku</I>
 </DL></DL>
 <hr><H3>Inherited from <A HREF="Descriptor.html">Descriptor:</A></h3>
 
@@ -68,12 +68,12 @@ Obiekty tej klasy to standardowe pliki systemu UNIX(R)
 <BLOCKQUOTE>
 
 Obiekty tej klasy to standardowe pliki systemu UNIX(R). Celem obudowania
-funkcji do obs³ugi plików w jedn± klasê jest uproszczenie i uczynienie
-bardziej przejrzystym kodu ¼ród³owego. Klasa dziedziczy publicznie klasê
-Descriptor. Zawiera dodatkowe metody specyficzne dla plików, takie jak
-blokowanie pliku, zmiana pozycji z której bêda czytane lub zapisywane
-dane, pobieranie rozmiaru pliku, czy te¿ daty jego ostatniej modyfikacji. 
-Wszystkie metody tej klasy, w przypadku niepowodzenia, rzucaj± wyj±tkami
+funkcji do obsÅ‚ugi plikÃ³w w jednÄ… klasÄ™ jest uproszczenie i uczynienie
+bardziej przejrzystym kodu ÅºrÃ³dÅ‚owego. Klasa dziedziczy publicznie klasÄ™
+Descriptor. Zawiera dodatkowe metody specyficzne dla plikÃ³w, takie jak
+blokowanie pliku, zmiana pozycji z ktÃ³rej bÄ™da czytane lub zapisywane
+dane, pobieranie rozmiaru pliku, czy teÅ¼ daty jego ostatniej modyfikacji. 
+Wszystkie metody tej klasy, w przypadku niepowodzenia, rzucajÄ… wyjÄ…tkami
 z odpowiednim komentarzem.
 
 </BLOCKQUOTE>
@@ -82,32 +82,32 @@ z odpowiednim komentarzem.
 <A NAME="File">
 <A NAME ="DOC.11.1">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  File(int d = -1)</B></TT>
-<DD>Konstruktor przypisuj±cy istniej±cy ju¿ deskryptor do tego obiektu, lub -1, co oznacza deskryptor ju¿ zamkniêty
+<DD>Konstruktor przypisujÄ…cy istniejÄ…cy juÅ¼ deskryptor do tego obiektu, lub -1, co oznacza deskryptor juÅ¼ zamkniÄ™ty
 <DL></DL><P>
 <A NAME="File">
 <A NAME ="DOC.11.2">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  File(const char *, int = O_RDONLY)</B></TT>
-<DD>Otwórz wskazany plik, z odpowiednim trybem 
+<DD>OtwÃ³rz wskazany plik, z odpowiednim trybem 
 <DL></DL><P>
 <A NAME="open">
 <A NAME ="DOC.11.3">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!2><A HREF="File.html#DOC.11.1">File</A>&amp;  open(const char *, int = O_RDONLY)</B></TT>
-<DD>Jak konstruktor wy¿ej, lecz umo¿liwia re-inicjowane obiektu
+<DD>Jak konstruktor wyÅ¼ej, lecz umoÅ¼liwia re-inicjowane obiektu
 <DL></DL><P>
 <A NAME="rewind">
 <A NAME ="DOC.11.4">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!2><A HREF="File.html#DOC.11.1">File</A>&amp;  rewind()</B></TT>
-<DD>Przesuñ wska¼nik pliku na jego pocz±tek
+<DD>PrzesuÅ„ wskaÅºnik pliku na jego poczÄ…tek
 <DL></DL><P>
 <A NAME="seek">
 <A NAME ="DOC.11.5">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!2><A HREF="File.html#DOC.11.1">File</A>&amp;  seek(off_t offset, int whence = SEEK_CUR)</B></TT>
-<DD>Ustaw wska¼nik pliku
+<DD>Ustaw wskaÅºnik pliku
 <DL></DL><P>
 <A NAME="setpos">
 <A NAME ="DOC.11.6">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!2><A HREF="File.html#DOC.11.1">File</A>&amp;  setpos(off_t offset)</B></TT>
-<DD>Podobnie jak wy¿ej
+<DD>Podobnie jak wyÅ¼ej
 <DL></DL><P>
 <A NAME="lock">
 <A NAME ="DOC.11.7">
@@ -137,36 +137,36 @@ z odpowiednim komentarzem.
 <A NAME="size">
 <A NAME ="DOC.11.12">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> off_t  size</B></TT>
-<DD>Tu zapamiêtujemy rozmiar pliku (w bajtach)
+<DD>Tu zapamiÄ™tujemy rozmiar pliku (w bajtach)
 <DL></DL><P>
 <A NAME="mtime">
 <A NAME ="DOC.11.13">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> time_t  mtime</B></TT>
-<DD>Tu zapamiêtujemy czas ostatniej modyfikacji w pliku
+<DD>Tu zapamiÄ™tujemy czas ostatniej modyfikacji w pliku
 <DL></DL><P></DL>
 <hr>
  <DL><DT><B>This class has no child classes.</B></DL>
 <DL></DL><P><I><A HREF="aindex.html"> alphabetic index</A></I>  <I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
 <STRONG>
-Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
-Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
-ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
-autorów.
+Kod ÅºrÃ³dÅ‚owy tego programu oraz jego dokumentacja sÄ… chronione przez
+UstawÄ™ o prawie autorskim i prawach pokrewnych. Nie mogÄ… byÄ‡ uÅ¼yte
+ani opublikowane w Å¼adnych innych pracach bez pisemnej zgody ich
+autorÃ³w.
 <P>
 This documentation and all of the sources are copyright protected and
 may not be used or published in other works without express written
 permission from the authors.
 </P>
 </STRONG>
-Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+Copyright &copy; 1999 Åukasz HoÅ‚ody, MichaÅ‚ Jacykiewicz, Marcin JarzÄ…b, Marek Konieczny. All rights reserved.
 
 <HR>
 
 <P ALIGN="CENTER">
 <SMALL>
-<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../">Strona gÅ‚Ã³wna projektu</A> |
 <A HREF="../projektowa.html">Dokumentacja projektowa</A> |
-<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+<A HREF="../koncowa.html">Dokumentacja koÅ„cowa</A>
 </SMALL>
 </P>
 

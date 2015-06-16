@@ -2,7 +2,7 @@
 <BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
 In file src/FileInfo.h:<H2><A HREF ="#DOC.DOCU" > <IMG BORDER=0 SRC=down.gif></A>  class  FileInfo  </H2><BLOCKQUOTE>
 
-Obiekty tej klasy zawieraj± informacje na temat istniej±cych plików takie
+Obiekty tej klasy zawierajÄ… informacje na temat istniejÄ…cych plikÃ³w takie
 jak: data ostatniej modyfikacji i rozmiar
 </BLOCKQUOTE>
 <hr>
@@ -10,38 +10,38 @@ jak: data ostatniej modyfikacji i rozmiar
 <DL>
 <DL>
 <DT><h3>Public Methods</h3><DD><DT><A HREF="#DOC.12.1"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>FileInfo</B>(const char *filename = NULL) </B>
- <DD><I>Pobierz informacje na temat pliku, którego nazwê Ci przekazujê jako argument </I>
+ <DD><I>Pobierz informacje na temat pliku, ktÃ³rego nazwÄ™ Ci przekazujÄ™ jako argument </I>
 <DT><A HREF="#DOC.12.2"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>FileInfo</B>(int fd) </B>
- <DD><I>Pobierz informacje na temat pliku, którego deskryptor Ci przekazujê jako parametr</I>
+ <DD><I>Pobierz informacje na temat pliku, ktÃ³rego deskryptor Ci przekazujÄ™ jako parametr</I>
 <DT><A HREF="#DOC.12.3"> <IMG BORDER=0 SRC=icon1.gif></A> <!2><A HREF="FileInfo.html#DOC.12.1">FileInfo</A>&amp;  <B>operator=</B>(const char *filename) </B>
- <DD><I>Pobierz informacje na temat pliku, którego nazwê Ci przypisujê </I>
+ <DD><I>Pobierz informacje na temat pliku, ktÃ³rego nazwÄ™ Ci przypisujÄ™ </I>
 <DT><A HREF="#DOC.12.4"> <IMG BORDER=0 SRC=icon1.gif></A> <!2><A HREF="FileInfo.html#DOC.12.1">FileInfo</A>&amp;  <B>operator=</B>(int fd) </B>
- <DD><I>Pobierz informacje na temat pliku, którego deskryptor Ci przypisujê</I>
+ <DD><I>Pobierz informacje na temat pliku, ktÃ³rego deskryptor Ci przypisujÄ™</I>
 <DT><A HREF="#DOC.12.5"> <IMG BORDER=0 SRC=icon1.gif></A> off_t  <B>getSize</B>() const  </B>
  <DD><I>Podaj mi rozmiar tego pliku</I>
 <DT><A HREF="#DOC.12.6"> <IMG BORDER=0 SRC=icon1.gif></A> time_t  <B>getMTime</B>() const  </B>
- <DD><I>Podaj mi czas ostatniej modyfikacji obiektu, o którym przechowujesz informacjê</I>
+ <DD><I>Podaj mi czas ostatniej modyfikacji obiektu, o ktÃ³rym przechowujesz informacjÄ™</I>
 <DT><A HREF="#DOC.12.7"> <IMG BORDER=0 SRC=icon1.gif></A> bool  <B>isDirectory</B>() const  </B>
- <DD><I>Czy obiekt o którym informacjê przechowujesz, jest katalogiem? </I>
+ <DD><I>Czy obiekt o ktÃ³rym informacjÄ™ przechowujesz, jest katalogiem? </I>
 </DL><DL>
 <DT><h3>Private Fields</h3><DD><DT><A HREF="#DOC.12.8"> <IMG BORDER=0 SRC=icon1.gif></A> off_t  <B>size</B> </B>
- <DD><I>Tu zapamiêtujemy rozmiar pliku w bajtach</I>
+ <DD><I>Tu zapamiÄ™tujemy rozmiar pliku w bajtach</I>
 <DT><A HREF="#DOC.12.9"> <IMG BORDER=0 SRC=icon1.gif></A> time_t  <B>mtime</B> </B>
- <DD><I>Tu zapamiêtujemu czas ostatniej modyifikacji</I>
+ <DD><I>Tu zapamiÄ™tujemu czas ostatniej modyifikacji</I>
 <DT><A HREF="#DOC.12.10"> <IMG BORDER=0 SRC=icon1.gif></A> bool  <B>dir</B> </B>
  <DD><I>Tu, czy jest to katalog, czy plik</I>
 </DL><DL>
 <DT><h3>Private Methods</h3><DD><DT><A HREF="#DOC.12.11"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>stat</B>(const char *filename) </B>
- <DD><I>Pobierz informacje o pliku wskazywanym przez nazwê podan± jako paramter</I>
+ <DD><I>Pobierz informacje o pliku wskazywanym przez nazwÄ™ podanÄ… jako paramter</I>
 <DT><A HREF="#DOC.12.12"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>stat</B>(int fd) </B>
- <DD><I>Pobierz informacje o pliku wskazywanym przez ten deskryptor, który Ci przekazujê, jako argument</I>
+ <DD><I>Pobierz informacje o pliku wskazywanym przez ten deskryptor, ktÃ³ry Ci przekazujÄ™, jako argument</I>
 </DL></DL>
 <A NAME="DOC.DOCU">
 <hr>
  <h2> Documentation </h2>
 <BLOCKQUOTE>
 
-Obiekty tej klasy zawieraj± informacje na temat istniej±cych plików takie
+Obiekty tej klasy zawierajÄ… informacje na temat istniejÄ…cych plikÃ³w takie
 jak: data ostatniej modyfikacji i rozmiar. Klasa pozwala na uzyskiwanie
 tych informacji bez otwierania wskazanego pliku.
 
@@ -51,22 +51,22 @@ tych informacji bez otwierania wskazanego pliku.
 <A NAME="FileInfo">
 <A NAME ="DOC.12.1">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  FileInfo(const char *filename = NULL)</B></TT>
-<DD>Pobierz informacje na temat pliku, którego nazwê Ci przekazujê jako argument 
+<DD>Pobierz informacje na temat pliku, ktÃ³rego nazwÄ™ Ci przekazujÄ™ jako argument 
 <DL></DL><P>
 <A NAME="FileInfo">
 <A NAME ="DOC.12.2">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  FileInfo(int fd)</B></TT>
-<DD>Pobierz informacje na temat pliku, którego deskryptor Ci przekazujê jako parametr
+<DD>Pobierz informacje na temat pliku, ktÃ³rego deskryptor Ci przekazujÄ™ jako parametr
 <DL></DL><P>
 <A NAME="operator=">
 <A NAME ="DOC.12.3">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!2><A HREF="FileInfo.html#DOC.12.1">FileInfo</A>&amp;  operator=(const char *filename)</B></TT>
-<DD>Pobierz informacje na temat pliku, którego nazwê Ci przypisujê 
+<DD>Pobierz informacje na temat pliku, ktÃ³rego nazwÄ™ Ci przypisujÄ™ 
 <DL></DL><P>
 <A NAME="operator=">
 <A NAME ="DOC.12.4">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!2><A HREF="FileInfo.html#DOC.12.1">FileInfo</A>&amp;  operator=(int fd)</B></TT>
-<DD>Pobierz informacje na temat pliku, którego deskryptor Ci przypisujê
+<DD>Pobierz informacje na temat pliku, ktÃ³rego deskryptor Ci przypisujÄ™
 <DL></DL><P>
 <A NAME="getSize">
 <A NAME ="DOC.12.5">
@@ -76,22 +76,22 @@ tych informacji bez otwierania wskazanego pliku.
 <A NAME="getMTime">
 <A NAME ="DOC.12.6">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> time_t  getMTime() const </B></TT>
-<DD>Podaj mi czas ostatniej modyfikacji obiektu, o którym przechowujesz informacjê
+<DD>Podaj mi czas ostatniej modyfikacji obiektu, o ktÃ³rym przechowujesz informacjÄ™
 <DL></DL><P>
 <A NAME="isDirectory">
 <A NAME ="DOC.12.7">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> bool  isDirectory() const </B></TT>
-<DD>Czy obiekt o którym informacjê przechowujesz, jest katalogiem? 
+<DD>Czy obiekt o ktÃ³rym informacjÄ™ przechowujesz, jest katalogiem? 
 <DL></DL><P>
 <A NAME="size">
 <A NAME ="DOC.12.8">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> off_t  size</B></TT>
-<DD>Tu zapamiêtujemy rozmiar pliku w bajtach
+<DD>Tu zapamiÄ™tujemy rozmiar pliku w bajtach
 <DL></DL><P>
 <A NAME="mtime">
 <A NAME ="DOC.12.9">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> time_t  mtime</B></TT>
-<DD>Tu zapamiêtujemu czas ostatniej modyifikacji
+<DD>Tu zapamiÄ™tujemu czas ostatniej modyifikacji
 <DL></DL><P>
 <A NAME="dir">
 <A NAME ="DOC.12.10">
@@ -101,36 +101,36 @@ tych informacji bez otwierania wskazanego pliku.
 <A NAME="stat">
 <A NAME ="DOC.12.11">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  stat(const char *filename)</B></TT>
-<DD>Pobierz informacje o pliku wskazywanym przez nazwê podan± jako paramter
+<DD>Pobierz informacje o pliku wskazywanym przez nazwÄ™ podanÄ… jako paramter
 <DL></DL><P>
 <A NAME="stat">
 <A NAME ="DOC.12.12">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  stat(int fd)</B></TT>
-<DD>Pobierz informacje o pliku wskazywanym przez ten deskryptor, który Ci przekazujê, jako argument
+<DD>Pobierz informacje o pliku wskazywanym przez ten deskryptor, ktÃ³ry Ci przekazujÄ™, jako argument
 <DL></DL><P></DL>
 <hr>
  <DL><DT><B>This class has no child classes.</B></DL>
 <DL></DL><P><I><A HREF="aindex.html"> alphabetic index</A></I>  <I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
 <STRONG>
-Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
-Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
-ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
-autorów.
+Kod ÅºrÃ³dÅ‚owy tego programu oraz jego dokumentacja sÄ… chronione przez
+UstawÄ™ o prawie autorskim i prawach pokrewnych. Nie mogÄ… byÄ‡ uÅ¼yte
+ani opublikowane w Å¼adnych innych pracach bez pisemnej zgody ich
+autorÃ³w.
 <P>
 This documentation and all of the sources are copyright protected and
 may not be used or published in other works without express written
 permission from the authors.
 </P>
 </STRONG>
-Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+Copyright &copy; 1999 Åukasz HoÅ‚ody, MichaÅ‚ Jacykiewicz, Marcin JarzÄ…b, Marek Konieczny. All rights reserved.
 
 <HR>
 
 <P ALIGN="CENTER">
 <SMALL>
-<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../">Strona gÅ‚Ã³wna projektu</A> |
 <A HREF="../projektowa.html">Dokumentacja projektowa</A> |
-<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+<A HREF="../koncowa.html">Dokumentacja koÅ„cowa</A>
 </SMALL>
 </P>
 

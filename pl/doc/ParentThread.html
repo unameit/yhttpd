@@ -2,9 +2,9 @@
 <BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
 In file src/ParentThread.h:<H2><A HREF ="#DOC.DOCU" > <IMG BORDER=0 SRC=down.gif></A>  class  ParentThread : public <!2><A HREF="AsyncConnection.html#DOC.1.3">AsyncConnection</A> </H2><BLOCKQUOTE>
 
-Obiekt tej klasy, istniej±cy tylko w procesie-rodzica, odpowiedzialny
-jest za przyjmowanie nowych po³±czeñ od klientów oraz przekazywanie ich
-procesom-dzieciom za pomoc± obiektów ConnectionWithChild
+Obiekt tej klasy, istniejÄ…cy tylko w procesie-rodzica, odpowiedzialny
+jest za przyjmowanie nowych poÅ‚Ä…czeÅ„ od klientÃ³w oraz przekazywanie ich
+procesom-dzieciom za pomocÄ… obiektÃ³w ConnectionWithChild
 </BLOCKQUOTE>
 <hr>
  <h2> Inheritance:</h2>
@@ -27,18 +27,18 @@ procesom-dzieciom za pomoc± obiektów ConnectionWithChild
  <DD><I>tu oddajemy sterowanie w procesie-rodzica </I>
 </DL><DL>
 <DT><h3>Private Fields</h3><DD><DT><A HREF="#DOC.15.4"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="ConnectionsManager.html">ConnectionsManager</A>  <B>manager</B> </B>
- <DD><I>manager naszych po³±czeñ </I>
+ <DD><I>manager naszych poÅ‚Ä…czeÅ„ </I>
 <DT><A HREF="#DOC.15.5"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="ConnectionWithChild.html">ConnectionWithChild</A>**  <B>children</B> </B>
- <DD><I>Wska¼nik do tablicy ze wska¼nikami do obiektów ConnectionWithChild </I>
+ <DD><I>WskaÅºnik do tablicy ze wskaÅºnikami do obiektÃ³w ConnectionWithChild </I>
 <DT><A HREF="#DOC.15.6"> <IMG BORDER=0 SRC=icon1.gif></A> const  int  <B>maxChildren</B> </B>
- <DD><I>liczba procesów-dzieci jak± posiadamy </I>
+ <DD><I>liczba procesÃ³w-dzieci jakÄ… posiadamy </I>
 <DT><A HREF="#DOC.15.7"> <IMG BORDER=0 SRC=icon1.gif></A> int  <B>socketfdToSend</B> </B>
- <DD><I>tu pamiêtamy deskryptor gniazda, które zaraz wy¶lemy procesowi-dziecku </I>
+ <DD><I>tu pamiÄ™tamy deskryptor gniazda, ktÃ³re zaraz wyÅ›lemy procesowi-dziecku </I>
 <DT><A HREF="#DOC.15.8"> <IMG BORDER=0 SRC=icon1.gif></A>  struct  sockaddr_in <B>peer</B> </B>
- <DD><I>tu pamiêtamy adres klienta, który pode¶lemy te¿ dziecku </I>
+ <DD><I>tu pamiÄ™tamy adres klienta, ktÃ³ry podeÅ›lemy teÅ¼ dziecku </I>
 </DL><DL>
 <DT><h3>Private Methods</h3><DD><DT><A HREF="#DOC.15.9"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="ConnectionWithChild.html">ConnectionWithChild</A>*  <B>getChild</B>() const  </B>
- <DD><I>metoda zwraca wska¼nik do proponowanego procesu-dziecka, które powinni¶my obarczyæ nastêpnym zadaniem</I>
+ <DD><I>metoda zwraca wskaÅºnik do proponowanego procesu-dziecka, ktÃ³re powinniÅ›my obarczyÄ‡ nastÄ™pnym zadaniem</I>
 </DL></DL>
 <hr><H3>Inherited from <A HREF="AsyncConnection.html">AsyncConnection:</A></h3>
 
@@ -57,12 +57,12 @@ procesom-dzieciom za pomoc± obiektów ConnectionWithChild
  <h2> Documentation </h2>
 <BLOCKQUOTE>
 
-Obiekt tej klasy, istniej±cy tylko w procesie-rodzica, odpowiedzialny
-jest za przyjmowanie nowych po³±czeñ od klientów oraz przekazywanie ich
-procesom-dzieciom za pomoc± obiektów ConnectionWithChild.  Klasa
-implementuje interfejs AsyncConnection, do obs³ugi asynchronicznego
-gniazda po³±czeniowego, na którym nas³uchuje w oczekiwaniu na nowe
-po³±czenia "ze ¶wiata".
+Obiekt tej klasy, istniejÄ…cy tylko w procesie-rodzica, odpowiedzialny
+jest za przyjmowanie nowych poÅ‚Ä…czeÅ„ od klientÃ³w oraz przekazywanie ich
+procesom-dzieciom za pomocÄ… obiektÃ³w ConnectionWithChild.  Klasa
+implementuje interfejs AsyncConnection, do obsÅ‚ugi asynchronicznego
+gniazda poÅ‚Ä…czeniowego, na ktÃ³rym nasÅ‚uchuje w oczekiwaniu na nowe
+poÅ‚Ä…czenia "ze Å›wiata".
 
 </BLOCKQUOTE>
 <DL>
@@ -85,56 +85,56 @@ po³±czenia "ze ¶wiata".
 <A NAME="manager">
 <A NAME ="DOC.15.4">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="ConnectionsManager.html">ConnectionsManager</A>  manager</B></TT>
-<DD>manager naszych po³±czeñ 
+<DD>manager naszych poÅ‚Ä…czeÅ„ 
 <DL></DL><P>
 <A NAME="children">
 <A NAME ="DOC.15.5">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="ConnectionWithChild.html">ConnectionWithChild</A>**  children</B></TT>
-<DD>Wska¼nik do tablicy ze wska¼nikami do obiektów ConnectionWithChild 
+<DD>WskaÅºnik do tablicy ze wskaÅºnikami do obiektÃ³w ConnectionWithChild 
 <DL></DL><P>
 <A NAME="maxChildren">
 <A NAME ="DOC.15.6">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  int  maxChildren</B></TT>
-<DD>liczba procesów-dzieci jak± posiadamy 
+<DD>liczba procesÃ³w-dzieci jakÄ… posiadamy 
 <DL></DL><P>
 <A NAME="socketfdToSend">
 <A NAME ="DOC.15.7">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> int  socketfdToSend</B></TT>
-<DD>tu pamiêtamy deskryptor gniazda, które zaraz wy¶lemy procesowi-dziecku 
+<DD>tu pamiÄ™tamy deskryptor gniazda, ktÃ³re zaraz wyÅ›lemy procesowi-dziecku 
 <DL></DL><P>
 <A NAME="peer">
 <A NAME ="DOC.15.8">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  struct  sockaddr_in peer</B></TT>
-<DD>tu pamiêtamy adres klienta, który pode¶lemy te¿ dziecku 
+<DD>tu pamiÄ™tamy adres klienta, ktÃ³ry podeÅ›lemy teÅ¼ dziecku 
 <DL></DL><P>
 <A NAME="getChild">
 <A NAME ="DOC.15.9">
 <DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="ConnectionWithChild.html">ConnectionWithChild</A>*  getChild() const </B></TT>
-<DD>metoda zwraca wska¼nik do proponowanego procesu-dziecka, które powinni¶my obarczyæ nastêpnym zadaniem
+<DD>metoda zwraca wskaÅºnik do proponowanego procesu-dziecka, ktÃ³re powinniÅ›my obarczyÄ‡ nastÄ™pnym zadaniem
 <DL></DL><P></DL>
 <hr>
  <DL><DT><B>This class has no child classes.</B></DL>
 <DL></DL><P><I><A HREF="aindex.html"> alphabetic index</A></I>  <I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
 <STRONG>
-Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
-Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
-ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
-autorów.
+Kod ÅºrÃ³dÅ‚owy tego programu oraz jego dokumentacja sÄ… chronione przez
+UstawÄ™ o prawie autorskim i prawach pokrewnych. Nie mogÄ… byÄ‡ uÅ¼yte
+ani opublikowane w Å¼adnych innych pracach bez pisemnej zgody ich
+autorÃ³w.
 <P>
 This documentation and all of the sources are copyright protected and
 may not be used or published in other works without express written
 permission from the authors.
 </P>
 </STRONG>
-Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+Copyright &copy; 1999 Åukasz HoÅ‚ody, MichaÅ‚ Jacykiewicz, Marcin JarzÄ…b, Marek Konieczny. All rights reserved.
 
 <HR>
 
 <P ALIGN="CENTER">
 <SMALL>
-<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../">Strona gÅ‚Ã³wna projektu</A> |
 <A HREF="../projektowa.html">Dokumentacja projektowa</A> |
-<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+<A HREF="../koncowa.html">Dokumentacja koÅ„cowa</A>
 </SMALL>
 </P>
 
