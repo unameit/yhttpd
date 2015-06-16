@@ -1,0 +1,610 @@
+<HTML>
+
+<HEAD>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-2">
+  <META NAME="authors" CONTENT="Lukasz Holody, Michal Jacykiewicz, Marcin Jarzab, Marek Konieczny">
+  <META NAME="generator" CONTENT="Yatz's & Carlos' minds powered by Linux 2.0.36 i586">
+  <TITLE>Systemy operacyjne - daemon HTTP - dokumentacja projektowa</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../../../gfx/backs/ltbrush.gif">
+
+<H1 ALIGN="CENTER">Systemy operacyjne - projekt</H1>
+<H3 ALIGN="RIGHT">
+<A HREF="mailto:holody@ds5.agh.edu.pl">Łukasz Hołody</A><BR>
+<A HREF="mailto:yac@icslab.agh.edu.pl">Michał Jacykiewicz</A><BR>
+<A HREF="mailto:bombel@ds14.agh.edu.pl">Marcin Jarząb</A><BR>
+<A HREF="mailto:carlos@ds14.agh.edu.pl">Marek Konieczny</A>
+</H3>
+
+<B>
+<BIG>
+<OL TYPE="I">
+<LI><A HREF="#temat">Temat zadania</A></LI>
+<LI><A HREF="#zalozenia">Założenia ogólne</A></LI>
+<LI><A HREF="#http">Opis protokołu HTTP</A></LI>
+  <SMALL>
+  <OL>
+    <LI><A HREF="#podstawy">Podstawy HTTP</A></LI>
+    <LI><A HREF="#zapytanie">Zapytanie klienta</A></LI>
+    <LI><A HREF="#kody">Kody odpowiedzi serwera</A></LI>
+    <LI><A HREF="#naglowki">Nagłówki HTTP</A></LI>
+  </OL>
+  </SMALL>
+<LI><A HREF="#projekt">Projekt</A></LI>
+<SMALL>
+<OL>
+  <LI><A HREF="#dyskusja">Dyskusja możliwych wariantów realizacji projektu</A></LI>
+  <!-- LI><A HREF="#obiekty">Model obiektowy</A></LI -->
+  <LI><A HREF="#klasy">Opis projektowanych klas</A></LI>
+  <LI><A HREF="#dzialanie">Opis sposobu funkcjonowania projektowanego oprogramowania</A></LI>
+</OL>
+</SMALL>
+</OL>
+</BIG>
+</B>
+
+<HR WIDTH="60%" SIZE="3">
+
+
+<BASE HREF="http://www.whatis.com/">
+
+<OL TYPE="I">
+
+<A NAME="temat"></A>
+<H3><LI>Temat zadania</LI></H3>
+<P>
+Serwer WWW (daemon HTTP).
+</P>
+
+<A NAME="zalozenia"></A>
+<H3><LI>Założenia ogólne</LI></H3>
+
+<UL TYPE="DISC">
+<LI><A HREF="daemon.htm">Demon</A> HTTP pracujący w środowisku <A HREF="unix.htm">UNIX</A><SMALL>&reg;</SMALL>.</LI>
+<LI>Komunikacja wg protokołu <A HREF="HTTP.htm">HTTP</A> w wersji 1.0 lub 1.1.</LI>
+<LI>Implementacja w języku <A HREF="cplusplu.htm">C++</A> z wykorzystaniem funkcji standardu <A HREF="posix.htm">POSIX</A>.</LI>
+<LI>Wykorzystanie wielowątkowości oraz zaawansowanych sposobów <A HREF="ipc.htm">komunikacji międzyprocesowej</A>.</LI>
+<LI>Wydajność zbliżona do takich serwerów jak
+<A HREF="http://www.apache.org/">Apache</A>
+czy <A HREF="http://hoohoo.ncsa.uiuc.edu/">NCSA</A>.</LI>
+</UL>
+
+<HR WIDTH="20%">
+<!-- BLOCKQUOTE -->
+<!-- BLOCKQUOTE -->
+<B>Demon (ang. <I>daemon</I>)</B> jest procesem drugoplanowym, czyli
+wykonywanym w tle (nie ma przydzielonych - ani terminala, ani shella
+zgłoszeniowego), który czeka albo na wystąpienie pewnego zdarzenia,
+albo na to, by wykonać pewne specjalne, okresowo powtarzane
+zadanie.<BR>
+Typowe demony systemowe (takie jak np. demon drukowania) są procesami
+o następujących właściwościach:
+<UL TYPE="DISC">
+	<LI>Są tylko jeden raz rozpoczynane podczas inicjowania pracy systemu.</LI>
+	<LI>Trwają przez cały czas pracy systemu; zazwyczaj nie umierają i nie są wznawiane.</LI>
+	<LI>Często powołują do życia nowe procesy w celu obsłużenia zamówień.
+</UL>
+<BR>
+<DIV ALIGN="RIGHT"><SMALL>[W.Richard Stevens <I>Programowanie zastosowań sieciowych w systemie
+Unix</I>]</SMALL></DIV>
+<!-- /BLOCKQUOTE -->
+<!-- /BLOCKQUOTE -->
+
+<!-- ********************************************************** -->
+
+<A NAME="http"></A>
+<H3><LI>Opis protokołu HTTP</LI></H3>
+
+<OL>
+
+<A NAME="podstawy"></A>
+<H4><LI>Podstawy HTTP</LI></H4>
+
+<P>
+<B>The Hyper Transfer Protocol (HTTP)</B> jest językiem jakiego klienci
+sieci WWW i serwery pracujące w tej sieci używają do porozumiewania się.
+Jest to właściwie podstawa sieci WWW. Bazuje on na wzajemnej wymianie
+nagłówków żądania i odpowiedzi (ang. <I>request and response headers</I>) w
+wielu wierszach. Mamy tutaj do czynienia z klientem (przeglądarką), który
+inicjuje komunikację, poprzez wysłanie do serwera nagłówka żądania.
+Następnie serwer odpowiada na to żądanie wysłaniem nagłówka odpowiedzi wraz
+z dołączonymi danymi, które są żądanymi zasobami (strona WWW, plik
+graficzny, audio itp.).
+</P>
+
+Wszystkie transakcje HTTP budowane są na podstawie tego samego, zasadniczego
+formatu. Każde zapytanie i odpowiedź klienta składa się z trzech części:
+linii zapytania lub odpowiedzi, sekcji nagłówków i zasadniczej części.
+
+<P>Klient inicjuje transakcje w sposób następujący:</P>
+
+<UL TYPE="DISC">
+  <LI>Połączenie z serwerem na porcie o określonym numerze (domyślnie jest to 80). Następnie jest zapytanie o dokument, zawierajace polecenie <I>method</I>, po którym umieszczony jest adres dokumentu i numer wersji HTTP (używanej przez klienta).</LI>
+  <LI>Następnie klient przesyła opcjonalnie informacje zawarte w nagłówku, informując serwer o swojej konfiguracji oraz akceptowanych formatach dokumentów. Każda informacja zawarta w nagłówku umieszczana jest w osobnych liniach, zawierających nazwę nagłówka i przekazywaną wartość. Na zakończenie części zawierającej nagłówek wysyłana jest pusta linia.</LI>
+  <LI>Następnie klient może wysłać dodatkowe dane (np. dane do programów <CODE>CGI</CODE> obsługujące metodę <CODE>POST</CODE>).</LI>
+</UL>
+
+<P>Natomiast serwer odpowiada w sposób następujący:</P>
+
+<UL TYPE="DISC">
+  <LI>Serwer wysyła odpowiedź w postaci linii zawierającej trzy pola: wersja HTTP, kod stanu i opis. Pole zawierające wersję HTTP informuje o numerze wersji protokołu jaka została użyta do udzielenia odpowiedzi. Pole zawierające kod stanu jest polem o o trzech cyfrach zawierajacy wynik działania na serwerze, wysyłanego przez klienta zapytania. Opis, który następuje po kodzie stanu, jest zwykłym tekstem, który w postaci notatki opisuje znaczenie kodu stanu.</LI>
+  <LI>Po linii stanu, serwer wysyła do do klienta informacje nagłówka zawierające dane dotyczace serwera i dokumentu żądanego przez klienta. Po nagłówku zawsze natępuje linia pusta, oznaczająca jegokoniec.</LI>e
+  <LI>Jeśli zapytanie klienta zostało odebane i przetworzone pomyślnie, przesyłane są żądane przez niego dane (kopia pliku lub odpowiedź wygenerowana przez program <CODE>CGI</CODE>). Jeśli zapytanie klienta nie może być spełnione, wysyłane są informacje dlaczego serwer nie może odpowiedzieć na zapytanie.</LI>
+</UL>
+
+<P>
+W HTTP 1.0, po zakończeniu wysyłania przez serwer odpowiedzi następuje
+zakończenie transakcji i rozłączenie z klientem. Zabezpieczeniem przed
+zrywaniem połączeń jest wysyłanie nagłówka <I>Connection: Keep Alive</I>. W
+HTTP 1.1, transakcja może rwać dopóty, dopóki program klienta lub serwer
+wyraźnie nie zarządają zakończenia połączenia. Będąc protokołem bez kontroli
+stanu, HTTP nie może przekazywać informacji z jednej transakcji do drugiej,
+przez co każda następna transakcja musi rozpoczynać całą procedurę od
+początku. Zaletą takiego rozwiązania jest to, że serwer HTTP może w tym
+czasie obsłużyć znacznie większą liczbę odwołań od klientów, właśnie dzięki
+temu, że nie jest obciążony dodatkowymi zadaniami śledzenia parametrów sesji
+i przekazywania ich z połączenia na połączenie. Wadą natomiast konieczność
+wykorzystywania ukrytych pól tekstowych lub <I>cookies</I> dla
+przechowywania informacji i przekazywania ich z jednej transakcji do
+drugiej.
+
+</P>
+
+<A NAME="zapytanie"></A>
+<H4><LI>Zapytanie klienta</LI></H4>
+
+<P>
+Zapytania klienta dzielone są na trzy części. Pierwsza linia wysyłanej do
+serwera wiadomości zawsze zawiera polecenie HTTP o nazwie <I>method</I>,
+następnie umieszczany jest <CODE>URI</CODE> (<I>Uniform Resources Identifier</I>)
+wskazujący plik lub zasoby, o które klient pyta oraz numer wersji używanego
+HTTP. Następne linie zapytania zawierają informacje nagłówkowe, gdzie
+umieszczone są dane zawierające informacje o rodzaju danych przesyłanych do
+serwera. Trzecia część zapytania klienta zawiera zasadniczą informację,
+którą są przesyłane do serwera dane.
+</P>
+
+<P>
+Metodą jest polecenie HTTP umieszczone na początku pierwszej linii zapytania
+wysyłanego przez klienta. Metoda informuje serwer o celu wysłania zapytania.
+Istnieją trzy główne metody, zdefiniowane dla protokołu HTTP: <CODE>GET</CODE>, <CODE>HEAD</CODE>,
+<CODE>POST</CODE>. Inne metody również mają przyjętą definicję, ale nie są obsłógiwane
+przez tak dużą liczbę serwerów. Nazwy metod muszą być pisane dużymi
+literami.
+</P>
+
+<UL TYPE="DISC">
+
+<A NAME="GET"></A>
+<B><LI>Metoda <CODE>GET</CODE></LI></B> jest zapytaniem o informacje
+znajdujące się pod określonym adresem <CODE>URI</CODE> na serwerze. Jest ona powszechnie
+używana przez przeglądarki do ściągania i wyświetlania zawartości
+dokumentów. Jeśli klient w wysłanym zapytaniu używa <CODE>GET</CODE>, serwer odpowiada mu
+linią stanu, nagłówkami oraz przesyła potrzebne dane. Jeśli z powodu błędów
+serwer nie jest w stanie odpowiedzieć na zapytanie, wysyła do klienta
+wyjaśnienie w postaci tekstu umieszczonego w części odpowiedzi zawierającej
+dane. Część zasadnicza zapytania <CODE>GET</CODE> jest zawsze pusta. Jest to więc rodzaj
+rozkazu o określony plik. Nazwa tego pliku jest zwykle określona przez
+podanie pełnej ścieżki dostępu na serwerze. Metoda <CODE>GET</CODE> jest również
+wykorzystywana do przesyłania danych z formularzy do <CODE>CGI</CODE>. Przesyłane dane
+dołączane są do URL i znajdują się w tej samej linii zapytania co polecenie
+<CODE>GET</CODE>. Jeśli określono metodę jako <CODE>GET</CODE>, to po znaku zapytania, umieszczonym po
+URL, dopisywane są wszystkie pary klucz=wartość, zawierające dane z
+wypełnionego formularza. Pary te rozdzielane są ampersandem. Aby używać
+specjalnych znaków w charakterze zwykłych, oprogramowanie klienta musi
+stosować notację szesnastkową.
+
+<A NAME="HEAD"></A>
+<B><LI>Metoda <CODE>HEAD</CODE></LI></B> jest z punktu widzenia sposobu
+działania podobna do <CODE>GET</CODE>, z tą różnicą, że serwer nie wysyła
+żadnych informacji w części odpowiedzi przeznaczonej na dane. Metoda
+<CODE>HEAD</CODE> pozwala więc na pobranie z serwera informacji o pliku lub
+zasobach serwera. Metoda ta jest używana wtedy, gdy klient chce znaleźć
+informację o dokumencie i jednocześnie nie chce tego dokumentu kopiować z
+serwera. Np. klient może otrymywać następujące informacje:
+<UL>
+  <LI>czas ostatniej modyfikacji dokumentu (przydatne przy keszowaniu)</LI>
+  <LI>rozmiar dokumentu (dane przydatne przy określaniu wyrównania strony, przewidywanego czasu przesyłania pliku itp.)</LI>
+  <LI>rodzaj dokumentu (przy przeglądaniu dokumetów tylko tego samego typu)</LI>
+  <LI>rodzaj serwera (właściwe przygotowanie zapytań)</LI>
+</UL>
+
+<A NAME="POST"></A>
+
+<B><LI>Metoda <CODE>POST</CODE></LI></B> pozwala na przesyłanie danych do
+serwera w zapytaniu wysyłanym przez klienta. Dane te są następnie kierowane
+do programu dokonującego ich analizy (najczęściej skrypt <CODE>CGI</CODE>).
+można jej użyć np do:
+<UL>
+  <LI>serwisów sieciowych, takich jak korespondencja do grup dyskusyjnych</LI>
+  <LI>programów pracujących z interfejsem linii poleceń</LI>
+  <LI>dokonania adnotacji w dokumentach na serwerze</LI>
+  <LI>programów obsługujących bazy danych</LI>
+</UL>
+Dane, które wysyłane są do serwera, umieszczone są w zasadniczej części
+przesyłanego zapytania. Po przetworzeniu przez serwer zapytania typu
+<CODE>POST</CODE> i jego nagłówków, pozostała część wiadomości przekazywana
+jest do programu, który wskazano w <CODE>URI</CODE>. Pozwala to na translację danych do
+postaci listy zmiennych i wartosci przetwarzanych następnie przez
+<CODE>CGI</CODE>.
+<BR><BR>
+<A NAME="INNE"></A>
+<B><LI>Inne metody</LI></B>
+Poniższe metody są zdefiniowane, choć nie są zbyt często stosowane:
+<UL>
+  <LI><CODE><B>LINK</B></CODE> - wymaga aby informacja zawarta w nagłówku była skojarzona z dokumentem znajdującym się na serwerze</LI>
+  <LI><CODE><B>UNLINK</B></CODE> - wymaga aby informacja zawarta w nagłówku była oddzielona od dokumentu na serwerze</LI>
+  <LI><CODE><B>PUT</B></CODE> - wymaga aby cała zasadnicza część zapytania została zapisana w określonym <CODE>URI</CODE></LI>
+  <LI><CODE><B>DELETE</B></CODE> - wymaga usunięcia danych określonych przez <CODE>URI</CODE>, znajdujących się w serwerze</LI>
+  <LI><CODE><B>OPTIONS</B></CODE> - wymaga przesłania informacji o opcjach komunikacyjnych dostępnych na serwerze. Symbol gwiazdka ( * ) oznacza przesłanie wszystkich informacji dostępnych na serwerze</LI>  
+  <LI><CODE><B>TRACE</B></CODE> - wymaga aby cała zasadnicza część wysyłanego zapytania została odesłana w nienaruszonej postaci</LI> 
+</UL>
+
+</UL>
+
+<A NAME="kody"></A>
+<H4><LI>Kody odpowiedzi serwera</LI></H4>
+
+Odpowiedź serwera na zapytanie klienta podzielona jest na trzy części.
+Pierwsza linia to linia odpowiedzi wysłanej przez serwer, w której znajduje
+się numer wersji HTTP, numer określający status zapytania oraz krótki tekst
+opisujący ten status. Po pierwszej linii odpowiedzi następują: informacja o
+nagłówku oraz zasadnicza część wiadomości.Pierwsza linia informuje czy
+zapytanie klienta powiodło się czy też nie oraz dlaczego tak się stało.
+Status podawany jest za pomocą <I>kodu odpowiedzi</I> zapisanego trzema
+cyframi, po którym następuje informacja wyjaśniająca. Kody statusu są zwykle
+generowane przez serwery WWW, mogą być także generowane przez skrypty
+<CODE>CGI</CODE>, które pomijają nagłówki serwera i dopisuja własne. Kody te
+pogrupowane są w następujące zestawy:
+
+<BR><BR>
+<CENTER>
+<TABLE BORDER CELLSPACING="1" CELLPADDING="1">
+<TR>
+  <TD><B><CENTER>Zakres kodu</CENTER></B></TD>
+  <TD><B><CENTER>Znaczenie odpowiedzi</CENTER></B></TD>
+</TR><TR>
+  <TD><CENTER>100 - 199</CENTER></TD>
+  <TD>informacyjne</TD>
+</TR><TR>
+  <TD><CENTER>200 - 299</CENTER></TD>
+  <TD>zapytanie klienta powiodło się</TD>
+</TR><TR>
+  <TD><CENTER>300 - 399</CENTER></TD>
+  <TD>zapytanie klienta zostało przekazane, konieczne dalsze działanie</TD>
+</TR><TR>
+  <TD><CENTER>400 - 499</CENTER></TD>
+  <TD>zapytanie klienta nie powiodło się</TD>
+</TR><TR>
+  <TD><CENTER>500 - 599</CENTER></TD>
+  <TD>błąd serwera</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<P>
+Protokół HTTP definiuje tylko kilka kodów w każdym z podanych zakresów, inne
+kody mogą być definiowane przez serwer. Jesli oprogramowanie otrzyma
+odpowiedź z kodem, którego nie potrafi rozpoznać, powinno przynajmniej
+rozpoznać podstawowe jego znaczenie.
+</P>
+
+<A NAME="naglowki"></A>
+<H4><LI>Nagłówki HTTP</LI></H3>
+
+Nagłówki HTTP używane są do przekazywania wszelkiego rodzaju informacji
+pomiędzy klientem a serwerem. Są cztery różne kategorie nagłówków:
+
+<OL TYPE="a">
+  <LI><B>ogólne</B> - informacje nie związane z klientem, serwerem lub HTTP</LI>
+  <LI><B>zapytanie</B> - preferowane formaty dokumentów i parametry serwera</LI>
+  <LI><B>odpowiedź</B> - informacje na temat serwera wysyłającego odpowiedź</LI>
+  <LI><B>zawartość</B> - informacje o danych przesyłanych pomiedzy klientem i serwerem</LI>
+</OL>
+
+Nagłówki z kategorii ogólne i zawartość są takie same dla klienta i serwera.
+Wszystkie nagłówki znajdujące sie w wiadomości HTTP zawierają nazwę
+nagłówka, po której następuje dwukopek (:), spacja i wartość nagłówka. W
+nazwach nagłówka nie jest rozróżnialna wielkość liter. Wartość nagłówka może
+zajmować kilka linii, pod warunkiem że każda nowa linia rozpoczyna się
+przynajmniej jedną spacją lub tabulatorem.
+
+<BR>
+
+W specyfikacji HTTP 1.1 możemy wyróżnić:
+
+<OL TYPE="a">
+  <LI><B>nagłówki ogólne</B> - nagłówki te używane są w zapytaniach klienta jak i w odpowiedziach serwera<BR></LI>
+  <LI><B>nagłówki zapytania klienta</B> - informują serwer o konfiguracji oprogramowania klienta i preferowanych formatach dokumentów. Są umieszczane w wiadomosciach wysyłanych przez klienta i zawierają informacje tylko o nim. </LI><BR>
+  <LI><B>nagłówki odpowiedzi serwera</B> - używane są w przesyłanych przez serwer komunikatach i zawierają informacje o serwerze oraz sposobie w jaki obsługuje on zapytanie. <BR></LI>
+  <LI><B>nagłówki zawartości</B> - używane są zarówno w zapytaniach klienta jak i odpowiedziach serwera. Zawierają informacje o danych przesyłanych w wiadomościach HTTP.</LI>
+</OL>
+
+</OL>
+
+<A NAME="projekt"></A>
+<H3><LI>Projekt</LI></H3>
+<OL>
+
+<A NAME="dyskusja"></A>
+<H4><LI>Dyskusja możliwych wariantów realizacji projektu</LI></H4>
+
+<P>
+Projekt można zrealizować na co najmniej kilka sposobów silnie
+różniących się stopniem komplikacji i przewidywaną wydajnością.
+<BR>
+Starając się zrobić demona szybkiego i wydajnego kluczowego znaczenia
+nabierają ograniczenia narzucane przez system operacyjny. Z
+ograniczeń &quot;oficjalnych&quot; największe znaczenie dla nas ma
+ograniczenie co do ilości procesów/wątków na jednego użytkownika,
+maksymalnej liczby otwartych deskryptorów plików/socketów na
+pojedyńczy proces oraz wielkości wewnętrznych buforów dla funkcji
+służących do komunikacji międzyprocesowej. Spodziewamy się także
+ograniczeń &quot;nieoficjalnych&quot; takich jak ograniczenie
+wielkości buforów przeznaczonych do operacji wejścia/wyjścia (czyli
+obsługi systemu plików oraz komunikacji sieciowej).
+</P>
+
+<P>
+
+Dla uproszczenia dalszych rozważań przyjmijmy, że dopuszczalna liczba
+procesów na jednego użytkownika wynosi N i tyleż samo ilość otwartych
+deskryptorów dla jednego procesu. Obecnie w ogólności założenie to jest
+bliskie prawdy, choć nie w każdym systemie. Poniższa tabelka przedstawia
+wartości dla kilku systemów:
+
+<CENTER>
+<TABLE BORDER CELLSPACING="1" CELLPADDING="1">
+<TR>
+  <TD><B><CENTER>system</CENTER></B></TD>
+  <TD><B><CENTER>max user processes</CENTER></B></TD>
+  <TD><B><CENTER>max open files</CENTER></B></TD>
+</TR>
+<TR>
+  <TD>Linux 2.2</TD>
+  <TD><CENTER>256</CENTER></TD>
+  <TD><CENTER>1024</CENTER></TD>
+</TR>
+<TR>
+  <TD>Solaris 2.6</TD>
+  <TD><CENTER>64</CENTER></TD>
+  <TD><CENTER>1024</CENTER></TD>
+</TR>
+<TR>
+  <TD>AIX 4.3</TD>
+  <TD><CENTER>512</CENTER></TD>
+  <TD><CENTER>2000</CENTER></TD>
+</TR>
+</TABLE>
+</CENTER>
+
+Przypomnieć także należy, iż jeszcze nie tak dawno w systemach UNIX jeden
+proces mógł mieć jedynie 20 jednocześnie otwartych plików.
+
+</P>
+
+<P>
+Poniżej używamy terminu <I>wielowątkowość</I> w znaczeniu wielu
+współpracujących ze sobą procesów UNIXowych, nie zaś wątków
+POSIXowych. Różnica jest istotna: wątki współdzielą wszystko oprócz
+stosu (czyli wspólne są dla nich: segment danych, instrukcji,
+deskryptory plików i socketów), podczas gdy procesy UNIXowe
+współdzielić mogą jedynie deskryptory oraz na wyraźne życzenie
+niewielkie obszary pamięci.
+</P>
+
+<P>
+A oto rozpatrywane przez nas warianty realizacji projektu:
+</P>
+
+<OL TYPE="a">
+
+<B><LI></B><P>
+Proces główny po przyjęciu połączenia tworzy proces potomny. Ten
+realizuje zlecenie, po czym umiera. W tym samym czasie proces główny
+może przyjmować następne połączenia i tworzć kolejne procesy potomne do
+obsługi tychże.
+<CENTER>
+<TABLE BORDER CELLSPACING="1" CELLPADDING="1">
+<TR>
+  <TD><B><CENTER>zalety:</CENTER></B></TD>
+  <TD><B><CENTER>wady:</CENTER></B></TD>
+</TR>
+<TR>
+  <TD><UL TYPE="DISC">
+    <LI>prostota</LI>
+    <LI>wykorzystanie wielowątkowości</LI>
+  </UL></TD>
+  <TD><UL TYPE="DISC">
+    <LI>jeden proces obsługuje tylko jedno połączenie</LI>
+    <LI>częste tworzenie i uśmiercanie procesów, a więc duże obciążenie systemu</LI>
+    <LI>duża liczba żyjących na raz procesów (rzędu N)</LI>
+    <LI>ograniczenie do N ilości przyjmowanych połączeń na raz</LI>
+    <LI>nieakceptowalna szybkość działania</LI>
+  </UL></TD>
+</TABLE>
+</CENTER>
+</P></LI>
+
+<B><LI></B><P>
+
+Istnieje jeden proces główny i około N jego dzieci realizujących zlecenia.
+Po przyjęciu połączenia proces główny przekazuje je jednemu ze swoich dzieci.
+Ten realizuje zlecenie, a następnie czeka na kolejne. W tym samym
+czasie proces główny może przyjmować następne połączenia i
+przekazywać je tym spośród swoich dzieci, które są wolne.
+<CENTER>
+<TABLE BORDER CELLSPACING="1" CELLPADDING="1">
+<TR>
+	<TD><B><CENTER>zalety:</CENTER></B></TD>
+	<TD><B><CENTER>wady:</CENTER></B></TD>
+</TR>
+<TR>
+	<TD><UL TYPE="DISC">
+		<LI>średnia złożoność projektu i implementacji</LI>
+		<LI>wykorzystanie wielowątkowości</LI>
+		<LI>niewielkie obciążenie systemu</LI>
+	</UL></TD>
+	<TD><UL TYPE="DISC">
+		<LI>jeden proces obsługuje tylko jedno połączenie</LI>
+		<LI>ograniczenie do N ilości przyjmowanych połączeń na raz</LI>
+		<LI>duża liczba żyjących na raz procesów (rzędu N)</LI>
+	</UL></TD>
+</TABLE>
+</CENTER>
+</P></LI>
+
+<B><LI></B><P>
+Istnieje tylko jeden proces przyjmujący połączenia i realizujący
+zlecenia. Wszystko dzieje się na <A HREF="asynchro.htm">asynchronicznych</A>
+<A HREF="socket.htm">socketach</A>. Nie są tworzone żadne dodatkowe procesy.
+<CENTER>
+<TABLE BORDER CELLSPACING="1" CELLPADDING="1">
+<TR>
+	<TD><B><CENTER>zalety:</CENTER></B></TD>
+	<TD><B><CENTER>wady:</CENTER></B></TD>
+</TR>
+<TR>
+	<TD><UL TYPE="DISC">
+		<LI>względna prostota</LI>
+		<LI>jeden proces obsługuje do N połączeń</LI>
+		<LI>niewielkie obciążenie systemu</LI>
+		<LI>relatywnie większa szybkość działania</LI>
+	</UL></TD>
+	<TD><UL TYPE="DISC">
+		<LI>ograniczenie do N ilości obsługiwanych połączeń na raz</LI>
+		<LI>nie wykorzystuje wielowątkowości</LI>
+	</UL></TD>
+</TABLE>
+</CENTER>
+</P></LI>
+
+<B><LI></B><P>
+
+Istnieje jeden proces przyjmujący połączenia i między kilka(naście) a
+N jego dzieci realizujących zlecenia. Każde dziecko może obsługiwać
+do N zleceń na raz (sockety asynchroniczne).
+
+<CENTER>
+<TABLE BORDER CELLSPACING="1" CELLPADDING="1">
+<TR>
+	<TD><B><CENTER>zalety:</CENTER></B></TD>
+	<TD><B><CENTER>wady:</CENTER></B></TD>
+</TR>
+<TR>
+	<TD><UL TYPE="DISC">
+		<LI>wykorzystuje wielowątkowość</LI>
+		<LI>jeden proces obsługuje do N połączeń</LI>
+		<LI>niewielkie obciążenie systemu</LI>
+		<LI>wystarczy kilka(naście) procesów, nie musi być ich aż N</LI>
+		<LI>duża szybkość działania</LI>
+		<LI>bardzo duża wydajność: N * N zleceń na raz</LI>
+	</UL></TD>
+	<TD><UL TYPE="DISC">
+		<LI>duża złożoność projektu i imlementacji</LI>
+	</UL></TD>
+</TABLE>
+</CENTER>
+</P></LI>
+
+
+</OL>
+
+<HR WIDTH="40%">
+
+Nadmienić wypada, iż zysk ze stosowania wielowątkowości nie tylko
+polega na zwiększeniu możliwej liczby otwartych deskryptorów, ale
+także na możliwości efektywnego zwiększenia szybkości działania na
+komputerach posiadających więcej niż jeden procesor, kontroler
+dyskowy, czy też interfejs sieciowy.
+
+<HR WIDTH="40%">
+
+Jeśli chodzi o to, który wariant będzie przez nas zrealizowany, to oczywiście będzie
+to <B>d.</B>
+
+<!-- A NAME="obiekty"></A>
+<H4><LI>Model obiektowy</LI></H4 -->
+
+
+
+<A NAME="klasy"></A>
+<H4><LI>Opis projektowanych klas</LI></H4>
+
+<UL>
+
+<P><LI>klasa <CODE><B>Exception</B></CODE> - obiekty tej klasy będą
+<I>wyjątkami</I> w sensie języka <CODE>C++</CODE> rzucanymi (jak
+nazwa wskazuje) w sytacjach wyjątkowych (np. niepowodzenia wywołania
+funkcji systemowej). Ułatwi to kontrolę sterownia programem oraz
+generowania treściwych komunikatów o błędach i miejscach ich
+wystąpienia.
+</LI></P>
+
+<P><LI>klasa <CODE><B>SystemException</B></CODE> - klasa pochodna klasy
+<CODE>Exception</CODE> zapewniająca dodatkowo komunikaty o błędach
+pochodzące bezpośrednio od systemu operacyjnego (na podstawie
+zmiennej <CODE>errno</CODE> i funkcji
+<CODE>strerror</CODE>).
+</LI></P>
+
+<P><LI>klasa <CODE><B>String</B></CODE> - klasa ułatwiające korzystanie z
+danych złożonych z ciągów znaków. Potrzebna między innymi klasie
+<CODE>MimeTypes</CODE>.</LI></P>
+
+<P><LI>klasa <CODE><B>Vector</B></CODE> - implementacja struktury danych
+określanej jako dynamiczna tablica. Klasa potrzebna między innymi klasie
+<CODE>MimeTypes</CODE>.</LI></P>
+
+<P><LI>klasa <CODE><B>File</B></CODE> - obiekty tej klasy to
+standardowe pliki systemu UNIX<SMALL>&reg;</SMALL>.
+Celem obudowania funkcji do obsługi plików w jedną
+klasę jest uproszczenie i uczynienie bardziej przejrzystym kodu źródłowego.
+</LI></P>
+
+<P><LI>klasa <CODE><B>Socket</B></CODE> - klasa obudowująca klasyczną
+obsługę <I>gniazdek</I> w sposób ułatwiająy korzystanie z nich.</LI></P>
+
+<P><LI>klasa <CODE><B>SocketManager</B></CODE> - obiekt tej klasy będzie
+zajmował się zarządzaniem pracą grupy asynchronicznych socketów</LI></P>
+
+<P><LI>klasa <CODE><B>MimeTypes</B></CODE> - obiekt tej klasy będzie
+potrafił wczytać plik opisu plików na podstawie ich rozszerzeń (plik
+<CODE>mime.types</CODE>) dzięki czemu będziemy mogli w nagłówkach
+odpowiedzi wysyłać informację na temat podejrzewanej zawatości
+przesyłanego pliku.
+</LI></P>
+
+<P><LI>klasa <CODE><B>HTTPRequest</B></CODE> - obiekt tej klasy będzie
+odbierał i &quot;rozbierał&quot; zapytanie przeglądarki oraz
+generował odpowiedni nagłówek odpowiedzi.
+</LI></P>
+
+</UL>
+
+
+<A NAME="dzialanie"></A>
+<H4><LI>Opis sposobu funkcjonowania projektowanego oprogramowania</LI></H4>
+
+Po uruchomieniu program wczyta swój plik konfiguracyjny, w którym zawarte będą informacje
+między innymi o liczbie procesów-dzieci które powinien stworzyć, lokalizacji
+pliku <CODE>mime.types</CODE>, adres (i nr portu) na którym ma
+nasłuchiwać.<BR>
+Następnie stworzy żądaną liczbę procesów potomnych i zacznie
+oczekiwać na zgłoszenia od przeglądarek (czyli klientów WWW).<BR>
+Po przyjęciu połączenia przekaże je do jednego ze swoich dzieci.
+Proces który otrzymał zlecenie, spróbuje je wykonać: tzn. otworzy
+wskazany plik, ustali jego typ i cechy (rozmiar, data ostatniej
+modyfikacji) oraz ostatecznie wyśle do klienta.
+Jeśli któraś z tych czynności nie powiedzie się, zostanie
+wygenerowany odpowiedni kod odpowiedzi i komentarz do zaistniałego błędu.
+</OL>
+</UL>
+
+</UL>
+<HR WIDTH="95%">
+
+</BODY>
+
+</HTML>

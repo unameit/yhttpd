@@ -1,0 +1,46 @@
+<html>
+<head>
+</head><BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
+<p><hr></p>
+<a name=AsyncSocket><h2>Class AsyncSocket</h2></a>
+<font face="Courier New,Courier">class AsyncSocket<br>extends  Socket</font>
+<dl>
+<dt><b>Documentation </b><dd>Klasa ta, dziedzicz±ca publicznie po klasie Socket, zmienia wywo³ania
+<dd>niektórych jej metod, by poprawnie zachowywa³y siê dla po³±czeñ
+<dd>asynchronicznych (nieblokuj±cych).
+</dl>
+<h3><b>Operations</h3></b>
+<a name=AsyncSocket#AsyncSocket><ul><li><b>AsyncSocket</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  AsyncSocket()</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=AsyncSocket#int#AsyncSocket><ul><li><b>AsyncSocket</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  AsyncSocket(int i)</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=AsyncSocket#int#int#int#AsyncSocket><ul><li><b>AsyncSocket</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  AsyncSocket(int domain, int type, int protocol)</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=operator=#int#AsyncSocket><ul><li><b>operator=</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public AsyncSocket & operator=(int )</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Przypisz mi nowy deskryptor, a ja zamieniê go przy okazji na asynchroniczny.
+</dl>
+</dir><a name=read#void_*#size_t#AsyncSocket><ul><li><b>read</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public size_t read(void * buf, size_t nbytes)</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=readv#const_struct_iovec_*#size_t#AsyncSocket><ul><li><b>readv</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public size_t readv(const struct iovec * iov, size_t count)</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=write#const_void_*#size_t#AsyncSocket><ul><li><b>write</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public size_t write(const void * buf, size_t nbytes)</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=writev#const_struct_iovec_*#size_t#AsyncSocket><ul><li><b>writev</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public size_t writev(const struct iovec * iov, size_t count)</font></font><p>  </p>
+<dl>
+</dl>
+</dir><center><h3><a href=_index.html#_index>Return to top</a></h3></center></html>

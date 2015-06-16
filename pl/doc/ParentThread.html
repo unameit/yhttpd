@@ -1,0 +1,142 @@
+<html><head><TITLE>ParentThread</TITLE></head>
+<BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
+In file src/ParentThread.h:<H2><A HREF ="#DOC.DOCU" > <IMG BORDER=0 SRC=down.gif></A>  class  ParentThread : public <!2><A HREF="AsyncConnection.html#DOC.1.3">AsyncConnection</A> </H2><BLOCKQUOTE>
+
+Obiekt tej klasy, istniej±cy tylko w procesie-rodzica, odpowiedzialny
+jest za przyjmowanie nowych po³±czeñ od klientów oraz przekazywanie ich
+procesom-dzieciom za pomoc± obiektów ConnectionWithChild
+</BLOCKQUOTE>
+<hr>
+ <h2> Inheritance:</h2>
+<APPLET CODE="ClassGraph.class" WIDTH=600 HEIGHT=65>
+<param name=classes value="CAsyncConnection,MAsyncConnection.html,CParentThread,MParentThread.html">
+<param name=before value="M,M">
+<param name=after value="Md_,M">
+<param name=indent value="0,1">
+<param name=arrowdir value="down">
+</APPLET>
+<hr>
+
+<DL>
+<DL>
+<DT><h3>Public Methods</h3><DD><DT><A HREF="#DOC.15.1"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>ParentThread</B>(<!1><A HREF="AsyncSocket.html">AsyncSocket</A> *socket, <!1><A HREF="ConnectionWithChild.html">ConnectionWithChild</A> **<!2><A HREF="ParentThread.html#DOC.15.5">children</A>, int <!2><A HREF="ParentThread.html#DOC.15.6">maxChildren</A>) </B>
+ <DD><I>Standardowy konstruktor </I>
+<DT><A HREF="#DOC.15.2"> <IMG BORDER=0 SRC=icon1.gif></A> virtual  <B>~ParentThread</B>() </B>
+ <DD><I>Standardowy (wirtualny) destruktor</I>
+<DT><A HREF="#DOC.15.3"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>main</B>() </B>
+ <DD><I>tu oddajemy sterowanie w procesie-rodzica </I>
+</DL><DL>
+<DT><h3>Private Fields</h3><DD><DT><A HREF="#DOC.15.4"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="ConnectionsManager.html">ConnectionsManager</A>  <B>manager</B> </B>
+ <DD><I>manager naszych po³±czeñ </I>
+<DT><A HREF="#DOC.15.5"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="ConnectionWithChild.html">ConnectionWithChild</A>**  <B>children</B> </B>
+ <DD><I>Wska¼nik do tablicy ze wska¼nikami do obiektów ConnectionWithChild </I>
+<DT><A HREF="#DOC.15.6"> <IMG BORDER=0 SRC=icon1.gif></A> const  int  <B>maxChildren</B> </B>
+ <DD><I>liczba procesów-dzieci jak± posiadamy </I>
+<DT><A HREF="#DOC.15.7"> <IMG BORDER=0 SRC=icon1.gif></A> int  <B>socketfdToSend</B> </B>
+ <DD><I>tu pamiêtamy deskryptor gniazda, które zaraz wy¶lemy procesowi-dziecku </I>
+<DT><A HREF="#DOC.15.8"> <IMG BORDER=0 SRC=icon1.gif></A>  struct  sockaddr_in <B>peer</B> </B>
+ <DD><I>tu pamiêtamy adres klienta, który pode¶lemy te¿ dziecku </I>
+</DL><DL>
+<DT><h3>Private Methods</h3><DD><DT><A HREF="#DOC.15.9"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="ConnectionWithChild.html">ConnectionWithChild</A>*  <B>getChild</B>() const  </B>
+ <DD><I>metoda zwraca wska¼nik do proponowanego procesu-dziecka, które powinni¶my obarczyæ nastêpnym zadaniem</I>
+</DL></DL>
+<hr><H3>Inherited from <A HREF="AsyncConnection.html">AsyncConnection:</A></h3>
+
+<DL>
+<DL>
+<DT><h3>Public Methods</h3><DD><DT><IMG SRC=icon2.gif> virtual  bool  <B>isReadNeeded</B>() const 
+<DT><IMG SRC=icon2.gif> virtual  bool  <B>isWriteNeeded</B>() const 
+<DT><IMG SRC=icon2.gif> virtual  void  <B>onReadable</B>()
+<DT><IMG SRC=icon2.gif> virtual  void  <B>onWriteable</B>()
+<DT><IMG SRC=icon2.gif> virtual  <B>operator int</B>() const 
+<DT><IMG SRC=icon2.gif> virtual  void  <B>finalize</B>()
+<DT><IMG SRC=icon2.gif> virtual  bool  <B>isFinalized</B>() const 
+</DL></DL>
+<A NAME="DOC.DOCU">
+<hr>
+ <h2> Documentation </h2>
+<BLOCKQUOTE>
+
+Obiekt tej klasy, istniej±cy tylko w procesie-rodzica, odpowiedzialny
+jest za przyjmowanie nowych po³±czeñ od klientów oraz przekazywanie ich
+procesom-dzieciom za pomoc± obiektów ConnectionWithChild.  Klasa
+implementuje interfejs AsyncConnection, do obs³ugi asynchronicznego
+gniazda po³±czeniowego, na którym nas³uchuje w oczekiwaniu na nowe
+po³±czenia "ze ¶wiata".
+
+</BLOCKQUOTE>
+<DL>
+
+<A NAME="ParentThread">
+<A NAME ="DOC.15.1">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  ParentThread(<!1><A HREF="AsyncSocket.html">AsyncSocket</A> *socket, <!1><A HREF="ConnectionWithChild.html">ConnectionWithChild</A> **<!2><A HREF="ParentThread.html#DOC.15.5">children</A>, int <!2><A HREF="ParentThread.html#DOC.15.6">maxChildren</A>)</B></TT>
+<DD>Standardowy konstruktor 
+<DL></DL><P>
+<A NAME="~ParentThread">
+<A NAME ="DOC.15.2">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> virtual  ~ParentThread()</B></TT>
+<DD>Standardowy (wirtualny) destruktor
+<DL></DL><P>
+<A NAME="main">
+<A NAME ="DOC.15.3">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  main()</B></TT>
+<DD>tu oddajemy sterowanie w procesie-rodzica 
+<DL></DL><P>
+<A NAME="manager">
+<A NAME ="DOC.15.4">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="ConnectionsManager.html">ConnectionsManager</A>  manager</B></TT>
+<DD>manager naszych po³±czeñ 
+<DL></DL><P>
+<A NAME="children">
+<A NAME ="DOC.15.5">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="ConnectionWithChild.html">ConnectionWithChild</A>**  children</B></TT>
+<DD>Wska¼nik do tablicy ze wska¼nikami do obiektów ConnectionWithChild 
+<DL></DL><P>
+<A NAME="maxChildren">
+<A NAME ="DOC.15.6">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  int  maxChildren</B></TT>
+<DD>liczba procesów-dzieci jak± posiadamy 
+<DL></DL><P>
+<A NAME="socketfdToSend">
+<A NAME ="DOC.15.7">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> int  socketfdToSend</B></TT>
+<DD>tu pamiêtamy deskryptor gniazda, które zaraz wy¶lemy procesowi-dziecku 
+<DL></DL><P>
+<A NAME="peer">
+<A NAME ="DOC.15.8">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  struct  sockaddr_in peer</B></TT>
+<DD>tu pamiêtamy adres klienta, który pode¶lemy te¿ dziecku 
+<DL></DL><P>
+<A NAME="getChild">
+<A NAME ="DOC.15.9">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="ConnectionWithChild.html">ConnectionWithChild</A>*  getChild() const </B></TT>
+<DD>metoda zwraca wska¼nik do proponowanego procesu-dziecka, które powinni¶my obarczyæ nastêpnym zadaniem
+<DL></DL><P></DL>
+<hr>
+ <DL><DT><B>This class has no child classes.</B></DL>
+<DL></DL><P><I><A HREF="aindex.html"> alphabetic index</A></I>  <I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
+<STRONG>
+Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
+Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
+ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
+autorów.
+<P>
+This documentation and all of the sources are copyright protected and
+may not be used or published in other works without express written
+permission from the authors.
+</P>
+</STRONG>
+Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+
+<HR>
+
+<P ALIGN="CENTER">
+<SMALL>
+<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../projektowa.html">Dokumentacja projektowa</A> |
+<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+</SMALL>
+</P>
+
+<P Align=right><I>generated by <A HREF="http://www.zib.de/Visual/software/doc++/index.html">doc++</A></I>
+</BODY>

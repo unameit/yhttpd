@@ -1,0 +1,94 @@
+<html>
+<head>
+</head><BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
+<p><hr></p>
+<a name=ChildThread><h2>Class ChildThread</h2></a>
+<font face="Courier New,Courier">class ChildThread<br>extends  AsyncConnection</font>
+<dl>
+<dt><b>Documentation </b><dd>Obiekt tej klasy odpowiedzialny s± za przyjmowanie nowych po³±czeñ od
+<dd>procesu-rodzica, tworzenie z nich obiektów HTTPConnection i obs³ugê
+<dd>tych¿e.  Jego czê¶ci± jest obiekt ConnectonsManager, który "za³atwia ca³±
+<dd>robotê" z po³±czeniami.
+</dl>
+<h3><b>Links</h3></b>
+<ul><li><b>Aggregation closedConnections to </b><a href=Vector.html#Vector>Vector</a></li></ul>
+<dir><dt><b>Documentation </b>tu mamy po³±czenia ju¿ zakoñczone - gotowe go re-inicjalizacji (dziêki nim unikamy kosztowengo 'new' i 'delete').
+</dir>
+<ul><li><b>Aggregation manager to </b><a href=ConnectionsManager.html#ConnectionsManager>ConnectionsManager</a></li></ul>
+<dir><dt><b>Documentation </b>Manager po³±czeñ odwalaj±cy de facto ca³± czarn± robotê.
+</dir>
+<ul><li><b>Aggregation msgq to </b><a href=AsyncMessageQueue.html#AsyncMessageQueue>AsyncMessageQueue</a></li></ul>
+<dir><dt><b>Documentation </b>nasze ³±cze komunikacyjne z procesem-ojcem.
+</dir>
+<ul><li><b>Aggregation openedConnections to </b><a href=Vector.html#Vector>Vector</a></li></ul>
+<dir><dt><b>Documentation </b>tu zapamiêtujemy nasze aktywne-otwarte po³±czenia z klientam.
+</dir>
+<ul><li><b>Association mimeTypes to </b><a href=Properties.html#Properties>Properties</a></li></ul>
+<dir><dt><b>Supplier cardinality </b>0..1</dt>
+</dir>
+<h3><b>Attributes</h3></b>
+<a name=documentRoot#ChildThread><ul><li><b>documentRoot</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private const char * const documentRoot</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=hostName#ChildThread><ul><li><b>hostName</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private const char * const hostName</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Wska¼niki do obiektów, które musimy przekazywaæ nowo-tworzonym obiektom HTTPconnection.
+</dl>
+</dir><a name=intToSend#ChildThread><ul><li><b>intToSend</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private int intToSend</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>warto¶æ int, któr± nale¿y zaraz wys³aæ do procesu-rodzica.
+</dl>
+</dir><a name=userDir#ChildThread><ul><li><b>userDir</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private const char * const userDir</font></font><p>  </p>
+<dl>
+</dl>
+</dir><h3><b>Operations</h3></b>
+<a name=ChildThread#int#const_char_*#const_Properties_*#const_char_*#const_char_*#ChildThread><ul><li><b>ChildThread</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  ChildThread(int sockfd, const char * hostName, const Properties * mimeTypes, const char * documentRoot, const char * userDir)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Standardowy konstruktor.
+</dl>
+</dir><a name=finalize#ChildThread><ul><li><b>finalize</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private void finalize()</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=isReadNeeded#ChildThread><ul><li><b>isReadNeeded</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private bool isReadNeeded()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>methods inherited from AsyncConnection
+</dl>
+</dir><a name=isWriteNeeded#ChildThread><ul><li><b>isWriteNeeded</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private bool isWriteNeeded()</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=main#ChildThread><ul><li><b>main</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void main()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>g³ówna funkcja procesu-dziecka. Tu nale¿y oddaæ sterowanie.
+</dl>
+</dir><a name=onReadable#ChildThread><ul><li><b>onReadable</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private void onReadable()</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=onWriteable#ChildThread><ul><li><b>onWriteable</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private void onWriteable()</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=operatorint#ChildThread><ul><li><b>operatorint</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private  operatorint()</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=updateConnections#ChildThread><ul><li><b>updateConnections</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private void updateConnections()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>metoda uaktualnia tablicê aktywnych i nieaktywnych po³±czeñ
+</dl>
+</dir><a name=~ChildThread#ChildThread><ul><li><b>~ChildThread</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  ~ChildThread()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Standardowy (wirtualny) desktruktor).
+</dl>
+</dir><center><h3><a href=_index.html#_index>Return to top</a></h3></center></html>

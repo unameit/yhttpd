@@ -1,0 +1,114 @@
+<html>
+<head>
+</head><BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
+<p><hr></p>
+<a name=Vector><h2>Class Vector</h2></a>
+<font face="Courier New,Courier">class Vector</font>
+<dl>
+<dt><b>Documentation </b><dd>Implementacja struktury danych okre¶lanej jako dynamiczna tablica.
+<dd>Przechowuje wska¼niki do "czegokolwiek" (void *). Po dostarczeniu jej
+<dd>funkcji porównuj±cej potrafi sortowaæ oraz wyszukiwaæ po¿±dane elementy.
+</dl>
+<h3><b>Attributes</h3></b>
+<a name=capacity#Vector><ul><li><b>capacity</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private uint capacity</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>actual capacity
+</dl>
+</dir><a name=count#Vector><ul><li><b>count</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private uint count</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>number of valid elements
+</dl>
+</dir><a name=data#Vector><ul><li><b>data</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private void * * data</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=increment#Vector><ul><li><b>increment</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private uint increment</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>capacity increment
+</dl>
+</dir><h3><b>Operations</h3></b>
+<a name=Vector#uint#uint#Vector><ul><li><b>Vector</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  Vector(uint , uint )</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>utwórz pusty wektor
+</dl>
+</dir><a name=add#void_*#Vector><ul><li><b>add</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public uint add(void * )</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>dodaj nowy element do tablicy
+</dl>
+</dir><a name=clear#Vector><ul><li><b>clear</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void clear()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>wyrzuæ wszysktie elementy
+</dl>
+</dir><a name=getCapacity#Vector><ul><li><b>getCapacity</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public uint getCapacity()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>podaj mi aktualn± pojemno¶æ tablicy
+</dl>
+</dir><a name=getCount#Vector><ul><li><b>getCount</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public uint getCount()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>podaj mi aktualn± liczbê elementów w tej tablicy
+</dl>
+</dir><a name=getIncrement#Vector><ul><li><b>getIncrement</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public uint getIncrement()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>o ile zwiêksza siê pojemno¶æ tablicy, gdy siê skoñczy w niej miejsce?
+</dl>
+</dir><a name=operator[]#uint#Vector><ul><li><b>operator[]</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void * operator[](uint )</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>podaj mi i-ty element tablicy
+</dl>
+</dir><a name=remove#uint#Vector><ul><li><b>remove</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void * remove(uint i)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>usuñ i-ty element tablicy
+</dl>
+</dir><a name=search#const_void_*#int#Vector><ul><li><b>search</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void * search(const void * key, int cmpf)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>wyszukaj element w tablicy (maj±c podan± funkcjê porównuj±c±).
+</dl>
+</dir><a name=set#uint#void_*#Vector><ul><li><b>set</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void set(uint index, void * element)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>zmieñ element o indeksie index na nowy
+</dl>
+</dir><a name=setCapacity#uint#Vector><ul><li><b>setCapacity</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void setCapacity(uint )</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>ustaw j±
+</dl>
+</dir><a name=setCount#uint#Vector><ul><li><b>setCount</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void setCount(uint )</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>ustaw liczbê elementów w tablicy - mo¿na j± tylko zmniejszyæ.
+</dl>
+</dir><a name=setIncrement#uint#Vector><ul><li><b>setIncrement</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void setIncrement(uint )</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>ustaw tê warto¶æ
+</dl>
+</dir><a name=sort#int#Vector><ul><li><b>sort</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void sort(int cmpf)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>posortuj elementy tablicy wg podanej funkcji porównuj±cej.
+</dl>
+</dir><a name=swap#uint#uint#Vector><ul><li><b>swap</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void swap(uint i, uint j)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>zamieñ miejscami dwa elementy tablicy
+</dl>
+</dir><a name=~Vector#Vector><ul><li><b>~Vector</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  ~Vector()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Usuñ tablicê
+</dl>
+</dir><center><h3><a href=_index.html#_index>Return to top</a></h3></center><p><hr></p>
+</html>

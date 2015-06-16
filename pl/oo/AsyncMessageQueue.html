@@ -1,0 +1,78 @@
+<html>
+<head>
+</head><BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
+<p><hr></p>
+<a name=AsyncMessageQueue><h2>Class AsyncMessageQueue</h2></a>
+<font face="Courier New,Courier">class AsyncMessageQueue<br>extends  AsyncSocket</font>
+<dl>
+<dt><b>Documentation </b><dd>Klasa ta (dziedzicz±ca prywatnie klasê AsyncSocket) s³u¿y przede
+<dd>wszystkim do komunikacji miêdzyprocesowej. Oprócz zwyk³ych danych pozwala
+<dd>tak¿e przekazywaæ otwarte deskryptory plików i gniazd (socketów) innym
+<dd>procesom. Ze wzglêdu na potrzeby tego projektu oraz wymagane jej cechy
+<dd>zosta³a ona zrealizowana na ³±czu komunikacyjnym nieblokuj±cym
+<dd>(asynchronicznym socket'cie w dziedzinie UNIXa).
+</dl>
+<h3><b>Attributes</h3></b>
+<a name=close#AsyncMessageQueue><ul><li><b>close</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  close</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Upubliczniamy metodê close(), gdy¿ zosta³a ona wcze¶niej schowana z powody prywatnego dziedziczenia.
+</dl>
+</dir><a name=fd#AsyncMessageQueue><ul><li><b>fd</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>protected  fd</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>udostêpniamy fd innym wy¿szym klasom (bo go schowali¶my przez ": private AsyncSocket")
+</dl>
+</dir><a name=iov#AsyncMessageQueue><ul><li><b>iov</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private struct iovec [1] iov</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=msg#AsyncMessageQueue><ul><li><b>msg</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private struct msghdr msg</font></font><p>  </p>
+<dl>
+</dl>
+</dir><h3><b>Operations</h3></b>
+<a name=AsyncMessageQueue#int#AsyncMessageQueue><ul><li><b>AsyncMessageQueue</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  AsyncMessageQueue(int sockfd)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b><dd>Jako argument MUSI byæ podany deskryptor gniazda z dziedziny UNIXa -
+<dd>inne nie potrafi± przekazywaæ ¿ywych deskryptorów.
+</dl>
+</dir><a name=init#AsyncMessageQueue><ul><li><b>init</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private void init()</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=operator=#int#AsyncMessageQueue><ul><li><b>operator=</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public AsyncMessageQueue & operator=(int )</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Przypisz temu obiektowi inny, wskazywany podanym deskryptorem.
+</dl>
+</dir><a name=operatorint#AsyncMessageQueue><ul><li><b>operatorint</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  operatorint()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Podaj mi swój deskryptor gniazda.
+</dl>
+</dir><a name=recvDescriptor#struct_sockaddr_in_*#AsyncMessageQueue><ul><li><b>recvDescriptor</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public int recvDescriptor(struct sockaddr_in * peer)</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=recvInt#AsyncMessageQueue><ul><li><b>recvInt</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public int recvInt()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Odbierz liczbê int.
+</dl>
+</dir><a name=sendDescriptor#int#const_struct_sockaddr_in_*#AsyncMessageQueue><ul><li><b>sendDescriptor</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void sendDescriptor(int , const struct sockaddr_in * peer)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Wy¶lij deskryptor podany jako argument.
+</dl>
+</dir><a name=sendInt#int#AsyncMessageQueue><ul><li><b>sendInt</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void sendInt(int i)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Wy¶lij liczbê int.
+</dl>
+</dir><a name=~AsyncMessageQueue#AsyncMessageQueue><ul><li><b>~AsyncMessageQueue</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  ~AsyncMessageQueue()</font></font><p>  </p>
+<dl>
+</dl>
+</dir><center><h3><a href=_index.html#_index>Return to top</a></h3></center></html>

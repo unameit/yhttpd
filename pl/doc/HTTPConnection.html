@@ -1,0 +1,217 @@
+<html><head><TITLE>HTTPConnection</TITLE></head>
+<BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
+In file src/HTTPConnection.h:<H2><A HREF ="#DOC.DOCU" > <IMG BORDER=0 SRC=down.gif></A>  class  HTTPConnection : public <!2><A HREF="AsyncConnection.html#DOC.1.3">AsyncConnection</A> </H2><BLOCKQUOTE>
+
+Klasa implementuj±ca interfejs AsyncConnection i realizuj±ca po³±czenie z
+klientem (cze¶ci± obiektu HTTPConnection jest obiekt AsyncSocket)
+</BLOCKQUOTE>
+<hr>
+ <h2> Inheritance:</h2>
+<APPLET CODE="ClassGraph.class" WIDTH=600 HEIGHT=65>
+<param name=classes value="CAsyncConnection,MAsyncConnection.html,CHTTPConnection,MHTTPConnection.html">
+<param name=before value="M,M">
+<param name=after value="Md_,M">
+<param name=indent value="0,1">
+<param name=arrowdir value="down">
+</APPLET>
+<hr>
+
+<DL>
+<DL>
+<DT><h3>Public Methods</h3><DD><DT><A HREF="#DOC.13.1"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>HTTPConnection</B>(const char *hostName, const <!1><A HREF="Properties.html">Properties</A> *mimeTypes, const char *documentRoot, const char *userDir) </B>
+ <DD><I>Utwórz obiekt</I>
+<DT><A HREF="#DOC.13.3"> <IMG BORDER=0 SRC=icon1.gif></A> virtual  <B>~HTTPConnection</B>() </B>
+ <DD><I>desktruktor </I>
+<DT><A HREF="#DOC.13.4"> <IMG BORDER=0 SRC=icon1.gif></A> <!2><A HREF="HTTPConnection.html#DOC.13.1">HTTPConnection</A>&amp;  <B>operator=</B>(int sockfd) </B>
+ <DD><I>inicjuj nowe po³±czenie (na podanym deskryptorze) </I>
+<DT><A HREF="#DOC.13.5"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>setPeer</B>(struct sockaddr_in *p) </B>
+ <DD><I>Ustaw sobie adres IP 'drugiej strony' celem zapisania tej informacji w logu</I>
+</DL><DL>
+<DT><h3>Private Fields</h3><DD><DT><A HREF="#DOC.13.6"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="AsyncSocket.html">AsyncSocket</A>  <B>sock</B> </B>
+ <DD><I>socket - po³±czenie ze ¶wiatem </I>
+<DT><A HREF="#DOC.13.7"> <IMG BORDER=0 SRC=icon1.gif></A>  struct  sockaddr_in <B>peer</B> </B>
+ <DD><I>tu zapamiêtujemy adres klienta - w celu zapisu w logu </I>
+<DT><A HREF="#DOC.13.8"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="HTTPRequest.html">HTTPRequest</A>  <B>request</B> </B>
+ <DD><I>ten obiekt parsuje zapytanie przegl±darki i czyni odpowied¼ </I>
+<DT><A HREF="#DOC.13.9"> <IMG BORDER=0 SRC=icon1.gif></A> static  const  size_t  <B>bufferSize</B> </B>
+ <DD><I>32k - powinno wystarczyæ </I>
+<DT><A HREF="#DOC.13.10"> <IMG BORDER=0 SRC=icon1.gif></A> char  <B>buffer</B>[<!2><A HREF="HTTPConnection.html#DOC.13.9">bufferSize</A>] </B>
+ <DD><I>bufor do odbierania i wysy³ania danych </I>
+<DT><A HREF="#DOC.13.11"> <IMG BORDER=0 SRC=icon1.gif></A> size_t  <B>nread</B> </B>
+ <DD><I>ile ju¿ odebrali¶my/wys³ali¶my </I>
+<DT><A HREF="#DOC.13.12"> <IMG BORDER=0 SRC=icon1.gif></A> size_t  <B>responseLength</B> </B>
+ <DD><I>ile trzeba bêdzie wys³aæ bajtów nag³ówka </I>
+<DT><A HREF="#DOC.13.13"> <IMG BORDER=0 SRC=icon1.gif></A> bool  <B>requestReceived</B> </B>
+ <DD><I>czy odebrali¶my ju¿ kompletny request? </I>
+<DT><A HREF="#DOC.13.14"> <IMG BORDER=0 SRC=icon1.gif></A> bool  <B>finalized</B> </B>
+ <DD><I>czy manager wie, ¿e po³±czenie zakoñczone? </I>
+<DT><A HREF="#DOC.13.15"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="File.html">File</A>*  <B>file</B> </B>
+ <DD><I>Wska¼nik do pliku, który od czasu do czasu zdarzy siê nam wys³aæ</I>
+</DL><DL>
+<DT><h3>Private Methods</h3><DD><DT><A HREF="#DOC.13.16"> <IMG BORDER=0 SRC=icon1.gif></A> bool  <B>isReadNeeded</B>() const  </B>
+ <DD><I>metody, które musz± byæ 'przykryte' dla ConnectionsManager'a: </I>
+<DT><A HREF="#DOC.13.17"> <IMG BORDER=0 SRC=icon1.gif></A> bool  <B>isWriteNeeded</B>() const  </B>
+ <DD><I>Odpowiedz na pytanie, czy ten obiekt jest w tym momencie zaineresowany zapisem</I>
+<DT><A HREF="#DOC.13.18"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>onReadable</B>() </B>
+ <DD><I>Metoda wywo³ywana, gdy odczyt jest mo¿liwy </I>
+<DT><A HREF="#DOC.13.19"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>onWriteable</B>() </B>
+ <DD><I>Metoda wywo³ywana, gdy zapis jest mo¿liwy </I>
+<DT><A HREF="#DOC.13.20"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>operator int</B>() const  </B>
+ <DD><I>Zwróæ deskryptor naszego po³±czenia - czyli socket'u</I>
+<DT><A HREF="#DOC.13.2"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>finalize</B>() </B>
+ <DD><I>'Zfinalizuj siê', tzn</I>
+<DT><A HREF="#DOC.13.21"> <IMG BORDER=0 SRC=icon1.gif></A> bool  <B>isFinalized</B>() const  </B>
+ <DD><I>Odpowiada na pytanie, czy obiekt jest ju¿ 'zfianlizowany'</I>
+</DL></DL>
+<hr><H3>Inherited from <A HREF="AsyncConnection.html">AsyncConnection:</A></h3>
+
+<DL>
+</DL>
+<A NAME="DOC.DOCU">
+<hr>
+ <h2> Documentation </h2>
+<BLOCKQUOTE>
+
+Klasa implementuj±ca interfejs AsyncConnection i realizuj±ca po³±czenie z
+klientem (cze¶ci± obiektu HTTPConnection jest obiekt AsyncSocket).
+Zajmuje siê tylko odbieraniem (i zapamiêtywaniem) danych przes³anych od
+klienta, oraz wysy³aniem odpowiedzi wygenerowanej przez obiekt
+HTTPRequest. Obiekt tej klasy potrafi te¿ wys³aæ plik wskazany przez
+HTTPRequest'a.
+
+</BLOCKQUOTE>
+<DL>
+
+<A NAME="HTTPConnection">
+<A NAME ="DOC.13.1">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  HTTPConnection(const char *hostName, const <!1><A HREF="Properties.html">Properties</A> *mimeTypes, const char *documentRoot, const char *userDir)</B></TT>
+<DD>Utwórz obiekt. Zapamiêtaj tych parê rzeczy, które Ci siê nied³ugo przydadz±. 
+<DL></DL><P>
+<A NAME="~HTTPConnection">
+<A NAME ="DOC.13.3">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> virtual  ~HTTPConnection()</B></TT>
+<DD>desktruktor 
+<DL></DL><P>
+<A NAME="operator=">
+<A NAME ="DOC.13.4">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!2><A HREF="HTTPConnection.html#DOC.13.1">HTTPConnection</A>&amp;  operator=(int sockfd)</B></TT>
+<DD>inicjuj nowe po³±czenie (na podanym deskryptorze) 
+<DL></DL><P>
+<A NAME="setPeer">
+<A NAME ="DOC.13.5">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  setPeer(struct sockaddr_in *p)</B></TT>
+<DD>Ustaw sobie adres IP 'drugiej strony' celem zapisania tej informacji w logu
+<DL></DL><P>
+<A NAME="sock">
+<A NAME ="DOC.13.6">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="AsyncSocket.html">AsyncSocket</A>  sock</B></TT>
+<DD>socket - po³±czenie ze ¶wiatem 
+<DL></DL><P>
+<A NAME="peer">
+<A NAME ="DOC.13.7">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  struct  sockaddr_in peer</B></TT>
+<DD>tu zapamiêtujemy adres klienta - w celu zapisu w logu 
+<DL></DL><P>
+<A NAME="request">
+<A NAME ="DOC.13.8">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="HTTPRequest.html">HTTPRequest</A>  request</B></TT>
+<DD>ten obiekt parsuje zapytanie przegl±darki i czyni odpowied¼ 
+<DL></DL><P>
+<A NAME="bufferSize">
+<A NAME ="DOC.13.9">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> static  const  size_t  bufferSize</B></TT>
+<DD>32k - powinno wystarczyæ 
+<DL></DL><P>
+<A NAME="buffer">
+<A NAME ="DOC.13.10">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> char  buffer[<!2><A HREF="HTTPConnection.html#DOC.13.9">bufferSize</A>]</B></TT>
+<DD>bufor do odbierania i wysy³ania danych 
+<DL></DL><P>
+<A NAME="nread">
+<A NAME ="DOC.13.11">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> size_t  nread</B></TT>
+<DD>ile ju¿ odebrali¶my/wys³ali¶my 
+<DL></DL><P>
+<A NAME="responseLength">
+<A NAME ="DOC.13.12">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> size_t  responseLength</B></TT>
+<DD>ile trzeba bêdzie wys³aæ bajtów nag³ówka 
+<DL></DL><P>
+<A NAME="requestReceived">
+<A NAME ="DOC.13.13">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> bool  requestReceived</B></TT>
+<DD>czy odebrali¶my ju¿ kompletny request? 
+<DL></DL><P>
+<A NAME="finalized">
+<A NAME ="DOC.13.14">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> bool  finalized</B></TT>
+<DD>czy manager wie, ¿e po³±czenie zakoñczone? 
+<DL></DL><P>
+<A NAME="file">
+<A NAME ="DOC.13.15">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="File.html">File</A>*  file</B></TT>
+<DD>Wska¼nik do pliku, który od czasu do czasu zdarzy siê nam wys³aæ
+<DL></DL><P>
+<A NAME="isReadNeeded">
+<A NAME ="DOC.13.16">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> bool  isReadNeeded() const </B></TT>
+<DD>metody, które musz± byæ 'przykryte' dla ConnectionsManager'a: 
+<DL></DL><P>
+<A NAME="isWriteNeeded">
+<A NAME ="DOC.13.17">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> bool  isWriteNeeded() const </B></TT>
+<DD>Odpowiedz na pytanie, czy ten obiekt jest w tym momencie zaineresowany zapisem
+<DL></DL><P>
+<A NAME="onReadable">
+<A NAME ="DOC.13.18">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  onReadable()</B></TT>
+<DD>Metoda wywo³ywana, gdy odczyt jest mo¿liwy 
+<DL></DL><P>
+<A NAME="onWriteable">
+<A NAME ="DOC.13.19">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  onWriteable()</B></TT>
+<DD>Metoda wywo³ywana, gdy zapis jest mo¿liwy 
+<DL></DL><P>
+<A NAME="operator int">
+<A NAME ="DOC.13.20">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  operator int() const </B></TT>
+<DD>Zwróæ deskryptor naszego po³±czenia - czyli socket'u
+<DL></DL><P>
+<A NAME="finalize">
+<A NAME ="DOC.13.2">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  finalize()</B></TT>
+<DD>'Zfinalizuj siê', tzn. odnotuj fakt, ¿e ConnectionsManager zauwa¿y³, i¿ po³±czenie zosta³o zakoñczone i usun±³ ten obiekt ze swojej tablicy. Bêdzie wiêc mo¿na po re-inicjalizacji podaæ mu go znowu. 
+<DL></DL><P>
+<A NAME="isFinalized">
+<A NAME ="DOC.13.21">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> bool  isFinalized() const </B></TT>
+<DD>Odpowiada na pytanie, czy obiekt jest ju¿ 'zfianlizowany'
+<DL></DL><P></DL>
+<hr>
+ <DL><DT><B>This class has no child classes.</B></DL>
+<DL></DL><P><I><A HREF="aindex.html"> alphabetic index</A></I>  <I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
+<STRONG>
+Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
+Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
+ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
+autorów.
+<P>
+This documentation and all of the sources are copyright protected and
+may not be used or published in other works without express written
+permission from the authors.
+</P>
+</STRONG>
+Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+
+<HR>
+
+<P ALIGN="CENTER">
+<SMALL>
+<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../projektowa.html">Dokumentacja projektowa</A> |
+<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+</SMALL>
+</P>
+
+<P Align=right><I>generated by <A HREF="http://www.zib.de/Visual/software/doc++/index.html">doc++</A></I>
+</BODY>

@@ -1,0 +1,153 @@
+<html><head><TITLE>ChildThread</TITLE></head>
+<BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
+In file src/ChildThread.h:<H2><A HREF ="#DOC.DOCU" > <IMG BORDER=0 SRC=down.gif></A>  class  ChildThread : public <!2><A HREF="AsyncConnection.html#DOC.1.3">AsyncConnection</A> </H2><BLOCKQUOTE>
+
+Obiekt tej klasy odpowiedzialny s± za przyjmowanie nowych po³±czeñ od
+procesu-rodzica, tworzenie z nich obiektów HTTPConnection i obs³ugê
+tych¿e
+</BLOCKQUOTE>
+<hr>
+ <h2> Inheritance:</h2>
+<APPLET CODE="ClassGraph.class" WIDTH=600 HEIGHT=65>
+<param name=classes value="CAsyncConnection,MAsyncConnection.html,CChildThread,MChildThread.html">
+<param name=before value="M,M">
+<param name=after value="Md_,M">
+<param name=indent value="0,1">
+<param name=arrowdir value="down">
+</APPLET>
+<hr>
+
+<DL>
+<DL>
+<DT><h3>Public Methods</h3><DD><DT><A HREF="#DOC.4.2"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>ChildThread</B>(int sockfd, const char *<!2><A HREF="ChildThread.html#DOC.4.9">hostName</A>, const <!1><A HREF="Properties.html">Properties</A> *mimeTypes, const char *documentRoot, const char *userDir) </B>
+ <DD><I>Standardowy konstruktor</I>
+<DT><A HREF="#DOC.4.3"> <IMG BORDER=0 SRC=icon1.gif></A> virtual  <B>~ChildThread</B>() </B>
+ <DD><I>Standardowy (wirtualny) desktruktor)</I>
+<DT><A HREF="#DOC.4.1"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>main</B>() </B>
+ <DD><I>g³ówna funkcja procesu-dziecka</I>
+</DL><DL>
+<DT><h3>Private Fields</h3><DD><DT><A HREF="#DOC.4.4"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="ConnectionsManager.html">ConnectionsManager</A>  <B>manager</B> </B>
+ <DD><I>Manager po³±czeñ odwalaj±cy de facto ca³± czarn± robotê</I>
+<DT><A HREF="#DOC.4.5"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="AsyncMessageQueue.html">AsyncMessageQueue</A>  <B>msgq</B> </B>
+ <DD><I>nasze ³±cze komunikacyjne z procesem-ojcem</I>
+<DT><A HREF="#DOC.4.6"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="Vector.html">Vector</A>  <B>openedConnections</B> </B>
+ <DD><I>tu zapamiêtujemy nasze aktywne-otwarte po³±czenia z klientam</I>
+<DT><A HREF="#DOC.4.7"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="Vector.html">Vector</A>  <B>closedConnections</B> </B>
+ <DD><I>tu mamy po³±czenia ju¿ zakoñczone - gotowe go re-inicjalizacji (dziêki nim unikamy kosztowengo 'new' i 'delete')</I>
+<DT><A HREF="#DOC.4.8"> <IMG BORDER=0 SRC=icon1.gif></A> int  <B>intToSend</B> </B>
+ <DD><I>warto¶æ int, któr± nale¿y zaraz wys³aæ do procesu-rodzica</I>
+<DT><A HREF="#DOC.4.9"> <IMG BORDER=0 SRC=icon1.gif></A> const  char*  const  <B>hostName</B> </B>
+ <DD><I>Wska¼niki do obiektów, które musimy przekazywaæ nowo-tworzonym obiektom HTTPconnection</I>
+</DL><DL>
+<DT><h3>Private Methods</h3><DD><DT><A HREF="#DOC.4.10"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>updateConnections</B>() </B>
+ <DD><I>metoda uaktualnia tablicê aktywnych i nieaktywnych po³±czeñ </I>
+<DT><A HREF="#DOC.4.11"> <IMG BORDER=0 SRC=icon1.gif></A> bool  <B>isReadNeeded</B>() const  </B>
+ <DD><I>methods inherited from AsyncConnection </I>
+</DL></DL>
+<hr><H3>Inherited from <A HREF="AsyncConnection.html">AsyncConnection:</A></h3>
+
+<DL>
+<DL>
+<DT><h3>Public Methods</h3><DD><DT><IMG SRC=icon2.gif> virtual  bool  <B>isWriteNeeded</B>() const 
+<DT><IMG SRC=icon2.gif> virtual  void  <B>onReadable</B>()
+<DT><IMG SRC=icon2.gif> virtual  void  <B>onWriteable</B>()
+<DT><IMG SRC=icon2.gif> virtual  <B>operator int</B>() const 
+<DT><IMG SRC=icon2.gif> virtual  void  <B>finalize</B>()
+<DT><IMG SRC=icon2.gif> virtual  bool  <B>isFinalized</B>() const 
+</DL></DL>
+<A NAME="DOC.DOCU">
+<hr>
+ <h2> Documentation </h2>
+<BLOCKQUOTE>
+
+Obiekt tej klasy odpowiedzialny s± za przyjmowanie nowych po³±czeñ od
+procesu-rodzica, tworzenie z nich obiektów HTTPConnection i obs³ugê
+tych¿e.  Jego czê¶ci± jest obiekt ConnectonsManager, który "za³atwia ca³±
+robotê" z po³±czeniami.
+
+</BLOCKQUOTE>
+<DL>
+
+<A NAME="ChildThread">
+<A NAME ="DOC.4.2">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  ChildThread(int sockfd, const char *<!2><A HREF="ChildThread.html#DOC.4.9">hostName</A>, const <!1><A HREF="Properties.html">Properties</A> *mimeTypes, const char *documentRoot, const char *userDir)</B></TT>
+<DD>Standardowy konstruktor
+<DL></DL><P>
+<A NAME="~ChildThread">
+<A NAME ="DOC.4.3">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> virtual  ~ChildThread()</B></TT>
+<DD>Standardowy (wirtualny) desktruktor)
+<DL></DL><P>
+<A NAME="main">
+<A NAME ="DOC.4.1">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  main()</B></TT>
+<DD>g³ówna funkcja procesu-dziecka. Tu nale¿y oddaæ sterowanie. 
+<DL></DL><P>
+<A NAME="manager">
+<A NAME ="DOC.4.4">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="ConnectionsManager.html">ConnectionsManager</A>  manager</B></TT>
+<DD>Manager po³±czeñ odwalaj±cy de facto ca³± czarn± robotê
+<DL></DL><P>
+<A NAME="msgq">
+<A NAME ="DOC.4.5">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="AsyncMessageQueue.html">AsyncMessageQueue</A>  msgq</B></TT>
+<DD>nasze ³±cze komunikacyjne z procesem-ojcem
+<DL></DL><P>
+<A NAME="openedConnections">
+<A NAME ="DOC.4.6">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="Vector.html">Vector</A>  openedConnections</B></TT>
+<DD>tu zapamiêtujemy nasze aktywne-otwarte po³±czenia z klientam
+<DL></DL><P>
+<A NAME="closedConnections">
+<A NAME ="DOC.4.7">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="Vector.html">Vector</A>  closedConnections</B></TT>
+<DD>tu mamy po³±czenia ju¿ zakoñczone - gotowe go re-inicjalizacji (dziêki nim unikamy kosztowengo 'new' i 'delete')
+<DL></DL><P>
+<A NAME="intToSend">
+<A NAME ="DOC.4.8">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> int  intToSend</B></TT>
+<DD>warto¶æ int, któr± nale¿y zaraz wys³aæ do procesu-rodzica
+<DL></DL><P>
+<A NAME="hostName">
+<A NAME ="DOC.4.9">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  char*  const  hostName</B></TT>
+<DD>Wska¼niki do obiektów, które musimy przekazywaæ nowo-tworzonym obiektom HTTPconnection
+<DL></DL><P>
+<A NAME="updateConnections">
+<A NAME ="DOC.4.10">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  updateConnections()</B></TT>
+<DD>metoda uaktualnia tablicê aktywnych i nieaktywnych po³±czeñ 
+<DL></DL><P>
+<A NAME="isReadNeeded">
+<A NAME ="DOC.4.11">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> bool  isReadNeeded() const </B></TT>
+<DD>methods inherited from AsyncConnection 
+<DL></DL><P></DL>
+<hr>
+ <DL><DT><B>This class has no child classes.</B></DL>
+<DL></DL><P><I><A HREF="aindex.html"> alphabetic index</A></I>  <I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
+<STRONG>
+Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
+Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
+ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
+autorów.
+<P>
+This documentation and all of the sources are copyright protected and
+may not be used or published in other works without express written
+permission from the authors.
+</P>
+</STRONG>
+Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+
+<HR>
+
+<P ALIGN="CENTER">
+<SMALL>
+<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../projektowa.html">Dokumentacja projektowa</A> |
+<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+</SMALL>
+</P>
+
+<P Align=right><I>generated by <A HREF="http://www.zib.de/Visual/software/doc++/index.html">doc++</A></I>
+</BODY>

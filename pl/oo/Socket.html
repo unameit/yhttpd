@@ -1,0 +1,73 @@
+<html>
+<head>
+</head><BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
+<p><hr></p>
+<a name=Socket><h2>Class Socket</h2></a>
+<font face="Courier New,Courier">class Socket<br>extends  Descriptor</font>
+<dl>
+<dt><b>Documentation </b><dd>Obiekty tej klasy to standardowe gniazda (socket'y) systemu UNIX(R).
+<dd>Klasa rozszerza mo¿liwo¶ci klasy Descriptor o metody specyficzne dla
+<dd>deskryptorów gniazd (takie jak: connect, bind, listen, accept).
+</dl>
+<h3><b>Operations</h3></b>
+<a name=Socket#Socket><ul><li><b>Socket</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  Socket()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Otwórz obiekt Socket, ale go ie otwieraj
+</dl>
+</dir><a name=Socket#int#Socket><ul><li><b>Socket</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  Socket(int i)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Utwórz obiekt Socket, z deskryptora, który Ci dajê.
+</dl>
+</dir><a name=Socket#int#int#int#Socket><ul><li><b>Socket</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  Socket(int domain, int type, int protocol)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Utwórz Socket ze wskazanej rodziny i podanego typu
+</dl>
+</dir><a name=accept#Socket><ul><li><b>accept</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public int accept()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Akceptuj po³±czenie ze ¶wiata. Zwróæ mi deskryptor nowo utworzonego w tym celu gniazda.
+</dl>
+</dir><a name=accept#struct_sockaddr_in_*#Socket><ul><li><b>accept</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public int accept(struct sockaddr_in * )</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Akceptuj po³±czenie ze ¶wiata. Adres maszyny, sk±d pochodzi po³±czenie zapisz do struktury przekazywanej jako parametr.
+</dl>
+</dir><a name=bind#const_char_*#ushort#Socket><ul><li><b>bind</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void bind(const char * hostName, ushort port)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Zrób bind tego Socket'a, czyli przypisz go do interfejsu sieciowego wskazywanego podan± nazw± komputera oraz do portu o podanym numerze.
+</dl>
+</dir><a name=bind#const_struct_sockaddr_in_*#Socket><ul><li><b>bind</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void bind(const struct sockaddr_in * addr)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Przypisz to gniazdo do adresu podanego w tej strukturze danych przekazanej jako argument.
+</dl>
+</dir><a name=connect#const_char_*#ushort#Socket><ul><li><b>connect</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void connect(const char * hostName, ushort port)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Po³±cz to gniazdo z podanym komputerem, na podanym porcie.
+</dl>
+</dir><a name=connect#const_struct_sockaddr_in_*#Socket><ul><li><b>connect</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void connect(const struct sockaddr_in * addr)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Po³±cz to gniazdo z komputerem, którego adres podany jest w tej strukturze.
+</dl>
+</dir><a name=convert#struct_sockaddr_in_*#const_char_*#ushort#Socket><ul><li><b>convert</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private void convert(struct sockaddr_in * addr, const char * hostName, ushort port)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Zapytaj DNSa o IP tego komputera i wpisz mi to do struktury sockaddr_in.
+</dl>
+</dir><a name=listen#int#Socket><ul><li><b>listen</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void listen(int backlog)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Pozwól na backlog oczekuj±cych po³±czeñ w kolejce na zaakceptowanie przez nas.
+</dl>
+</dir><a name=operator=#int#Socket><ul><li><b>operator=</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public Socket & operator=(int )</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Podany deskryptor niech bêdzie nowym moim.
+</dl>
+</dir><center><h3><a href=_index.html#_index>Return to top</a></h3></center></html>

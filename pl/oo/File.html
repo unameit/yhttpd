@@ -1,0 +1,88 @@
+<html>
+<head>
+</head><BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
+<p><hr></p>
+<a name=File><h2>Class File</h2></a>
+<font face="Courier New,Courier">class File<br>extends  Descriptor</font>
+<dl>
+<dt><b>Documentation </b><dd>Obiekty tej klasy to standardowe pliki systemu UNIX(R). Celem obudowania
+<dd>funkcji do obs³ugi plików w jedn± klasê jest uproszczenie i uczynienie
+<dd>bardziej przejrzystym kodu ¼ród³owego. Klasa dziedziczy publicznie klasê
+<dd>Descriptor. Zawiera dodatkowe metody specyficzne dla plików, takie jak
+<dd>blokowanie pliku, zmiana pozycji z której bêda czytane lub zapisywane
+<dd>dane, pobieranie rozmiaru pliku, czy te¿ daty jego ostatniej modyfikacji. 
+<dd>Wszystkie metody tej klasy, w przypadku niepowodzenia, rzucaj± wyj±tkami
+<dd>z odpowiednim komentarzem.
+</dl>
+<h3><b>Attributes</h3></b>
+<a name=mtime#File><ul><li><b>mtime</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private time_t mtime</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Tu zapamiêtujemy czas ostatniej modyfikacji w pliku.
+</dl>
+</dir><a name=size#File><ul><li><b>size</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private off_t size</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Tu zapamiêtujemy rozmiar pliku (w bajtach).
+</dl>
+</dir><h3><b>Operations</h3></b>
+<a name=File#const_char_*#int#File><ul><li><b>File</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  File(const char * , int )</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Otwórz wskazany plik, z odpowiednim trybem
+</dl>
+</dir><a name=File#int#File><ul><li><b>File</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  File(int d)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Konstruktor przypisuj±cy istniej±cy ju¿ deskryptor do tego obiektu, lub -1, co oznacza deskryptor ju¿ zamkniêty.
+</dl>
+</dir><a name=getModificationTime#File><ul><li><b>getModificationTime</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public time_t getModificationTime()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Podaj mi czas ostatniej modyfikacji tego pliku.
+</dl>
+</dir><a name=getSize#File><ul><li><b>getSize</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public off_t getSize()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Podaj mi rozmiar tego pliku w bajtach.
+</dl>
+</dir><a name=lock#off_t#bool#File><ul><li><b>lock</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public File & lock(off_t len, bool mandatory)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Zablokuj fragment pliku
+</dl>
+</dir><a name=open#const_char_*#int#File><ul><li><b>open</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public File & open(const char * , int )</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Jak konstruktor wy¿ej, lecz umo¿liwia re-inicjowane obiektu.
+</dl>
+</dir><a name=open#int#File><ul><li><b>open</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private File & open(int )</font></font><p>  </p>
+<dl>
+</dl>
+</dir><a name=operator=#int#File><ul><li><b>operator=</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public File & operator=(int )</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Niech ten obiekt zostanie przypisany innemu deskryptorowi
+</dl>
+</dir><a name=rewind#File><ul><li><b>rewind</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public File & rewind()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Przesuñ wska¼nik pliku na jego pocz±tek.
+</dl>
+</dir><a name=seek#off_t#int#File><ul><li><b>seek</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public File & seek(off_t offset, int whence)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Ustaw wska¼nik pliku.
+</dl>
+</dir><a name=setpos#off_t#File><ul><li><b>setpos</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public File & setpos(off_t offset)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Podobnie jak wy¿ej.
+</dl>
+</dir><a name=unlock#off_t#File><ul><li><b>unlock</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public File & unlock(off_t len)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Odblokuj.
+</dl>
+</dir><center><h3><a href=_index.html#_index>Return to top</a></h3></center></html>

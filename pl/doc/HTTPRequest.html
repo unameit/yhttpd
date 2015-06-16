@@ -1,0 +1,203 @@
+<html><head><TITLE>HTTPRequest</TITLE></head>
+<BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
+In file src/HTTPRequest.h:<H2><A HREF ="#DOC.DOCU" > <IMG BORDER=0 SRC=down.gif></A>  class  HTTPRequest  </H2><BLOCKQUOTE>
+
+Obiekt tej klasy zajmuje siê parsowaniem zapytania klienta, zrozumieniem
+go oraz wygenerowaniem w³a¶ciwej odpowiedzi (zgodnie z protoko³em HTTP)
+</BLOCKQUOTE>
+<hr>
+
+<DL>
+<DL>
+<DT><h3>Public Methods</h3><DD><DT><A HREF="#DOC.14.8"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>HTTPRequest</B>(const char *<!2><A HREF="HTTPRequest.html#DOC.14.9">hostName</A>, const <!1><A HREF="Properties.html">Properties</A> *<!2><A HREF="HTTPRequest.html#DOC.14.10">mimeTypes</A>, const char *<!2><A HREF="HTTPRequest.html#DOC.14.11">documentRoot</A>, const char *<!2><A HREF="HTTPRequest.html#DOC.14.6">userDir</A>) </B>
+ <DD><I>
+Standardowy konstruktor, w którym podajemy wska¼niki do pó¼niej
+wykorzystywanych obiektów</I>
+<DT><A HREF="#DOC.14.1"> <IMG BORDER=0 SRC=icon1.gif></A> bool  <B>isComplete</B>(const char *request) </B>
+ <DD><I>
+Metoda prawdza to co nam przys³a³a przegl±darka (a ja to podajê w
+buforze tekstowym jako string - czyli zakoñczony znakiem '\0')</I>
+<DT><A HREF="#DOC.14.2"> <IMG BORDER=0 SRC=icon1.gif></A> uint  <B>getResponse</B>(char *buffer, uint bufferLength) </B>
+ <DD><I>
+Metoda ta na podstawie zapytania przegl±darki (podawanego w metodzie
+wy¿ej, ale podana tak¿e tutaj jeszcze raz, tylko tym razem mo¿n± j±
+zniszczyæ - a nawet trzeba</I>
+<DT><A HREF="#DOC.14.3"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="File.html">File</A>*  <B>getFile</B>() </B>
+ <DD><I>
+Metoda ta zwraca wska¼nik do obiektu File, którego zawarto¶æ nale¿y
+wys³aæ, zaraz za nag³ówkiem</I>
+<DT><A HREF="#DOC.14.4"> <IMG BORDER=0 SRC=icon1.gif></A> const  char*  <B>getMethod</B>() const  </B>
+ <DD><I>Zwraca metodê bie¿±cego zapytania</I>
+<DT><A HREF="#DOC.14.5"> <IMG BORDER=0 SRC=icon1.gif></A> const  char*  <B>getURI</B>() const  </B>
+ <DD><I>Zwraca URI bie¿±cego zapytania</I>
+</DL><DL>
+<DT><h3>Private Fields</h3><DD><DT><A HREF="#DOC.14.9"> <IMG BORDER=0 SRC=icon1.gif></A> const  char*  const  <B>hostName</B> </B>
+ <DD><I>Nazwa komputera na którym jeste¶my uruchomieni - potrzebna w polu Location odpowiedzi HTTP</I>
+<DT><A HREF="#DOC.14.10"> <IMG BORDER=0 SRC=icon1.gif></A> const  <!1><A HREF="Properties.html">Properties</A>*  const  <B>mimeTypes</B> </B>
+ <DD><I>Obiekt 'rozpoznaj±cy' typy plików po rozszerzeniach ich nazwy</I>
+<DT><A HREF="#DOC.14.11"> <IMG BORDER=0 SRC=icon1.gif></A> const  char*  const  <B>documentRoot</B> </B>
+ <DD><I>Gdzie sk³aowane s± dokumenty z g³ównego drzewa</I>
+<DT><A HREF="#DOC.14.6"> <IMG BORDER=0 SRC=icon1.gif></A> const  char*  const  <B>userDir</B> </B>
+ <DD><I>W którym katalogu w katalgoach u¿ytkowników szukaæ index</I>
+<DT><A HREF="#DOC.14.12"> <IMG BORDER=0 SRC=icon1.gif></A> bool  <B>haveContent</B> </B>
+ <DD><I>wysy³amy co¶ oprócz nag³ówka? / wysy³amy plik? </I>
+<DT><A HREF="#DOC.14.13"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="FileInfo.html">FileInfo</A>  <B>fileinfo</B> </B>
+ <DD><I>tu pamiêtamy dane o pliku, którym interesuje siê klient </I>
+<DT><A HREF="#DOC.14.14"> <IMG BORDER=0 SRC=icon1.gif></A> <!1><A HREF="File.html">File</A>  <B>file</B> </B>
+ <DD><I>a tu jest ewentualnie ten plik</I>
+</DL><DL>
+<DT><h3>Private Methods</h3><DD><DT><A HREF="#DOC.14.15"> <IMG BORDER=0 SRC=icon1.gif></A> const  char*  <B>resolvePathName</B>(char *) </B>
+ <DD><I>metoda przerabia URI na pe³n± scie¿kê dostêpu do pliku </I>
+<DT><A HREF="#DOC.14.16"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>generateResponseHeader</B>(char *buffer, uint bufferLength, const <!2><A HREF="HTTPRequest.html#DOC.14.7">ResponseHeader</A> &amp;hdr, const char *location, ulong contentLength, const char *contentType, time_t mtime) const  </B>
+ <DD><I>Metoda generuje nag³ówke odpowiedzi korzystaj±c z podanych obiektów</I>
+</DL></DL>
+<A NAME="DOC.DOCU">
+<hr>
+ <h2> Documentation </h2>
+<BLOCKQUOTE>
+
+Obiekt tej klasy zajmuje siê parsowaniem zapytania klienta, zrozumieniem
+go oraz wygenerowaniem w³a¶ciwej odpowiedzi (zgodnie z protoko³em HTTP). 
+Wskazuje te¿ oraz otwiera plik, którego wys³aniem zaj±æ siê ma obiekt
+HTTPConnection.
+
+</BLOCKQUOTE>
+<DL>
+
+<A NAME="HTTPRequest">
+<A NAME ="DOC.14.8">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  HTTPRequest(const char *<!2><A HREF="HTTPRequest.html#DOC.14.9">hostName</A>, const <!1><A HREF="Properties.html">Properties</A> *<!2><A HREF="HTTPRequest.html#DOC.14.10">mimeTypes</A>, const char *<!2><A HREF="HTTPRequest.html#DOC.14.11">documentRoot</A>, const char *<!2><A HREF="HTTPRequest.html#DOC.14.6">userDir</A>)</B></TT>
+<DD>
+Standardowy konstruktor, w którym podajemy wska¼niki do pó¼niej
+wykorzystywanych obiektów
+<DL></DL><P>
+<A NAME="isComplete">
+<A NAME ="DOC.14.1">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> bool  isComplete(const char *request)</B></TT>
+<DD>
+Metoda prawdza to co nam przys³a³a przegl±darka (a ja to podajê w
+buforze tekstowym jako string - czyli zakoñczony znakiem '\0'). 
+Zwraca true, je¶li request jest ju¿ odebrany w ca³o¶ci (zwykle
+oznacza to, ¿e koñczy siê dwoma znakami koñca linii '\n' - ale nie
+jest to regu³±, choæ tak powinno byæ). Lub zwraca false, je¶li
+request nie jest jeszcze kompletny i nale¿y spodziewaæ siê, ¿e co¶ z
+sieci zaraz dojdzie. Wtedy metoda ta zostanie wywo³ana ponownie z
+uzupe³nionym buforem.
+<DL></DL><P>
+<A NAME="getResponse">
+<A NAME ="DOC.14.2">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> uint  getResponse(char *buffer, uint bufferLength)</B></TT>
+<DD>
+Metoda ta na podstawie zapytania przegl±darki (podawanego w metodzie
+wy¿ej, ale podana tak¿e tutaj jeszcze raz, tylko tym razem mo¿n± j±
+zniszczyæ - a nawet trzeba. Bufor przenaczony jest przecie¿ teraz na
+odpowied¼) formu³uje nag³ówek odpowiedzi. Mog± to ju¿ byæ np. jakie¶
+informacje o pliku, który za¿yczy³a sobie przegl±darka w zapytaniu. 
+Odpowied¼ tê umieszcza we wskazanym buforze tekstowym, którego
+wielko¶æ podana jest jako drugi argument.  Naturalnie odpowied¼ nie
+mo¿e przekroczyæ tego rozmiaru, gdy¿ spowoduje to "SEGMENTATION
+FAULT" i zakoñczenie bie¿±cego procesu. Nale¿y siê jednak spodziewaæ,
+¿e dany bufor bêdzie mia³ conajmniej 32 kilobajty, a wiêc
+wystarczaj±co du¿o.  Metoda ta zwraca d³ugo¶æ w bajtach nag³ówka
+odpowiedzi, który nale¿y wys³aæ.
+<DL></DL><P>
+<A NAME="getFile">
+<A NAME ="DOC.14.3">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="File.html">File</A>*  getFile()</B></TT>
+<DD>
+Metoda ta zwraca wska¼nik do obiektu File, którego zawarto¶æ nale¿y
+wys³aæ, zaraz za nag³ówkiem.  Zwraca NULL je¶li nie nale¿y nic wiêcej
+(poza nag³ówkiem) wysy³aæ.  Je¶li skoñczê z plikiem, to sam go zamknê
+- Ty wiêc o jego zamykanie nie musisz martwiæ.
+<DL></DL><P>
+<A NAME="getMethod">
+<A NAME ="DOC.14.4">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  char*  getMethod() const </B></TT>
+<DD>Zwraca metodê bie¿±cego zapytania. Metoda na potrzeby wpisu w pliku acces.log 
+<DL></DL><P>
+<A NAME="getURI">
+<A NAME ="DOC.14.5">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  char*  getURI() const </B></TT>
+<DD>Zwraca URI bie¿±cego zapytania. Metoda na potrzeby wpisu w pliku acces.log 
+<DL></DL><P>
+<A NAME="hostName">
+<A NAME ="DOC.14.9">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  char*  const  hostName</B></TT>
+<DD>Nazwa komputera na którym jeste¶my uruchomieni - potrzebna w polu Location odpowiedzi HTTP
+<DL></DL><P>
+<A NAME="mimeTypes">
+<A NAME ="DOC.14.10">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  <!1><A HREF="Properties.html">Properties</A>*  const  mimeTypes</B></TT>
+<DD>Obiekt 'rozpoznaj±cy' typy plików po rozszerzeniach ich nazwy
+<DL></DL><P>
+<A NAME="documentRoot">
+<A NAME ="DOC.14.11">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  char*  const  documentRoot</B></TT>
+<DD>Gdzie sk³aowane s± dokumenty z g³ównego drzewa
+<DL></DL><P>
+<A NAME="userDir">
+<A NAME ="DOC.14.6">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  char*  const  userDir</B></TT>
+<DD>W którym katalogu w katalgoach u¿ytkowników szukaæ index.html i innych dokumentów. 
+<DL></DL><P>
+<A NAME="haveContent">
+<A NAME ="DOC.14.12">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> bool  haveContent</B></TT>
+<DD>wysy³amy co¶ oprócz nag³ówka? / wysy³amy plik? 
+<DL></DL><P>
+<A NAME="fileinfo">
+<A NAME ="DOC.14.13">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="FileInfo.html">FileInfo</A>  fileinfo</B></TT>
+<DD>tu pamiêtamy dane o pliku, którym interesuje siê klient 
+<DL></DL><P>
+<A NAME="file">
+<A NAME ="DOC.14.14">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> <!1><A HREF="File.html">File</A>  file</B></TT>
+<DD>a tu jest ewentualnie ten plik
+<DL></DL><P>
+<A NAME="resolvePathName">
+<A NAME ="DOC.14.15">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> const  char*  resolvePathName(char *)</B></TT>
+<DD>metoda przerabia URI na pe³n± scie¿kê dostêpu do pliku 
+<DL></DL><P>
+<A NAME="ResponseHeader">
+<A NAME ="DOC.14.7">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  class  ResponseHeader</B></TT>
+<DD>
+Prywatna klasa klasy HTTPRequest. Jej obiekty s± nag³ówkami
+odpowiedzi wysy³anymi do klientów. Atrybutami tych oiektów s±: kod
+odpowiedzi, jej krótki opis, opis w HTMLu
+<DL></DL><P>
+<A NAME="generateResponseHeader">
+<A NAME ="DOC.14.16">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  generateResponseHeader(char *buffer, uint bufferLength, const <!2><A HREF="HTTPRequest.html#DOC.14.7">ResponseHeader</A> &amp;hdr, const char *location, ulong contentLength, const char *contentType, time_t mtime) const </B></TT>
+<DD>Metoda generuje nag³ówke odpowiedzi korzystaj±c z podanych obiektów
+<DL></DL><P></DL>
+<hr>
+ <DL><DT><B>This class has no child classes.</B></DL>
+<DL></DL><P><I><A HREF="aindex.html"> alphabetic index</A></I>  <I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
+<STRONG>
+Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
+Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
+ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
+autorów.
+<P>
+This documentation and all of the sources are copyright protected and
+may not be used or published in other works without express written
+permission from the authors.
+</P>
+</STRONG>
+Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+
+<HR>
+
+<P ALIGN="CENTER">
+<SMALL>
+<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../projektowa.html">Dokumentacja projektowa</A> |
+<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+</SMALL>
+</P>
+
+<P Align=right><I>generated by <A HREF="http://www.zib.de/Visual/software/doc++/index.html">doc++</A></I>
+</BODY>

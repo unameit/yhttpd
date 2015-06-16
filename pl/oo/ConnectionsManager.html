@@ -1,0 +1,48 @@
+<html>
+<head>
+</head><BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
+<p><hr></p>
+<a name=ConnectionsManager><h2>Class ConnectionsManager</h2></a>
+<font face="Courier New,Courier">class ConnectionsManager</font>
+<dl>
+<dt><b>Documentation </b><dd>Obiekt tej klasy potrafi zarz±dzaæ grup± obiektów, które implementuj±
+<dd>interfejs AsyncConnection i realizuj± nieblokuj±ce po³±czenie z u¿yciem
+<dd>UNIXowych deskryptorów.  Obiektowi tej klasy oddaje siê sterowanie
+<dd>zarówno w procesie-rodzicu, jak i w procesach potomnych.  Dziêki klasie
+<dd>AsyncConnection metody z innych obiektów mog± byæ wywo³ywane w
+<dd>odpowiednich dla nich momentach, tj. gdy zajd± zdarzenia "mo¿liwo¶æ
+<dd>pisania na deskryptorze" lub/i "mo¿liwo¶æ czytania z deskryptora". Obiekt
+<dd>tej klasy usuwa zamkniête po³±czenia w sposób umo¿liwiaj±cy ich dalsze
+<dd>wykorzystanie po re-inicjalizacji.
+</dl>
+<h3><b>Links</h3></b>
+<ul><li><b>Aggregation connections to </b><a href=Vector.html#Vector>Vector</a></li></ul>
+<dir><dt><b>Documentation </b>tu pamiêtamy wszystkie obs³ugiwane po³±czenia
+</dir>
+<h3><b>Operations</h3></b>
+<a name=add#AsyncConnection_*#ConnectionsManager><ul><li><b>add</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void add(AsyncConnection * )</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b><dd>Dodaj nowe po³±czenie. Je¶li zostanie ono zamkniête (zwróci -1
+<dd>jako swój deskryptor) zostanie 'automatycznie' usuniête z naszej
+<dd>tablicy obs³ugiwanych po³±czeñ. Musimy powiadomiæ inne obiekty o
+<dd>tym, ¿e 'zauwa¿yli¶my' zamkniêcie po³±czenia. Zrobimy to poprzez
+<dd>wywo³anie metody AsyncConnection::finalize(). Wtedy obiekt ten
+<dd>(jak i inne) bêd± wiedzia³y, ¿e nie znajduje siê on ju¿ w naszej
+<dd>tablicy, a wiêc mo¿na na tym obiekcie utoworzyæ nowe po³±czenie i
+<dd>na nowo dodaæ do tego manager'a.
+</dl>
+</dir><a name=main#ConnectionsManager><ul><li><b>main</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public void main()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b><dd>Tu siê oddaje sterowanie. Potem tyko wyskakuje do metod obiektów
+<dd>AsyncConnection::onReadable() i onWriteable().  dlatego trzeba
+<dd>przed oddaniem sterowania dodaæ conajmniej jeden ¿ywy obiekt
+<dd>AsyncConnection.
+</dl>
+</dir><a name=update#ConnectionsManager><ul><li><b>update</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private void update()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Metoda sprawdza, czy po³±czenia s± aktywne, i ewentualnie je usuwa.
+</dl>
+</dir><center><h3><a href=_index.html#_index>Return to top</a></h3></center></html>

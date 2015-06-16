@@ -1,0 +1,163 @@
+<html><head><TITLE>Descriptor</TITLE></head>
+<BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
+In file src/Descriptor.h:<H2><A HREF ="#DOC.DOCU" > <IMG BORDER=0 SRC=down.gif></A>  class  Descriptor  </H2><BLOCKQUOTE>
+
+Klasa ta obudowuje klasyczne UNIXowe funkcje operuj±ce na deskryptorach w
+klasê jêzyka C++, by upro¶ciæ korzystanie z nich, a jednocze¶nie zapewniæ
+lepsz± obs³ugê sytuacji awaryjnych (niepowodzeñ wywo³añ tych¿e funkcji
+systemowych) poprzez rzucanie wyj±tków jêzyka C++, a przez to u³atwienie
+sterowania wykonywaniem programu
+</BLOCKQUOTE>
+<hr>
+ <h2> Inheritance:</h2>
+<APPLET CODE="ClassGraph.class" WIDTH=600 HEIGHT=95>
+<param name=classes value="CDescriptor,MDescriptor.html,CSocket,MSocket.html,CFile,MFile.html">
+<param name=before value="M,M|_,Mr_">
+<param name=after value="M,M,M">
+<param name=indent value="0,0,0">
+<param name=arrowdir value="down">
+</APPLET>
+<hr>
+
+<DL>
+<DL>
+<DT><h3>Public Methods</h3><DD><DT><A HREF="#DOC.8.6"> <IMG BORDER=0 SRC=icon1.gif></A> virtual  <!2><A HREF="Descriptor.html#DOC.8.4">Descriptor</A>&amp;  <B>operator=</B>(int) </B>
+ <DD><I>Przypisz temu obiektowi ca³kiem nowy deskryptor</I>
+<DT><A HREF="#DOC.8.7"> <IMG BORDER=0 SRC=icon1.gif></A> virtual  <B>~Descriptor</B>() </B>
+ <DD><I>Standardowy destruktor</I>
+<DT><A HREF="#DOC.8.1"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>close</B>() </B>
+ <DD><I>Zamknij deskryptor</I>
+<DT><A HREF="#DOC.8.8"> <IMG BORDER=0 SRC=icon1.gif></A> int  <B>read</B>() </B>
+ <DD><I>Odczytaj jeden znak</I>
+<DT><A HREF="#DOC.8.2"> <IMG BORDER=0 SRC=icon1.gif></A> size_t  <B>read</B>(void *buffer, size_t nbytes, bool full = true) </B>
+ <DD><I>Odczytaj nbytes znaków do bufora wskazywanego przez buffer</I>
+<DT><A HREF="#DOC.8.9"> <IMG BORDER=0 SRC=icon1.gif></A> size_t  <B>readv</B>(const struct iovec *iov, size_t count, bool full = true) </B>
+ <DD><I>Podobnie jak wy¿ej, lecz dla tablicy buforów iovec[] </I>
+<DT><A HREF="#DOC.8.10"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>write</B>(u_char) </B>
+ <DD><I>Zapisz jeden znak</I>
+<DT><A HREF="#DOC.8.3"> <IMG BORDER=0 SRC=icon1.gif></A> size_t  <B>write</B>(const void *buffer, size_t, bool full = true) </B>
+ <DD><I>Zapisz bufor</I>
+<DT><A HREF="#DOC.8.11"> <IMG BORDER=0 SRC=icon1.gif></A> size_t  <B>writev</B>(const struct iovec *iov, size_t count, bool full = true) </B>
+ <DD><I>Podobnie jak wy¿ej</I>
+<DT><A HREF="#DOC.8.12"> <IMG BORDER=0 SRC=icon1.gif></A> inline  <B>operator int</B>() const  </B>
+ <DD><I>Zwróæ mi swój UNIXowy deskryptor</I>
+</DL><DL>
+<DT><h3>Protected Fields</h3><DD><DT><A HREF="#DOC.8.13"> <IMG BORDER=0 SRC=icon1.gif></A> int  <B>fd</B> </B>
+ <DD><I>I tu jest ten nasz deskryptor</I>
+</DL><DL>
+<DT><h3>Protected Methods</h3><DD><DT><A HREF="#DOC.8.4"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>Descriptor</B>(int newfd = -1) </B>
+ <DD><I>Chroniony konstruktor  - niech nie istnieja obiekty tej klasy tworzone przez inaczej, ni¿ w klasach pochdnych</I>
+<DT><A HREF="#DOC.8.5"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>makeAsync</B>() </B>
+ <DD><I>Zrób z tego deskryptora, deskryptor asynchroniczny</I>
+</DL></DL>
+<A NAME="DOC.DOCU">
+<hr>
+ <h2> Documentation </h2>
+<BLOCKQUOTE>
+
+Klasa ta obudowuje klasyczne UNIXowe funkcje operuj±ce na deskryptorach w
+klasê jêzyka C++, by upro¶ciæ korzystanie z nich, a jednocze¶nie zapewniæ
+lepsz± obs³ugê sytuacji awaryjnych (niepowodzeñ wywo³añ tych¿e funkcji
+systemowych) poprzez rzucanie wyj±tków jêzyka C++, a przez to u³atwienie
+sterowania wykonywaniem programu. Metody tej klasy s± wspólne dla plików
+jak i gniazd.
+
+</BLOCKQUOTE>
+<DL>
+
+<A NAME="Descriptor">
+<A NAME ="DOC.8.4">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  Descriptor(int newfd = -1)</B></TT>
+<DD>Chroniony konstruktor  - niech nie istnieja obiekty tej klasy tworzone przez inaczej, ni¿ w klasach pochdnych
+<DL></DL><P>
+<A NAME="makeAsync">
+<A NAME ="DOC.8.5">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  makeAsync()</B></TT>
+<DD>Zrób z tego deskryptora, deskryptor asynchroniczny
+<DL></DL><P>
+<A NAME="operator=">
+<A NAME ="DOC.8.6">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> virtual  <!2><A HREF="Descriptor.html#DOC.8.4">Descriptor</A>&amp;  operator=(int)</B></TT>
+<DD>Przypisz temu obiektowi ca³kiem nowy deskryptor
+<DL></DL><P>
+<A NAME="~Descriptor">
+<A NAME ="DOC.8.7">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> virtual  ~Descriptor()</B></TT>
+<DD>Standardowy destruktor
+<DL></DL><P>
+<A NAME="close">
+<A NAME ="DOC.8.1">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  close()</B></TT>
+<DD>Zamknij deskryptor. Zwykle oznacza to tak¿e zapisanie danych przetrzymywanych nadal w buforach systemowych. 
+<DL></DL><P>
+<A NAME="read">
+<A NAME ="DOC.8.8">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> int  read()</B></TT>
+<DD>Odczytaj jeden znak
+<DL></DL><P>
+<A NAME="read">
+<A NAME ="DOC.8.2">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> size_t  read(void *buffer, size_t nbytes, bool full = true)</B></TT>
+<DD>Odczytaj nbytes znaków do bufora wskazywanego przez buffer. Je¶li ostatni argument bêdzie true, to rzuæ wyj±tkiem EOFException, je¶li nie uda³o Ci siê wczytaæ ca³ej ¿±danej porcji danych. 
+<DL></DL><P>
+<A NAME="readv">
+<A NAME ="DOC.8.9">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> size_t  readv(const struct iovec *iov, size_t count, bool full = true)</B></TT>
+<DD>Podobnie jak wy¿ej, lecz dla tablicy buforów iovec[] 
+<DL></DL><P>
+<A NAME="write">
+<A NAME ="DOC.8.10">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  write(u_char)</B></TT>
+<DD>Zapisz jeden znak
+<DL></DL><P>
+<A NAME="write">
+<A NAME ="DOC.8.3">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> size_t  write(const void *buffer, size_t, bool full = true)</B></TT>
+<DD>Zapisz bufor. Parametry analogicznie, jak przy read. 
+<DL></DL><P>
+<A NAME="writev">
+<A NAME ="DOC.8.11">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> size_t  writev(const struct iovec *iov, size_t count, bool full = true)</B></TT>
+<DD>Podobnie jak wy¿ej
+<DL></DL><P>
+<A NAME="operator int">
+<A NAME ="DOC.8.12">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> inline  operator int() const </B></TT>
+<DD>Zwróæ mi swój UNIXowy deskryptor
+<DL></DL><P>
+<A NAME="fd">
+<A NAME ="DOC.8.13">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> int  fd</B></TT>
+<DD>I tu jest ten nasz deskryptor
+<DL></DL><P></DL>
+<hr>
+<DL><DT><B>Direct child classes:
+</B><DD><A HREF="Socket.html"> Socket </A><br>
+<A HREF="File.html"> File </A><br>
+</DL>
+<DL></DL><P><I><A HREF="aindex.html"> alphabetic index</A></I>  <I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
+<STRONG>
+Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
+Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
+ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
+autorów.
+<P>
+This documentation and all of the sources are copyright protected and
+may not be used or published in other works without express written
+permission from the authors.
+</P>
+</STRONG>
+Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+
+<HR>
+
+<P ALIGN="CENTER">
+<SMALL>
+<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../projektowa.html">Dokumentacja projektowa</A> |
+<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+</SMALL>
+</P>
+
+<P Align=right><I>generated by <A HREF="http://www.zib.de/Visual/software/doc++/index.html">doc++</A></I>
+</BODY>

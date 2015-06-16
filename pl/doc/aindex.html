@@ -1,0 +1,110 @@
+<html><head><TITLE>Table of Contents</TITLE></head><BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
+
+<H1>Table of contents</H1>
+<H2>Classes</H2>
+<UL>
+<LI><A HREF="AsyncConnection.html">AsyncConnection</A> <I>
+Klasa ta jest tylko interfejsem który musz± implementowaæ obiekty chc±ce
+byæ obs³ugiwane przez ConnectionsManager'a</I>
+<LI><A HREF="AsyncMessageQueue.html">AsyncMessageQueue</A> <I>
+Klasa ta (dziedzicz±ca prywatnie klasê AsyncSocket) s³u¿y przede
+wszystkim do komunikacji miêdzyprocesowej</I>
+<LI><A HREF="AsyncSocket.html">AsyncSocket</A> <I>
+Klasa ta, dziedzicz±ca publicznie po klasie Socket, zmienia wywo³ania
+niektórych jej metod, by poprawnie zachowywa³y siê dla po³±czeñ
+asynchronicznych (nieblokuj±cych)</I>
+<LI><A HREF="ChildThread.html">ChildThread</A> <I>
+Obiekt tej klasy odpowiedzialny s± za przyjmowanie nowych po³±czeñ od
+procesu-rodzica, tworzenie z nich obiektów HTTPConnection i obs³ugê
+tych¿e</I>
+<LI><A HREF="Configuration.html">Configuration</A> <I>
+Klasa dziedzicz±ca prywatnie po klasie Properties a stworzona, by
+wygodniej obs³ugiwaæ plik konfiguracyjny naszego daemona</I>
+<LI><A HREF="ConnectionsManager.html">ConnectionsManager</A> <I>
+Obiekt tej klasy potrafi zarz±dzaæ grup± obiektów, które implementuj±
+interfejs AsyncConnection i realizuj± nieblokuj±ce po³±czenie z u¿yciem
+UNIXowych deskryptorów</I>
+<LI><A HREF="ConnectionWithChild.html">ConnectionWithChild</A> <I>
+Ka¿dy obiekt tej klasy zajmuje siê komunikacj± miêdzy procesem-rodzicem a
+jednym procesem-dzieckiem, po stronie procesu-ojca</I>
+<LI><A HREF="Descriptor.html">Descriptor</A> <I>
+Klasa ta obudowuje klasyczne UNIXowe funkcje operuj±ce na deskryptorach w
+klasê jêzyka C++, by upro¶ciæ korzystanie z nich, a jednocze¶nie zapewniæ
+lepsz± obs³ugê sytuacji awaryjnych (niepowodzeñ wywo³añ tych¿e funkcji
+systemowych) poprzez rzucanie wyj±tków jêzyka C++, a przez to u³atwienie
+sterowania wykonywaniem programu</I>
+<LI><A HREF="EOFException.html">EOFException</A> <I>
+Obiekt tej klasy jest wyj±tkiem w sensie jêzyka C++ rzucanym w sytuacji,
+gdy za¿±dano odczytu z deskryptora dok³adnej porcji danych (tzn</I>
+<LI><A HREF="Exception.html">Exception</A> <I>
+obiekty tej klasy s± wyj±tkami jêzyka C++ rzucanymi (jak nazwa wskazuje)
+w sytacjach wyj±tkowych (np</I>
+<LI><A HREF="File.html">File</A> <I>
+Obiekty tej klasy to standardowe pliki systemu UNIX(R)</I>
+<LI><A HREF="FileInfo.html">FileInfo</A> <I>
+Obiekty tej klasy zawieraj± informacje na temat istniej±cych plików takie
+jak: data ostatniej modyfikacji i rozmiar</I>
+<LI><A HREF="HTTPConnection.html">HTTPConnection</A> <I>
+Klasa implementuj±ca interfejs AsyncConnection i realizuj±ca po³±czenie z
+klientem (cze¶ci± obiektu HTTPConnection jest obiekt AsyncSocket)</I>
+<LI><A HREF="HTTPRequest.html">HTTPRequest</A> <I>
+Obiekt tej klasy zajmuje siê parsowaniem zapytania klienta, zrozumieniem
+go oraz wygenerowaniem w³a¶ciwej odpowiedzi (zgodnie z protoko³em HTTP)</I>
+<LI><A HREF="ParentThread.html">ParentThread</A> <I>
+Obiekt tej klasy, istniej±cy tylko w procesie-rodzica, odpowiedzialny
+jest za przyjmowanie nowych po³±czeñ od klientów oraz przekazywanie ich
+procesom-dzieciom za pomoc± obiektów ConnectionWithChild</I>
+<LI><A HREF="Properties.html">Properties</A> <I>
+Obiekty tej klasy potrafi± wczytaæ plik tekstowy zawieraj±cy pary
+klucz-warto¶æ oraz zapamiêtaæ go tak (dziêki obiektowi klasy Vector), by
+odszukiwanie danej warto¶ci na podstawie podanego klucza odbywa³o siê
+szybko</I>
+<LI><A HREF="PropertiesNode.html">PropertiesNode</A> <I>
+Prywatna klasa klasy Properties zapamiêtuj±ca (jako obiekty klasy String)
+klucz i odpowiadaj±c± mu warto¶æ</I>
+<LI><A HREF="Socket.html">Socket</A> <I>
+Obiekty tej klasy to standardowe gniazda (socket'y) systemu UNIX(R)</I>
+<LI><A HREF="SString.html">SString</A> <I>
+Obiekty tej klasy u³atwiaj± operacje na ci±gach znaków, poprzez
+zdefiniowanie kilku operatorów oraz posiadanie statycznego bufora o
+wielko¶ci 512 bajtów</I>
+<LI><A HREF="String.html">String</A> <I>
+Klasa u³atwiaj±ce korzystanie z danych z³o¿onych z ci±gów znaków</I>
+<LI><A HREF="SystemException.html">SystemException</A> <I>
+Klasa pochodna klasy Exception zapewniaj±ca dodatkowo komunikaty o
+b³êdach pochodz±ce bezpo¶rednio od systemu operacyjnego (na podstawie
+zmiennej errno i funkcji strerror)</I>
+<LI><A HREF="Vector.html">Vector</A> <I>
+Implementacja struktury danych okre¶lanej jako dynamiczna tablica</I>
+</UL>
+<H2>Functions, Macros</H2>
+<UL>
+<LI><A HREF="getChildNo.html">getChildNo</A> <I>
+Funkcja zwraca nr procesu-dziecka [1</I>
+</UL>
+<I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
+<STRONG>
+Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
+Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
+ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
+autorów.
+<P>
+This documentation and all of the sources are copyright protected and
+may not be used or published in other works without express written
+permission from the authors.
+</P>
+</STRONG>
+Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+
+<HR>
+
+<P ALIGN="CENTER">
+<SMALL>
+<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../projektowa.html">Dokumentacja projektowa</A> |
+<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+</SMALL>
+</P>
+
+<P Align=right><I>generated by <A HREF="http://www.zib.de/Visual/software/doc++/index.html">doc++</A></I>
+</BODY>

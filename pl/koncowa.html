@@ -1,0 +1,853 @@
+<HTML>
+
+<HEAD>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-2">
+  <META NAME="authors" CONTENT="Lukasz Holody, Michal Jacykiewicz, Marcin Jarzab, Marek Konieczny">
+  <META NAME="generator" CONTENT="Yatz's & Carlos' minds powered by Linux 2.0.36 i586">
+  <TITLE>Systemy operacyjne - daemon HTTP - dokumentacja koncowa</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../../../gfx/backs/ltbrush.gif">
+
+<H1 ALIGN="CENTER">Systemy operacyjne - projekt</H1>
+<H3 ALIGN="RIGHT">
+<A HREF="mailto:holody@ds5.agh.edu.pl">Łukasz Hołody</A><BR>
+<A HREF="mailto:yac@icslab.agh.edu.pl">Michał Jacykiewicz</A><BR>
+<A HREF="mailto:bombel@ds14.agh.edu.pl">Marcin Jarząb</A><BR>
+<A HREF="mailto:carlos@ds14.agh.edu.pl">Marek Konieczny</A>
+</H3>
+
+<B>
+<BIG>
+<OL TYPE="I">
+<LI><A HREF="#temat">Temat zadania</A></LI>
+<LI><A HREF="#zalozenia">Założenia ogólne</A></LI>
+<LI><A HREF="#http">Opis protokołu HTTP</A></LI>
+  <SMALL>
+  <OL>
+    <LI><A HREF="#podstawy">Podstawy HTTP</A></LI>
+    <LI><A HREF="#zapytanie">Zapytanie klienta</A></LI>
+    <LI><A HREF="#kody">Kody odpowiedzi serwera</A></LI>
+    <LI><A HREF="#naglowki">Nagłówki HTTP</A></LI>
+  </OL>
+  </SMALL>
+<LI><A HREF="#projekt">Projekt</A></LI>
+<SMALL>
+<OL>
+  <LI><A HREF="#dyskusja">Dyskusja możliwych wariantów realizacji projektu</A></LI>
+  <LI><A HREF="#obiekty">Model obiektowy</A></LI>
+  <LI><A HREF="#klasy">Opis zaprojektowanych klas</A></LI>
+  <LI><A HREF="#dzialanie">Opis sposobu funkcjonowania oprogramowania</A></LI>
+  <LI><A HREF="#zmiany">Zmiany w projekcie</A></LI>
+</OL>
+</SMALL>
+<LI><A HREF="#implementacja">Implementacja</A></LI>
+<SMALL>
+<OL>
+  <LI><A HREF="#kompatybilnosc">Kompatybilność</A></LI>
+  <LI><A HREF="#kompilacja">Informacje o sposobie kompilacji</A></LI>
+  <LI><A HREF="#podrecznik">Podręcznik użytkownika</A></LI>
+</OL>
+</SMALL>
+<LI><A HREF="#podsumowanie">Podsumowanie</A></LI>
+</OL>
+</BIG>
+</B>
+
+<HR WIDTH="60%" SIZE="3">
+
+
+<OL TYPE="I">
+
+<A NAME="temat"></A>
+<H3><LI>Temat zadania</LI></H3>
+<P>
+Serwer WWW (daemon HTTP).
+</P>
+
+<A NAME="zalozenia"></A>
+<H3><LI>Założenia ogólne</LI></H3>
+
+<UL TYPE="DISC">
+  <LI>Demon HTTP pracujący w środowisku UNIX</A><SMALL>&reg;</SMALL>.</LI>
+  <LI>Komunikacja wg protokołu HTTP w wersji 1.0.</LI>
+  <LI>Implementacja w języku C++ z wykorzystaniem funkcji standardu POSIX.</LI>
+  <LI>Wykorzystanie wielowątkowości oraz zaawansowanych sposobów komunikacji międzyprocesowej.</LI>
+</UL>
+
+<A NAME="http"></A>
+<H3><LI>Opis protokołu HTTP</LI></H3>
+
+<OL>
+
+<A NAME="podstawy"></A>
+<H4><LI>Podstawy HTTP</LI></H4>
+
+<P>
+<B>The Hyper Transfer Protocol (HTTP)</B> jest językiem jakiego klienci
+sieci WWW i serwery pracujące w tej sieci używają do porozumiewania się.
+Jest to właściwie podstawa sieci WWW. Bazuje on na wzajemnej wymianie
+nagłówków żądania i odpowiedzi (ang. <I>request and response headers</I>) w
+wielu wierszach. Mamy tutaj do czynienia z klientem (przeglądarką), który
+inicjuje komunikację, poprzez wysłanie do serwera nagłówka żądania.
+Następnie serwer odpowiada na to żądanie wysłaniem nagłówka odpowiedzi wraz
+z dołączonymi danymi, które są żądanymi zasobami (strona WWW, plik
+graficzny, audio itp.).
+</P>
+
+Wszystkie transakcje HTTP budowane są na podstawie tego samego, zasadniczego
+formatu. Każde zapytanie i odpowiedź klienta składa się z trzech części:
+linii zapytania lub odpowiedzi, sekcji nagłówków i zasadniczej części.
+
+<P>Klient inicjuje transakcje w sposób następujący:</P>
+
+<UL TYPE="DISC">
+  <LI>Połączenie z serwerem na porcie o określonym numerze (domyślnie jest to 80). Następnie jest zapytanie o dokument, zawierajace polecenie <I>method</I>, po którym umieszczony jest adres dokumentu i numer wersji HTTP (używanej przez klienta).</LI>
+  <LI>Następnie klient przesyła opcjonalnie informacje zawarte w nagłówku, informując serwer o swojej konfiguracji oraz akceptowanych formatach dokumentów. Każda informacja zawarta w nagłówku umieszczana jest w osobnych liniach, zawierających nazwę nagłówka i przekazywaną wartość. Na zakończenie części zawierającej nagłówek wysyłana jest pusta linia.</LI>
+  <LI>Następnie klient może wysłać dodatkowe dane (np. dane do programów <CODE>CGI</CODE> obsługujące metodę <CODE>POST</CODE>).</LI>
+</UL>
+
+<P>Natomiast serwer odpowiada w sposób następujący:</P>
+
+<UL TYPE="DISC">
+  <LI>Serwer wysyła odpowiedź w postaci linii zawierającej trzy pola: wersja HTTP, kod stanu i opis. Pole zawierające wersję HTTP informuje o numerze wersji protokołu jaka została użyta do udzielenia odpowiedzi. Pole zawierające kod stanu jest polem o o trzech cyfrach zawierajacy wynik działania na serwerze, wysyłanego przez klienta zapytania. Opis, który następuje po kodzie stanu, jest zwykłym tekstem, który w postaci notatki opisuje znaczenie kodu stanu.</LI>
+  <LI>Po linii stanu, serwer wysyła do do klienta informacje nagłówka zawierające dane dotyczace serwera i dokumentu żądanego przez klienta. Po nagłówku zawsze natępuje linia pusta, oznaczająca jegokoniec.</LI>e
+  <LI>Jeśli zapytanie klienta zostało odebane i przetworzone pomyślnie, przesyłane są żądane przez niego dane (kopia pliku lub odpowiedź wygenerowana przez program <CODE>CGI</CODE>). Jeśli zapytanie klienta nie może być spełnione, wysyłane są informacje dlaczego serwer nie może odpowiedzieć na zapytanie.</LI>
+</UL>
+
+<P>
+W HTTP 1.0, po zakończeniu wysyłania przez serwer odpowiedzi następuje
+zakończenie transakcji i rozłączenie z klientem. Zabezpieczeniem przed
+zrywaniem połączeń jest wysyłanie nagłówka <I>Connection: Keep Alive</I>. W
+HTTP 1.1, transakcja może rwać dopóty, dopóki program klienta lub serwer
+wyraźnie nie zarządają zakończenia połączenia. Będąc protokołem bez kontroli
+stanu, HTTP nie może przekazywać informacji z jednej transakcji do drugiej,
+przez co każda następna transakcja musi rozpoczynać całą procedurę od
+początku. Zaletą takiego rozwiązania jest to, że serwer HTTP może w tym
+czasie obsłużyć znacznie większą liczbę odwołań od klientów, właśnie dzięki
+temu, że nie jest obciążony dodatkowymi zadaniami śledzenia parametrów sesji
+i przekazywania ich z połączenia na połączenie. Wadą natomiast konieczność
+wykorzystywania ukrytych pól tekstowych lub <I>cookies</I> dla
+przechowywania informacji i przekazywania ich z jednej transakcji do
+drugiej.
+
+</P>
+
+<A NAME="zapytanie"></A>
+<H4><LI>Zapytanie klienta</LI></H4>
+
+<P>
+Zapytania klienta dzielone są na trzy części. Pierwsza linia wysyłanej do
+serwera wiadomości zawsze zawiera polecenie HTTP o nazwie <I>method</I>,
+następnie umieszczany jest <CODE>URI</CODE> (<I>Uniform Resources Identifier</I>)
+wskazujący plik lub zasoby, o które klient pyta oraz numer wersji używanego
+HTTP. Następne linie zapytania zawierają informacje nagłówkowe, gdzie
+umieszczone są dane zawierające informacje o rodzaju danych przesyłanych do
+serwera. Trzecia część zapytania klienta zawiera zasadniczą informację,
+którą są przesyłane do serwera dane.
+</P>
+
+<P>
+Metodą jest polecenie HTTP umieszczone na początku pierwszej linii zapytania
+wysyłanego przez klienta. Metoda informuje serwer o celu wysłania zapytania.
+Istnieją trzy główne metody, zdefiniowane dla protokołu HTTP: <CODE>GET</CODE>, <CODE>HEAD</CODE>,
+<CODE>POST</CODE>. Inne metody również mają przyjętą definicję, ale nie są obsłógiwane
+przez tak dużą liczbę serwerów. Nazwy metod muszą być pisane dużymi
+literami.
+</P>
+
+<UL TYPE="DISC">
+
+<A NAME="GET"></A>
+<B><LI>Metoda <CODE>GET</CODE></LI></B> jest zapytaniem o informacje
+znajdujące się pod określonym adresem <CODE>URI</CODE> na serwerze. Jest ona powszechnie
+używana przez przeglądarki do ściągania i wyświetlania zawartości
+dokumentów. Jeśli klient w wysłanym zapytaniu używa <CODE>GET</CODE>, serwer odpowiada mu
+linią stanu, nagłówkami oraz przesyła potrzebne dane. Jeśli z powodu błędów
+serwer nie jest w stanie odpowiedzieć na zapytanie, wysyła do klienta
+wyjaśnienie w postaci tekstu umieszczonego w części odpowiedzi zawierającej
+dane. Część zasadnicza zapytania <CODE>GET</CODE> jest zawsze pusta. Jest to więc rodzaj
+rozkazu o określony plik. Nazwa tego pliku jest zwykle określona przez
+podanie pełnej ścieżki dostępu na serwerze. Metoda <CODE>GET</CODE> jest również
+wykorzystywana do przesyłania danych z formularzy do <CODE>CGI</CODE>. Przesyłane dane
+dołączane są do URL i znajdują się w tej samej linii zapytania co polecenie
+<CODE>GET</CODE>. Jeśli określono metodę jako <CODE>GET</CODE>, to po znaku zapytania, umieszczonym po
+URL, dopisywane są wszystkie pary klucz=wartość, zawierające dane z
+wypełnionego formularza. Pary te rozdzielane są ampersandem. Aby używać
+specjalnych znaków w charakterze zwykłych, oprogramowanie klienta musi
+stosować notację szesnastkową.
+
+<A NAME="HEAD"></A>
+<B><LI>Metoda <CODE>HEAD</CODE></LI></B> jest z punktu widzenia sposobu
+działania podobna do <CODE>GET</CODE>, z tą różnicą, że serwer nie wysyła
+żadnych informacji w części odpowiedzi przeznaczonej na dane. Metoda
+<CODE>HEAD</CODE> pozwala więc na pobranie z serwera informacji o pliku lub
+zasobach serwera. Metoda ta jest używana wtedy, gdy klient chce znaleźć
+informację o dokumencie i jednocześnie nie chce tego dokumentu kopiować z
+serwera. Np. klient może otrymywać następujące informacje:
+<UL>
+  <LI>czas ostatniej modyfikacji dokumentu (przydatne przy keszowaniu)</LI>
+  <LI>rozmiar dokumentu (dane przydatne przy określaniu wyrównania strony, przewidywanego czasu przesyłania pliku itp.)</LI>
+  <LI>rodzaj dokumentu (przy przeglądaniu dokumetów tylko tego samego typu)</LI>
+  <LI>rodzaj serwera (właściwe przygotowanie zapytań)</LI>
+</UL>
+
+<A NAME="POST"></A>
+
+<B><LI>Metoda <CODE>POST</CODE></LI></B> pozwala na przesyłanie danych do
+serwera w zapytaniu wysyłanym przez klienta. Dane te są następnie kierowane
+do programu dokonującego ich analizy (najczęściej skrypt <CODE>CGI</CODE>).
+można jej użyć np do:
+<UL>
+  <LI>serwisów sieciowych, takich jak korespondencja do grup dyskusyjnych</LI>
+  <LI>programów pracujących z interfejsem linii poleceń</LI>
+  <LI>dokonania adnotacji w dokumentach na serwerze</LI>
+  <LI>programów obsługujących bazy danych</LI>
+</UL>
+Dane, które wysyłane są do serwera, umieszczone są w zasadniczej części
+przesyłanego zapytania. Po przetworzeniu przez serwer zapytania typu
+<CODE>POST</CODE> i jego nagłówków, pozostała część wiadomości przekazywana
+jest do programu, który wskazano w <CODE>URI</CODE>. Pozwala to na translację danych do
+postaci listy zmiennych i wartosci przetwarzanych następnie przez
+<CODE>CGI</CODE>.
+<BR><BR>
+<A NAME="INNE"></A>
+<B><LI>Inne metody</LI></B>
+Poniższe metody są zdefiniowane, choć nie są zbyt często stosowane:
+<UL>
+  <LI><CODE><B>LINK</B></CODE> - wymaga aby informacja zawarta w nagłówku była skojarzona z dokumentem znajdującym się na serwerze</LI>
+  <LI><CODE><B>UNLINK</B></CODE> - wymaga aby informacja zawarta w nagłówku była oddzielona od dokumentu na serwerze</LI>
+  <LI><CODE><B>PUT</B></CODE> - wymaga aby cała zasadnicza część zapytania została zapisana w określonym <CODE>URI</CODE></LI>
+  <LI><CODE><B>DELETE</B></CODE> - wymaga usunięcia danych określonych przez <CODE>URI</CODE>, znajdujących się w serwerze</LI>
+  <LI><CODE><B>OPTIONS</B></CODE> - wymaga przesłania informacji o opcjach komunikacyjnych dostępnych na serwerze. Symbol gwiazdka ( * ) oznacza przesłanie wszystkich informacji dostępnych na serwerze</LI>  
+  <LI><CODE><B>TRACE</B></CODE> - wymaga aby cała zasadnicza część wysyłanego zapytania została odesłana w nienaruszonej postaci</LI> 
+</UL>
+
+</UL>
+
+<A NAME="kody"></A>
+<H4><LI>Kody odpowiedzi serwera</LI></H4>
+
+Odpowiedź serwera na zapytanie klienta podzielona jest na trzy części.
+Pierwsza linia to linia odpowiedzi wysłanej przez serwer, w której znajduje
+się numer wersji HTTP, numer określający status zapytania oraz krótki tekst
+opisujący ten status. Po pierwszej linii odpowiedzi następują: informacja o
+nagłówku oraz zasadnicza część wiadomości.Pierwsza linia informuje czy
+zapytanie klienta powiodło się czy też nie oraz dlaczego tak się stało.
+Status podawany jest za pomocą <I>kodu odpowiedzi</I> zapisanego trzema
+cyframi, po którym następuje informacja wyjaśniająca. Kody statusu są zwykle
+generowane przez serwery WWW, mogą być także generowane przez skrypty
+<CODE>CGI</CODE>, które pomijają nagłówki serwera i dopisuja własne. Kody te
+pogrupowane są w następujące zestawy:
+
+<BR><BR>
+<CENTER>
+<TABLE BORDER CELLSPACING="1" CELLPADDING="1">
+<TR>
+  <TD><B><CENTER>Zakres kodu</CENTER></B></TD>
+  <TD><B><CENTER>Znaczenie odpowiedzi</CENTER></B></TD>
+</TR><TR>
+  <TD><CENTER>100 - 199</CENTER></TD>
+  <TD>informacyjne</TD>
+</TR><TR>
+  <TD><CENTER>200 - 299</CENTER></TD>
+  <TD>zapytanie klienta powiodło się</TD>
+</TR><TR>
+  <TD><CENTER>300 - 399</CENTER></TD>
+  <TD>zapytanie klienta zostało przekazane, konieczne dalsze działanie</TD>
+</TR><TR>
+  <TD><CENTER>400 - 499</CENTER></TD>
+  <TD>zapytanie klienta nie powiodło się</TD>
+</TR><TR>
+  <TD><CENTER>500 - 599</CENTER></TD>
+  <TD>błąd serwera</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<P>
+Protokół HTTP definiuje tylko kilka kodów w każdym z podanych zakresów, inne
+kody mogą być definiowane przez serwer. Jesli oprogramowanie otrzyma
+odpowiedź z kodem, którego nie potrafi rozpoznać, powinno przynajmniej
+rozpoznać podstawowe jego znaczenie.
+</P>
+
+<A NAME="naglowki"></A>
+<H4><LI>Nagłówki HTTP</LI></H3>
+
+Nagłówki HTTP używane są do przekazywania wszelkiego rodzaju informacji
+pomiędzy klientem a serwerem. Są cztery różne kategorie nagłówków:
+
+<OL TYPE="a">
+  <LI><B>ogólne</B> - informacje nie związane z klientem, serwerem lub HTTP</LI>
+  <LI><B>zapytanie</B> - preferowane formaty dokumentów i parametry serwera</LI>
+  <LI><B>odpowiedź</B> - informacje na temat serwera wysyłającego odpowiedź</LI>
+  <LI><B>zawartość</B> - informacje o danych przesyłanych pomiedzy klientem i serwerem</LI>
+</OL>
+
+Nagłówki z kategorii ogólne i zawartość są takie same dla klienta i serwera.
+Wszystkie nagłówki znajdujące sie w wiadomości HTTP zawierają nazwę
+nagłówka, po której następuje dwukopek (:), spacja i wartość nagłówka. W
+nazwach nagłówka nie jest rozróżnialna wielkość liter. Wartość nagłówka może
+zajmować kilka linii, pod warunkiem że każda nowa linia rozpoczyna się
+przynajmniej jedną spacją lub tabulatorem.
+
+<BR>
+
+W specyfikacji HTTP 1.1 możemy wyróżnić:
+
+<OL TYPE="a">
+  <LI><B>nagłówki ogólne</B> - nagłówki te używane są w zapytaniach klienta jak i w odpowiedziach serwera<BR></LI>
+  <LI><B>nagłówki zapytania klienta</B> - informują serwer o konfiguracji oprogramowania klienta i preferowanych formatach dokumentów. Są umieszczane w wiadomosciach wysyłanych przez klienta i zawierają informacje tylko o nim. </LI><BR>
+  <LI><B>nagłówki odpowiedzi serwera</B> - używane są w przesyłanych przez serwer komunikatach i zawierają informacje o serwerze oraz sposobie w jaki obsługuje on zapytanie. <BR></LI>
+  <LI><B>nagłówki zawartości</B> - używane są zarówno w zapytaniach klienta jak i odpowiedziach serwera. Zawierają informacje o danych przesyłanych w wiadomościach HTTP.</LI>
+</OL>
+
+</OL>
+
+<A NAME="projekt"></A>
+<H3><LI>Projekt</LI></H3>
+<OL>
+
+<A NAME="dyskusja"></A>
+<H4><LI>Dyskusja możliwych wariantów realizacji projektu</LI></H4>
+
+<P>
+Projekt można było zrealizować na conajmniej kilka sposobów.
+Warianty te zostały omówionie w
+<A HREF="projektowa.html#dyskusja">dokumentacji projektowej</A>.
+<BR>
+
+Wystarczy, że wspomnimy tutaj, iż wybraliśmy wariant, który umożliwia
+obsługiwanie największej liczby (w porównaniu do pozostałych)
+połączeń z klientami (bo blisko <CODE>M * N</CODE>, gdzie
+<CODE>N</CODE> - jest maksymalną liczbą otwartych deskryptorów dla
+jednego procesu, zaś <CODE>M</CODE> - maksymalną liczbą jednocześnie
+działających procesów jednego użytkownika). Tak wysoką sprawność
+uzyskaliśmy dzięki przestawieniu całej komunikacji (tj. tej z
+klientami oraz tej między procesem-rodzicem a procesem-dzieckiem) na
+połączenia nieblokujące (asynchroniczne socket'y). Poza tym,
+rodzieliliśmy zadanie przyjmowania połączenia, które wykonuje
+proces-ojciec oraz obsługę połączeń HTTP, które wykonują
+procesy-dzieci.
+
+</P>
+
+<A NAME="obiekty"></A>
+<H4><LI>Model obiektowy</LI></H4>
+
+<P>
+<A HREF="oo/project__.Package.gif.html">GIF 3032x1386 [26K + 64K]</A>
+</P>
+
+
+<A NAME="klasy"></A>
+<H4><LI>Opis zaprojektowanych klas</LI></H4>
+
+<UL>
+
+<P><LI><A HREF="doc/Exception.html">klasa <CODE><B>Exception</B></CODE></A> - obiekty tej klasy są
+<I>wyjątkami</I> języka C++ rzucanymi (jak
+nazwa wskazuje) w sytacjach wyjątkowych (np. niepowodzenia wywołania
+funkcji systemowej). Ułatwa to kontrolę sterowania programem oraz
+generowania treściwych komunikatów o błędach i miejscach ich
+wystąpienia.
+</LI></P>
+
+<P><LI><A HREF="doc/SystemException.html">klasa <CODE><B>SystemException</B></CODE></A> - klasa pochodna klasy
+<CODE>Exception</CODE> zapewniająca dodatkowo komunikaty o błędach
+pochodzące bezpośrednio od systemu operacyjnego (na podstawie
+zmiennej <CODE>errno</CODE> i funkcji
+<CODE>strerror</CODE>).
+</LI></P>
+
+<P><LI><A HREF="doc/EOFException.html">klasa <CODE><B>EOFException</B></CODE></A> - obiekt tej klasy jest
+<I>wyjątkiem</I> w sensie języka <CODE>C++</CODE> rzucanym
+w sytuacji, gdy zażądano odczytu z deskryptora dokładnej porcji danych
+(tzn. nie akceptowana jest porcja mniejsza), zaś
+system operacyjny informuje, iż do czytania już nic więcej nie
+ma.<BR>
+Klasa dziedziczy publicznie po klasie <CODE>SystemException</CODE>.
+</LI></P>
+
+<P><LI><A HREF="doc/SString.html">klasa <CODE><B>SString</B></CODE></A> - obiekty tej klasy
+ułatwiają operacje na ciągach znaków, poprzez zdefiniowanie kilku
+operatorów oraz posiadanie statycznego bufora o wielkości 512 bajtów.
+Potrafią też formatować tekst tak jak czyni to np. funkcja
+<CODE>sprintf</CODE>.<BR>
+Wykorzystywana głównie przez klasy <CODE>Exception</CODE>,
+<CODE>SystemException</CODE> i <CODE>EOFException</CODE>.
+</LI></P>
+
+<P><LI><A HREF="doc/Descriptor.html">klasa <CODE><B>Descriptor</B></CODE></A> - klasa ta obudowuje
+klasyczne UNIXowe funkcje operujące na deskryptorach w klasę języka C++, by
+uprościć korzystanie z nich, a jednocześnie zapewnić lepszą obsługę
+sytuacji awaryjnych (niepowodzeń wywołań tychże funkcji systemowych)
+poprzez rzucanie wyjątków języka C++, a przez to ułatwienie
+sterowania wykonywaniem programu. Metody tej klasy są wspólne dla
+plików jak i gniazd.
+</LI></P>
+
+<P><LI><A HREF="doc/File.html">klasa <CODE><B>File</B></CODE></A> - obiekty tej klasy to
+standardowe pliki systemu UNIX<SMALL>&reg;</SMALL>.
+Celem obudowania funkcji do obsługi plików w jedną
+klasę jest uproszczenie i uczynienie bardziej przejrzystym kodu
+źródłowego.<BR>
+Klasa dziedziczy publicznie klasę <CODE>Descriptor</CODE>. Zawiera
+dodatkowe metody specyficzne dla plików, takie jak blokowanie pliku,
+zmiana pozycji z której będa czytane lub zapisywane dane, pobieranie
+rozmiaru pliku, czy też daty jego ostatniej modyfikacji.
+</LI></P>
+
+<P><LI><A HREF="doc/FileInfo.html">klasa <CODE><B>FileInfo</B></CODE></A> - obiekty tej klasy
+zawierają informacje na temat istniejących plików takie jak: data
+ostatniej modyfikacji i rozmiar. Klasa pozwala na
+uzyskiwanie tych informacji bez otwierania wskazanego pliku.
+</LI></P>
+
+<P><LI><A HREF="doc/Socket.html">klasa <CODE><B>Socket</B></CODE></A> - obiekty tej klasy to
+standardowe gniazda (socket'y) systemu UNIX<SMALL>&reg;</SMALL>.
+Klasa rozszerza możliwości klasy <CODE>Descriptor</CODE> o metody
+specyficzne dla deskryptorów gniazd (takie jak: <CODE>connect</CODE>,
+<CODE>bind</CODE>, <CODE>listen</CODE>, <CODE>accept</CODE>).
+</LI></P>
+
+<P><LI><A HREF="doc/AsyncSocket.html">klasa <CODE><B>AsyncSocket</B></CODE></A> - klasa ta,
+dziedzicząca publicznie po klasie <CODE>Socket</CODE>, zmienia
+wywołania niektórych jej metod, by poprawnie zachowywały się dla
+połączeń asynchronicznych (nieblokujących).
+</LI></P>
+
+<P><LI><A HREF="doc/AsyncMessageQueue.html">klasa <CODE><B>AsyncMessageQueue</B></CODE></A> - klasa ta
+(dziedzicząca prywatnie klasę <CODE>AsyncSocket</CODE>) służy przede
+wszystkim do komunikacji międzyprocesowej. Oprócz zwykłych danych
+pozwala także przekazywać otwarte deskryptory plików i gniazd
+(socketów) innym procesom. Ze względu na potrzeby tego projektu oraz
+wymagane jej cechy
+została ona zrealizowana na łączu komunikacyjnym nieblokującym
+(asynchronicznym socket'cie w dziedzinie UNIXa).
+</LI></P>
+
+<P><LI><A HREF="doc/AsyncConnection.html">klasa <CODE><B>AsyncConnection</B></CODE></A> - klasa ta jest
+<I>interfejsem</I>, który muszą implementować obiekty, które życzą
+sobie być obsługiwane przez <CODE>ConnectionsManager</CODE>'a.
+Zawiera wirtualne metody (w sensie języka C++), które przykryte
+przez klasy dziedziczące tę klasę, zostaną wywołane, gdy zajdą
+sprzyjające ku temu okoliczności, tj. gdy obiekt ten poinformuje, iż
+interesuje go np. zdarzenie &quot;możliwość pisania na jego
+deskryptorze&quot; i jednoczeście system operacyjny poinformuje
+obiekt <CODE>ConnectionsManager</CODE> za pomocą funkcji
+<CODE>select</CODE>, że taka możliwość istnieje.
+Innymi słowy, za pomocą klasy <CODE>AsyncConnection</CODE> i
+<CODE>ConnectionsManager</CODE>, realizujemy <B>programowanie
+zdarzeniowe</B>.
+</LI></P>
+
+<P><LI><A HREF="doc/ConnectionsManager.html">klasa <CODE><B>ConnectionsManager</B></CODE></A> - obiekt tej klasy
+potrafi zarządzać grupą obiektów, które implementują interfejs
+<CODE>AsyncConnection</CODE> i realizują nieblokujące połączenie z
+użyciem UNIXowych deskryptorów. Obiektowi tej klasy oddaje się
+sterowanie zarówno w procesie-rodzicu, jak i w procesach potomnych.
+Dzięki klasie <CODE>AsyncConnection</CODE> metody z innych obiektów
+mogą być wywoływane w odpowiednich dla nich momentach, tj. gdy zajdą
+zdarzenia &quot;możliwość pisania na deskryptorze&quot; lub/i
+&quot;możliwość czytania z deskryptora&quot. Obiekt tej klasy usuwa
+zamknięte połączenia w sposób umożliwiający ich dalsze wykorzystanie
+po re-inicjalizacji.
+</LI></P>
+
+<P><LI><A HREF="doc/HTTPConnection.html">klasa <CODE><B>HTTPConnection</B></CODE></A> - klasa
+implementująca interfejs <CODE>AsyncConnection</CODE> i realizująca
+połączenie z klientem (cześcią obiektu <CODE>HTTPConnection</CODE> jest obiekt
+<CODE>AsyncSocket</CODE>). Zajmuje się tylko odbieraniem (i
+zapamiętywaniem) danych przesłanych od klienta, oraz wysyłaniem
+odpowiedzi wygenerowanej przez obiekt <CODE>HTTPRequest</CODE>.
+Obiekt tej klasy potrafi też wysłać plik wskazany przez
+<CODE>HTTPRequest</CODE>'a.<BR>
+</LI></P>
+
+<P><LI><A HREF="doc/HTTPRequest.html">klasa <CODE><B>HTTPRequest</B></CODE></A> - obiekt tej klasy
+zajmuje się parsowaniem zapytania klienta, zrozumieniem go oraz
+wygenerowaniem właściwej odpowiedzi (zgodnie z protokołem HTTP).
+Wskazuje też oraz otwiera plik, którego wysłaniem zająć się ma obiekt
+<CODE>HTTPConnection</CODE>.
+</LI></P>
+
+<P><LI><A HREF="doc/ResponseHeader.html">klasa <CODE><B>ResponseHeader</B></CODE></A> - prywatna klasa
+klasy <CODE>HTTPRequest</CODE>. Jej obiekty są nagłówkami odpowiedzi
+wysyłanymi do klientów. Atrybutami tych oiektów są: kod odpowiedzi, jej krótki
+opis, opis w HTMLu.
+</LI></P>
+
+<P><LI><A HREF="doc/ChildThread.html">klasa <CODE><B>ChildThread</B></CODE></A> - obiekt tej klasy
+odpowiedzialny są za przyjmowanie nowych połączeń od procesu-rodzica,
+tworzenie z nich obiektów <CODE>HTTPConnection</CODE>
+i obsługę tychże.<BR>
+Jego częścią jest obiekt <CODE>ConnectonsManager</CODE>, który
+&quot;załatwia całą robotę&quot; z połączeniami.<BR>
+Klasa <CODE>ChildThread</CODE> implementuje interfejs <CODE>AsyncConnection</CODE>.
+</LI></P>
+
+<P><LI><A HREF="doc/ConnectionWithChild.html">klasa <CODE><B>ConnectionWithChild</B></CODE></A> - każdy obiekt
+tej klasy zajmuje się komunikacją między procesem-rodzicem
+a jednym procesem-dzieckiem, po stronie procesu-ojca. Potrafi
+przekazać dziecku nowe połączenie (deskryptor gniazda przekazany za
+pomocą obiektu <CODE>AsyncMessageQueue</CODE>, który jest jego
+częścią) oraz odebrać informację
+o aktualnej ilości otwartych połączeń procesu-dziecka. To on nie
+pozwala, by proces-dziecko miało większą niż dozwolona w pliku
+konfiguracyjnym ilość jednocześnie otwartych połączeń.<BR>
+Klasa implementuje interfejs <CODE>AsyncConnection</CODE>.
+</LI></P>
+
+<P><LI><A HREF="doc/ParentThread.html">klasa <CODE><B>ParentThread</B></CODE></A> - obiekt tej klasy,
+istniejący tylko w procesie-rodzica, odpowiedzialny jest za przyjmowanie nowych połączeń
+od klientów oraz przekazywanie ich procesom-dzieciom za pomocą
+obiektów <CODE>ConnectionWithChild</CODE>.<BR>
+Klasa implementuje interfejs <CODE>AsyncConnection</CODE>, do obsługi
+asynchronicznego gniazda połączeniowego, na którym nasłuchuje w
+oczekiwaniu na nowe połączenia &quot;ze świata&quot;.
+</LI></P>
+
+<P><LI><A HREF="doc/Vector.html">klasa <CODE><B>Vector</B></CODE></A> - implementacja struktury danych
+określanej jako dynamiczna tablica. Przechowuje wskaźniki do
+&quot;czegokolwiek&quot; (<CODE>void *</CODE>). Po dostarczeniu jej
+funkcji porównującej potrafi sortować oraz wyszukiwać pożądane
+elementy.<BR>
+Klasa potrzebna między innymi klasie <CODE>Properties</CODE>,
+<CODE>ConnectionsManager</CODE> i <CODE>ChildThread</CODE>.
+</LI></P>
+
+<P><LI><A HREF="doc/Properties.html">klasa <CODE><B>Properties</B></CODE></A> - obiekty tej klasy
+ potrafią wczytać plik tekstowy zawierający pary
+<CODE>klucz-wartość</CODE> oraz zapamiętać go tak (dzięki obiektowi
+klasy <CODE>Vector</CODE>), by odszukiwanie danej wartości na
+podstawie podanego klucza odbywało się szybko. Klasa ta rozpoznaje
+linie komentarza rozpoczynające się od znaku
+&quot;<CODE>#</CODE>&quot;. Akceptuje odwrotną kolejność w pliku tekstowym, a
+także wiele kluczy dla jednej wartości.<BR> Wykorzystana przede
+wszystkim do wczytania pliku z <CODE>MimeTypes</CODE> oraz pliku
+konfiguracyjnego dla tego daemona.
+</LI></P>
+
+<P><LI><A HREF="doc/PropertiesNode.html">klasa <CODE><B>PropertiesNode</B></CODE></A> - prywatna klasa
+klasy <CODE>Properties</CODE> zapamiętująca (jako obiekty klasy
+<CODE>String</CODE>) <CODE>klucz</CODE> i odpowiadającą mu
+<CODE>wartość</CODE>.
+</LI></P>
+
+<P><LI><A HREF="doc/String.html">klasa <CODE><B>String</B></CODE></A> - klasa ułatwiające korzystanie z
+danych złożonych z ciągów znaków. Podobna do klasy
+<CODE>SString</CODE>, jednak tutaj bufor znakowy jest przydzielany
+dynamicznie (<CODE>malloc</CODE>), zaś jego wielkość nieograniczona.<BR>
+Potrzebna między innymi klasie <CODE>Properties</CODE>.
+</LI></P>
+
+<P><LI><A HREF="doc/Configuration.html">klasa <CODE><B>Configuration</B></CODE></A> - klasa dziedzicząca
+prywatnie po klasie <CODE>Properties</CODE> a stworzona, by wygodniej
+obsługiwać plik konfiguracyjny naszego daemona.
+</LI></P>
+
+</UL>
+
+
+
+<A NAME="dzialanie"></A>
+<H4><LI>Opis sposobu funkcjonowania oprogramowania</LI></H4>
+
+<P>
+<A NAME="conf"></A>
+Po uruchomieniu program czyta swój <B>plik konfiguracyjny</B> o
+nazwie <B><CODE>yhttpd.conf</CODE></B>, w którym zawarte
+muszą być takie informacje:
+</P>
+
+<UL>
+<LI>
+<P>
+<B><CODE>BindAddress</CODE></B> - adres <CODE>IP</CODE> na którym na nasłuchiwać.
+W większości wypadków wystarczy <CODE>0.0.0.0</CODE>, co oznacza, że pakiety przychodzące
+na każdy z posiadanych przez ten komputer interfejsów sieciowych mają
+być przekazywane naszemu procesowi (pod warunkiem oczywiście, że zgadzał
+się też będzie numer portu - takimi rzeczami zajmuje się jednak system
+operacyjny).<BR>Jeśli chcemy natomiast odbierać połączenia tylko z
+jednego adresu <CODE>IP</CODE>, to należy go tu wpisać.</P></LI>
+
+<LI><P>
+<B><CODE>BindPort</CODE></B> - numer  portu na którym
+nasłuchujemy.<BR>O ile nasz proces nie będzie
+działał z uprawnieniami nadzorcy systemu (<CODE>root</CODE>'a), to
+numer portu musi być większy od 1024 i oczywiście wolny.</P></LI>
+
+<LI><P><B><CODE>HostName</CODE></B> - nazwa komputera w sieci (np.
+<CODE>student.uci.agh.edu.pl</CODE>), potrzebna dla
+odpowiedzi <CODE>HTTP</CODE> o kodzie <CODE>301 Moved Permanently</CODE> i pola
+<CODE>Location</CODE> tejże odpowiedzi.</P></LI>
+
+<LI><P><B><CODE>PidFile</CODE></B> - nazwa pliku (może być ze
+ścieżką) do którego zapisany zostanie <CODE>PID</CODE> procesu-ojca.
+Wystarczy potem z linii poleceń wpisać: <CODE>kill `cat yhttpd.pid`</CODE>
+i proces (wraz ze swoimi dziećmi) jest już ubity (jeśli
+<CODE>yhttpd.pid</CODE>
+był wskazanym plikiem).
+</P></LI>
+
+<LI><P><B><CODE>ErrorLog</CODE></B> - nazwa pliku (może być ze
+ścieżką) do którego zapisywane będą ewentualne komunikaty o błędach.
+Konieczna ze względu na to, że jeśli proces będzie działał jak
+prawdziwy demon, to naturalnie odłączony będzie od jakiegokolwiek
+terminala, tak więc komunikaty o błędach nie były by wyświetlone
+nigdzie.
+</P></LI>
+
+<LI><P><B><CODE>DebugLog</CODE></B> - nazwa pliku (może być także ze
+ścieżką) do którego zapisywane będą ewentualne informacje o przebiegu
+proramu. Bardzo użyteczne przy testowaniu (dla obszernych informacji
+konieczne jest skompilowanie projektu z ustawionym
+<CODE>define</CODE>'em <CODE>DEBUG</CODE>.
+</P></LI>
+
+<LI><P><B><CODE>Children</CODE></B> - ilość procesów-dzieci jaką
+utworzyć ma proces rodzic. Nie może przekroczyć maksymalnej wartości
+narzucanej przez dany system operacyjny (jeśli tak się stanie, to
+demon się nie uruchomi, a odpowiedni komuniakt znajdzie się w pliku).
+</P></LI>
+
+<LI><P><B><CODE>MaxChildConnections</CODE></B> - maksymalna ilość
+aktywnych połączeń z klientami, które może obsługiwać jeden
+proces-dziecko.
+</P></LI>
+
+<LI><P><B><CODE>ListenBacklog</CODE></B> - wartość argumentu dla
+funkcji systemowej <CODE>::listen</CODE>. Zwykle <CODE>150</CODE>.
+</P></LI>
+
+<LI><P><B><CODE>DocumentRoot</CODE></B> - bezwzględna ścieżka dostępu do
+głównego katalogu dokumentów <CODE>HTML</CODE>.
+</P></LI>
+
+<LI><P><B><CODE>UserDir</CODE></B> - ścieżka dostępu względem
+katalogów użytkowników, do katalogu, w którym należy spodziewać się dokumentów <CODE>HTML</CODE>
+użytkowników (zwykle <CODE>public_html</CODE>).
+</P></LI>
+
+<LI><P><B><CODE>MimeTypesFile</CODE></B> - pełna ścieżka dostępu do
+pliku <CODE>mime.types</CODE>.
+</P></LI>
+</UL>
+A tak może wyglądać przykładowy plik <CODE>yhttpd.conf</CODE>:
+<PRE>
+BindAddress		0.0.0.0
+BindPort		8000
+HostName		student.uci.agh.edu.pl
+PidFile			yhttpd.pid
+ErrorLog		error.log
+DebugLog		debug.log
+Children		10
+MaxChildConnections	100
+ListenBacklog		150
+DocumentRoot		/var/www/
+UserDir			/public_html
+# MimeTypesFile		/etc/mime.types
+MimeTypesFile		/usr/local/apache/etc/mime.types
+</PRE>
+
+<P>
+Po wczytaniu pliku konfiguracyjnego tworzone jest
+gniazdo, na którym proces będzi nasłuchiwał.<BR>
+Następnie
+otwierane są pliki wskazane w pliku konfiguracyjnym i zapisywane
+informacje o czasie rozpoczęcia pracy. Proces-główny (i jedyny na
+razie) odłącza się od terminala (poprzez ustawienie obsługi
+odpowiednich sygnałów, przejęcie przywództwa grupy procesów i
+podwójny <CODE>fork()</CODE>).
+</P>
+
+<P>
+Następnie tworzy żądaną liczbę procesów potomnych, ustanawia z nimi
+łącza komunikacyjne i zaczyna oczekiwać na zgłoszenia od przeglądarek (klientów WWW).
+</P>
+
+<P>
+Po przyjęciu połączenia przekazuje je do jednego ze swoich dzieci.
+Proces który otrzymał zlecenie, spróbuje je wykonać: tzn. otworzy
+wskazany plik, ustali jego typ i cechy (rozmiar, data ostatniej
+modyfikacji) oraz ostatecznie wyśle do klienta, jeśli kilent tego
+żądał.
+Jeśli któraś z tych czynności nie powiedzie się, zostanie
+wygenerowany odpowiedni kod odpowiedzi i komentarz do zaistniałego błędu.
+</P>
+
+<P>
+Nasz serwer obsługuje zapytania: <CODE><B>GET</B></CODE>,
+<CODE><B>HEAD</B></CODE> i <CODE><B>OPTIONS</B></CODE> oraz
+następujące odpowiedzi:
+</P>
+<P>
+<CENTER>
+<TABLE BORDER="1" CELLPADDING="2" CELLSPACING="1">
+<TR><TD ALIGN="CENTER"><B>&nbsp;kod&nbsp;</B></TD><TD ALIGN="CENTER"><B>&nbsp;znacznie&nbsp;</B></TD></TR>
+<TR><TD>&nbsp;200 OK&nbsp;</TD><TD>&nbsp;wszystko w porządku&nbsp;</TD></TR>
+<TR><TD>&nbsp;301 Moved Permanently&nbsp;</TD><TD>&nbsp;dokument przeniesiono&nbsp;</TD></TR>
+<TR><TD>&nbsp;400 Bad Request&nbsp;</TD><TD>&nbsp;niepoprawne zapytanie&nbsp;</TD></TR>
+<TR><TD>&nbsp;404 Not Found&nbsp;</TD><TD>&nbsp;dokumentu nie znaleziono&nbsp;</TD></TR>
+<TR><TD>&nbsp;501 Method Not Implemented&nbsp;</TD><TD>&nbsp;zapytanie nieobsługiwane&nbsp;</TD></TR>
+</TABLE>
+</CENTER>
+</P>
+
+
+
+<A NAME="zmiany"></A>
+<H4><LI>Zmiany w projekcie</LI></H4>
+<P>
+Jedyne zmiany jakie nastąpiły względem pierwotnego projektu, dotyczą
+zwiększenia ilości klas zaprojektowanych w czasie dokonywania
+formalnej analizy obiektowej w stosunku do klas powstałych na etapie
+projektowania obiektowego. Nastąpiło to poprzez
+</P>
+<UL>
+
+<LI>
+<P>
+generalizację już istniejących klas i wyodrębnienie z nich klas,
+które łączą wspólne cechy pozostałych:<BR>
+- z klas <CODE>File</CODE> i <CODE>Socket</CODE> wyodrębniono klasę
+<CODE>Descriptor</CODE>.
+</P>
+</LI>
+
+<LI>
+<P>
+rozszerzenie możliwości już istniejących klas i uogólnienie ich
+przeznaczenia (wraz z ewentualną zmianą ich nazwy):<BR>
+- klasa <CODE>MimeTypes</CODE> zamieniła się w bardzo uniwersalną klasę
+<CODE>Properties</CODE>,<BR>
+- klasa <CODE>SocketManager</CODE> w <CODE>ConnectionsManager</CODE>.
+</P>
+</LI>
+
+<LI>
+<P>
+stworzenie całkiem nowych klas, których nie przewidziano w
+początkowym projekcie, a które uzupełniają funkcjonalność pozostałych
+i czynią projekt kompletnym obiektowo i &quot;zapiętym na ostatni
+guzik&quot; funkcjonalnie:<BR>
+- klasy <CODE>AsyncSocket</CODE>, <CODE>AsyncMessageQueue</CODE>,
+<CODE>ChildThread</CODE>, <CODE>ParentThread</CODE>
+i interfejs <CODE>AsyncConnection</CODE>.
+</P>
+</LI>
+
+<LI>
+<P>
+stworzenie klas, które mimo tego, że ich istnienie jest w pełni
+uzasadnione z punktu widzenia obiektowego, to powstały tylko dlatego,
+by uczynić kod źródłowy czytelniejszym a pracę programisty
+wygodniejszą.<BR>
+- należą do nich klasy <CODE>EOFException</CODE>, <CODE>SString</CODE>,
+<CODE>Configuration</CODE>, <CODE>FileInfo</CODE>.
+</P>
+</LI>
+</UL>
+
+</OL>
+
+<A NAME="implementacja"></A>
+<H3><LI>Implementacja</LI></H3>
+
+<OL>
+
+<A NAME="kompatybilnosc"></A>
+<H4><LI>Kompatybilność</LI></H4>
+
+<P>
+Projekt został zaimplementowany w języku C++ z użyciem funkcji
+należących do standardu POSIX.<BR>Dlatego powinien się kompilować i
+poprawnie działać na wszelkich maszynach posiadających kompilator
+tego języka oraz przynajmniej częściową kompatybilność ze wspomnianym
+standardem (w zakresie przez nas wykorzystywanym). Obecność narzędzia
+<CODE>make</CODE> jest wskazana, lecz niekonieczna.
+</P>
+
+<A NAME="kompilacja"></A>
+<H4><LI>Informacje o sposobie kompilacji</LI></H4>
+
+<P>
+By skompilować demona, należy z linii poleceń wydać polecenie:
+<PRE>
+make
+</PRE>
+Kompilacja przebiega automatycznie. Program wykonywalny znajduje się
+w pliku <CODE><B>yhttpd</B></CODE> w tym samym katalogu, co jego
+pliki źródłowe.
+</P>
+
+
+<A NAME="podrecznik"></A>
+<H4><LI>Podręcznik użytkownika</LI></H4>
+
+<P>
+Demona uruchamia się wpisując z linii poleceń:
+<PRE>
+./yhttpd
+</PRE>
+lub z inną scieżką dostępu. W każdym razie nie są wymagane żadne
+parametry. Wszelkie informacje potrzebne demonowi pobierane są z
+pliku konfiguracyjnego, którego szuka on z katalogu bieżącego (nie
+musi to być ten sam katalog, z którego został on uruchomiony). Inne
+pliki tworzy on w miejscach wskazanych w pliku konfiguracyjnym,
+którego opis znajduje się <A HREF="#conf">tutaj</A>.
+</P>
+
+<P>
+Demon normalne nie kończy swego działania, chyba, że wydarzy się coś
+złego lub też odbierze on sygnał sugerujący mu zakończenie pracy. Łatwym
+sposobem na zabicie demona jest posłużenie się PIDem procesu-ojca,
+który zapisany zostanie w pliku wskazanym w pliku konfiguracyjnym.
+</P>
+
+
+</OL>
+
+
+<A NAME="podsumowanie"></A>
+<H3><LI>Podsumowanie</LI></H3>
+
+Wykonany przez nas projekt jest zgodny z tematem zadania oraz spełnia
+jego wszystkie założenia.<BR>
+
+Podczas prac nad nim wykorzystaliśmy wszystkie te cechy języka C++,
+jak i systemu UNIX&reg;, które pozwoliły na osiągnięcie dużej
+wydajności i bezawaryjności pracy demona, przy jednoczesnym
+zachowaniu przejrzystości kodu źródłowego i względnej &quot;prostoty
+koncepcyjnej&quot;.<BR>
+
+Demon nasz został także gruntownie przetestowany - poprawnie
+współpracuje ze wszystkimi przeglądarkami WWW, do których udało się
+nam dotrzeć.
+
+
+</OL>
+
+<P>
+<HR>
+<STRONG>
+Kod źródłowy tego programu oraz jego dokumentacja są chronione przez
+Ustawę o prawie autorskim i prawach pokrewnych. Nie mogą być użyte
+ani opublikowane w żadnych innych pracach bez pisemnej zgody ich
+autorów.
+</P>
+
+<P>
+This documentation and all of the sources are copyright protected and
+may not be used or published in other works without express written
+permission from the authors.
+</P>
+
+</STRONG>
+
+Copyright &copy; 1999 Łukasz Hołody, Michał Jacykiewicz, Marcin Jarząb, Marek Konieczny. All rights reserved.
+
+</BODY>
+</HTML>

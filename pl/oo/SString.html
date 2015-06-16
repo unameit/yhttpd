@@ -1,0 +1,50 @@
+<html>
+<head>
+</head><BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
+<p><hr></p>
+<a name=SString><h2>Class SString</h2></a>
+<font face="Courier New,Courier">class SString</font>
+<dl>
+<dt><b>Documentation </b><dd>Obiekty tej klasy u³atwiaj± operacje na ci±gach znaków, poprzez
+<dd>zdefiniowanie kilku operatorów oraz posiadanie statycznego bufora o
+<dd>wielko¶ci 512 bajtów. Potrafi± te¿ formatowaæ tekst tak jak czyni to np.
+<dd>funkcja sprintf.
+</dl>
+<h3><b>Attributes</h3></b>
+<a name=BUF_LEN#SString><ul><li><b>BUF_LEN</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private static const int BUF_LEN</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Decydujemy siê na bufor sta³ej wielko¶ci.
+</dl>
+</dir><a name=s#SString><ul><li><b>s</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>private char [BUF_LEN] s</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Tu przechowujemy ci±g znaków dla obiektów tej klasy.
+</dl>
+</dir><h3><b>Operations</h3></b>
+<a name=SString#SString><ul><li><b>SString</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  SString()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Konstruktor bez parametrów. Nic nie inicjuj.
+</dl>
+</dir><a name=SString#const_char_*#...#SString><ul><li><b>SString</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  SString(const char * fmt, ... )</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Utwórz obiekt zgodnie z podanym formatem (identycznie jak funkcji printf).
+</dl>
+</dir><a name=operator+=#const_char_*#SString><ul><li><b>operator+=</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public SString & operator+=(const char * str)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Do³±cz tekst.
+</dl>
+</dir><a name=operator=#const_char_*#SString><ul><li><b>operator=</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public SString & operator=(const char * str)</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Skopiuj nowy tekst.
+</dl>
+</dir><a name=operatorconstchar*#SString><ul><li><b>operatorconstchar*</b></li></ul>
+</a><dir><font face="Courier New,Courier"><font size=-1>public  operatorconstchar*()</font></font><p>  </p>
+<dl>
+<dt><b>Documentation </b>Daj mi ten tekst, który przechowujesz.
+</dl>
+</dir><center><h3><a href=_index.html#_index>Return to top</a></h3></center></html>

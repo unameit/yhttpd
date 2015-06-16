@@ -1,0 +1,165 @@
+<html><head><TITLE>AsyncMessageQueue</TITLE></head>
+<BODY BACKGROUND="../../../../gfx/backs/ltbrush.gif">
+In file src/AsyncMessageQueue.h:<H2><A HREF ="#DOC.DOCU" > <IMG BORDER=0 SRC=down.gif></A>  class  AsyncMessageQueue : private <!1><A HREF="AsyncSocket.html">AsyncSocket</A> </H2><BLOCKQUOTE>
+
+Klasa ta (dziedzicz±ca prywatnie klasê AsyncSocket) s³u¿y przede
+wszystkim do komunikacji miêdzyprocesowej
+</BLOCKQUOTE>
+<hr>
+ <h2> Inheritance:</h2>
+<APPLET CODE="ClassGraph.class" WIDTH=600 HEIGHT=125>
+<param name=classes value="CDescriptor,MDescriptor.html,CSocket,MSocket.html,CAsyncSocket,MAsyncSocket.html,CAsyncMessageQueue,MAsyncMessageQueue.html">
+<param name=before value="M,M,M,M">
+<param name=after value="Md_SPSP,Md_SP,Md-,M">
+<param name=indent value="0,1,2,3">
+<param name=arrowdir value="down">
+</APPLET>
+<hr>
+
+<DL>
+<DL>
+<DT><h3>Public Fields</h3><DD><DT><A HREF="#DOC.2.7"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>AsyncSocket::close</B> </B>
+ <DD><I>Upubliczniamy metodê close(), gdy¿ zosta³a ona wcze¶niej schowana z powody prywatnego dziedziczenia</I>
+</DL><DL>
+<DT><h3>Public Methods</h3><DD><DT><A HREF="#DOC.2.1"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>AsyncMessageQueue</B>(int sockfd) </B>
+ <DD><I>
+Jako argument MUSI byæ podany deskryptor gniazda z dziedziny UNIXa -
+inne nie potrafi± przekazywaæ ¿ywych deskryptorów</I>
+<DT><A HREF="#DOC.2.2"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>sendDescriptor</B>(int, const struct sockaddr_in *peer) </B>
+ <DD><I>Wy¶lij deskryptor podany jako argument</I>
+<DT><A HREF="#DOC.2.3"> <IMG BORDER=0 SRC=icon1.gif></A> void  <B>sendInt</B>(int i) </B>
+ <DD><I>Wy¶lij liczbê int</I>
+<DT><A HREF="#DOC.2.4"> <IMG BORDER=0 SRC=icon1.gif></A> int  <B>recvInt</B>() </B>
+ <DD><I>Odbierz liczbê int</I>
+<DT><A HREF="#DOC.2.5"> <IMG BORDER=0 SRC=icon1.gif></A> virtual  <!2><A HREF="AsyncMessageQueue.html#DOC.2.1">AsyncMessageQueue</A>&amp;  <B>operator=</B>(int) </B>
+ <DD><I>Przypisz temu obiektowi inny, wskazywany podanym deskryptorem</I>
+<DT><A HREF="#DOC.2.6"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>operator int</B>() const  </B>
+ <DD><I>Podaj mi swój deskryptor gniazda</I>
+</DL><DL>
+<DT><h3>Protected Fields</h3><DD><DT><A HREF="#DOC.2.8"> <IMG BORDER=0 SRC=icon1.gif></A>  <B>AsyncSocket::fd</B> </B>
+ <DD><I>udostêpniamy fd innym wy¿szym klasom (bo go schowali¶my przez ": private AsyncSocket") </I>
+</DL></DL>
+<hr><H3>Inherited from <A HREF="AsyncSocket.html">AsyncSocket:</A></h3>
+
+<DL>
+</DL>
+<hr><H3>Inherited from <A HREF = "Socket.html"> Socket:</A></h3>
+
+<DL>
+<DL>
+<DT><h3>Public Methods</h3><DD><DT><IMG SRC=icon2.gif> void  <B>connect</B>(const char *hostName, ushort port)
+<DT><IMG SRC=icon2.gif> void  <B>connect</B>(const struct sockaddr_in *addr)
+<DT><IMG SRC=icon2.gif> void  <B>bind</B>(const char *hostName, ushort port)
+<DT><IMG SRC=icon2.gif> void  <B>bind</B>(const struct sockaddr_in *addr)
+<DT><IMG SRC=icon2.gif> int  <B>accept</B>()
+<DT><IMG SRC=icon2.gif> int  <B>accept</B>(struct sockaddr_in *)
+<DT><IMG SRC=icon2.gif> void  <B>listen</B>(int backlog)
+</DL><DL>
+<DT><h3>Private Methods</h3><DD><DT><IMG SRC=icon2.gif> void  <B>convert</B>(struct sockaddr_in *addr, const char *hostName, ushort port) const 
+</DL></DL>
+<hr><H3>Inherited from <A HREF = "Descriptor.html"> Descriptor:</A></h3>
+
+<DL>
+<DL>
+<DT><h3>Public Methods</h3><DD><DT><IMG SRC=icon2.gif> void  <B>close</B>()
+<DT><IMG SRC=icon2.gif> int  <B>read</B>()
+<DT><IMG SRC=icon2.gif> size_t  <B>read</B>(void *buffer, size_t nbytes, bool full = true)
+<DT><IMG SRC=icon2.gif> size_t  <B>readv</B>(const struct iovec *iov, size_t count, bool full = true)
+<DT><IMG SRC=icon2.gif> void  <B>write</B>(u_char)
+<DT><IMG SRC=icon2.gif> size_t  <B>write</B>(const void *buffer, size_t, bool full = true)
+<DT><IMG SRC=icon2.gif> size_t  <B>writev</B>(const struct iovec *iov, size_t count, bool full = true)
+</DL><DL>
+<DT><h3>Protected Fields</h3><DD><DT><IMG SRC=icon2.gif> int  <B>fd</B>
+</DL><DL>
+<DT><h3>Protected Methods</h3><DD><DT><IMG SRC=icon2.gif> void  <B>makeAsync</B>()
+</DL></DL>
+<A NAME="DOC.DOCU">
+<hr>
+ <h2> Documentation </h2>
+<BLOCKQUOTE>
+
+Klasa ta (dziedzicz±ca prywatnie klasê AsyncSocket) s³u¿y przede
+wszystkim do komunikacji miêdzyprocesowej. Oprócz zwyk³ych danych pozwala
+tak¿e przekazywaæ otwarte deskryptory plików i gniazd (socketów) innym
+procesom. Ze wzglêdu na potrzeby tego projektu oraz wymagane jej cechy
+zosta³a ona zrealizowana na ³±czu komunikacyjnym nieblokuj±cym
+(asynchronicznym socket'cie w dziedzinie UNIXa).
+
+</BLOCKQUOTE>
+<DL>
+
+<A NAME="AsyncMessageQueue">
+<A NAME ="DOC.2.1">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  AsyncMessageQueue(int sockfd)</B></TT>
+<DD>
+Jako argument MUSI byæ podany deskryptor gniazda z dziedziny UNIXa -
+inne nie potrafi± przekazywaæ ¿ywych deskryptorów
+<DL></DL><P>
+<A NAME="sendDescriptor">
+<A NAME ="DOC.2.2">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  sendDescriptor(int, const struct sockaddr_in *peer)</B></TT>
+<DD>Wy¶lij deskryptor podany jako argument
+<DL></DL><P>
+<A NAME="sendInt">
+<A NAME ="DOC.2.3">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> void  sendInt(int i)</B></TT>
+<DD>Wy¶lij liczbê int
+<DL></DL><P>
+<A NAME="recvInt">
+<A NAME ="DOC.2.4">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> int  recvInt()</B></TT>
+<DD>Odbierz liczbê int
+<DL></DL><P>
+<A NAME="operator=">
+<A NAME ="DOC.2.5">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B> virtual  <!2><A HREF="AsyncMessageQueue.html#DOC.2.1">AsyncMessageQueue</A>&amp;  operator=(int)</B></TT>
+<DD>Przypisz temu obiektowi inny, wskazywany podanym deskryptorem
+<DL></DL><P>
+<A NAME="operator int">
+<A NAME ="DOC.2.6">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  operator int() const </B></TT>
+<DD>Podaj mi swój deskryptor gniazda
+<DL></DL><P>
+<A NAME="AsyncSocket::close">
+<A NAME ="DOC.2.7">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  AsyncSocket::close</B></TT>
+<DD>Upubliczniamy metodê close(), gdy¿ zosta³a ona wcze¶niej schowana z powody prywatnego dziedziczenia
+<DL></DL><P>
+<A NAME="AsyncSocket::fd">
+<A NAME ="DOC.2.8">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  AsyncSocket::fd</B></TT>
+<DD>udostêpniamy fd innym wy¿szym klasom (bo go schowali¶my przez ": private AsyncSocket") 
+<DL></DL><P>
+<A NAME="">
+<A NAME ="DOC.2.9">
+<DT><IMG BORDER=0 SRC=icon2.gif><TT><B>  struct </B></TT>
+<DD>Struktury i zmienne potrzebne dla wywo³añ funkcji systemowych
+<DL></DL><P></DL>
+<hr>
+ <DL><DT><B>This class has no child classes.</B></DL>
+<DL></DL><P><I><A HREF="aindex.html"> alphabetic index</A></I>  <I><A HREF="HIER.html"> hierarchy of classes</A></I><P><hr>
+<STRONG>
+Kod ¼ród³owy tego programu oraz jego dokumentacja s± chronione przez
+Ustawê o prawie autorskim i prawach pokrewnych. Nie mog± byæ u¿yte
+ani opublikowane w ¿adnych innych pracach bez pisemnej zgody ich
+autorów.
+<P>
+This documentation and all of the sources are copyright protected and
+may not be used or published in other works without express written
+permission from the authors.
+</P>
+</STRONG>
+Copyright &copy; 1999 £ukasz Ho³ody, Micha³ Jacykiewicz, Marcin Jarz±b, Marek Konieczny. All rights reserved.
+
+<HR>
+
+<P ALIGN="CENTER">
+<SMALL>
+<A HREF="../">Strona g³ówna projektu</A> |
+<A HREF="../projektowa.html">Dokumentacja projektowa</A> |
+<A HREF="../koncowa.html">Dokumentacja koñcowa</A>
+</SMALL>
+</P>
+
+<P Align=right><I>generated by <A HREF="http://www.zib.de/Visual/software/doc++/index.html">doc++</A></I>
+</BODY>
